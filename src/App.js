@@ -11,6 +11,10 @@ function App() {
         if (response.status === 200) {
           console.log(response)
         }
+        const response2 = await axios.get('/api/commute/attend')
+        if (response.status === 200) {
+          console.log(response2)
+        }
       } catch (err) {
         console.log(err)
       }

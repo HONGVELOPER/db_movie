@@ -26,6 +26,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING(6),
             allowNull: false,
         },
+        U_DIVIDE: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        },
         U_CRET_DT: {
             type: DataTypes.DATE,
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),

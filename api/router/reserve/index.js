@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const reserverFunctions = require('./reserveFunction.js');
 
-// 영호 예매 및 취소 router
+// 영호 관련 Router
 
-
-router.get('/list', (req, res) => {
+router.get('/list', async (req, res) => {
     console.log('진입!')
-    res.json({username:'api test youngjin'})
+    const userInfo = await reserverFunctions.getUser()
+    console.log(userInfo, 'index user info') 
+    res.json({userInfo: userInfo})
 })
 
-module.exports = router
+module.exports = router;
