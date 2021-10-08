@@ -7,8 +7,14 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/')
-        console.log(response)
+        const response = await axios.get('/api/reserve/list')
+        if (response.status === 200) {
+          console.log(response)
+        }
+        const response2 = await axios.get('/api/commute/attend')
+        if (response.status === 200) {
+          console.log(response2)
+        }
       } catch (err) {
         console.log(err)
       }
