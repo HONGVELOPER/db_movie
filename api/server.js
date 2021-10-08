@@ -1,6 +1,5 @@
 const express = require('express'); // express 모듈 선언
 const app = express(); // express 객체로 선언
-// const route = require('./router/index'); // api 경로 (router code)
 const port = process.env.PORT || 3001;
 
 // DB ORM 연동

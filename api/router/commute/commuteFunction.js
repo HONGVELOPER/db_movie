@@ -1,4 +1,4 @@
-// const a = require('../../models')
+// const { M_USER, M_MOVIE } = require('../../models')
 // const commuteFunctions = {}
 
 // commuteFunctions.getAttend = async () => {
