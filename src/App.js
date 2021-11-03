@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Movie from './pages/Movie';
+import Movie from './pages/hong/Movie';
 
 function App() {
   return (
