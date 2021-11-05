@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const CommuteItem = ({ name }) => {
+const CommuteItem = ({ name, position }) => {
   const [punchIn, setPunchIn] = useState("-");
   const [punchOut, setPunchOut] = useState("-");
 
@@ -9,11 +9,12 @@ const CommuteItem = ({ name }) => {
     display: flex;
     flex-direction: row;
     background-color: green;
+    border: 2px solid white;
   `;
 
   const LeftBox = styled.div`
     flex: 1;
-    background: grey;
+    background: ${(props) => (props.name === "이름이없엉" ? "red" : "grey")};
   `;
 
   const MiddleBox = styled.div`
@@ -38,52 +39,63 @@ const CommuteItem = ({ name }) => {
     name = "이름이없엉";
   }
 
-  const recordCurrentTime = (punchType) => {
+  if (position === undefined) {
+    position = "직급이없엉";
+  }
+
+  const recordCurrentTime = (type) => {
     const currentTime = new Date();
     console.log(currentTime.toTimeString());
     console.log(typeof currentTime.toTimeString());
 
-    if (punchType === "In") {
+    if (type === "In") {
       setPunchIn(currentTime.toLocaleTimeString());
+
+      if (punchOut !== "-") {
+        setPunchOut("-");
+      }
     }
 
-    if (punchType === "Out") {
-      setPunchOut(currentTime.toLocaleTimeString());
+    if (type === "Out") {
+      if (punchIn === "-") {
+        alert("출근 시각을 먼저 기입해주세요");
+      } else {
+        setPunchOut(currentTime.toLocaleTimeString());
+      }
     }
   };
 
   return (
-    <div>
-      <Container>
-        <LeftBox>
-          <h1>{name}</h1>
-        </LeftBox>
+    <Container>
+      <LeftBox name={name}>
+        <h1>{name}</h1>
+        <h2>{position}</h2>
+      </LeftBox>
 
-        <MiddleBox>
-          <h2>출근시각</h2>
-          <h3>{punchIn}</h3>
-          <button
-            onClick={() => {
-              recordCurrentTime("In");
-            }}
-          >
-            출근
-          </button>
-        </MiddleBox>
+      <MiddleBox>
+        <h2>출근시각</h2>
+        <h3>{punchIn}</h3>
+        <button
+          onClick={() => {
+            recordCurrentTime("In");
+          }}
+        >
+          출근
+        </button>
+      </MiddleBox>
 
-        <RightBox>
-          <h2>퇴근시각</h2>
-          <h3>{punchOut}</h3>
-          <button
-            onClick={() => {
-              recordCurrentTime("Out");
-            }}
-          >
-            퇴근
-          </button>
-        </RightBox>
-      </Container>
-    </div>
+      <RightBox>
+        <h2>퇴근시각</h2>
+        <h3>{punchOut}</h3>
+        <button
+          onClick={() => {
+            recordCurrentTime("Out");
+          }}
+        >
+          퇴근
+        </button>
+      </RightBox>
+    </Container>
   );
 };
 
