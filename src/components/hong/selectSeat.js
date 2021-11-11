@@ -39,6 +39,7 @@ const SelectSeat = () => {
     }
 
     const handleChild = (event) => {
+        console.log(event)
         setChildSeat(event.target.textContent)
         document.getElementById(event.target.id).style.backgroundColor = 'black'
         for (let i = 0; i < 9; i++) {
@@ -95,7 +96,7 @@ const SelectSeat = () => {
                     <Grid item xs={6}>
                         check
                     </Grid>
-                    <Grid item xs={12} style={{border: '1px solid black'}}>
+                    {/* <Grid item xs={12} style={{border: '1px solid black'}}>
                         <div>
                             <div>{normalSeat}</div>
                             <div>{childSeat}</div>
@@ -108,7 +109,7 @@ const SelectSeat = () => {
                                 ))}
                             </div>
                         </div>                    
-                    </Grid>
+                    </Grid> */}
                 </Grid>
             </Container>
         </>
