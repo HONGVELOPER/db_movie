@@ -7,6 +7,7 @@ import Seat from "./pages/hong/Seat";
 import CommutePage from "./pages/choi/CommutePage";
 import SalaryPage from "./pages/choi/SalaryPage";
 import LoginPage from "./pages/kim/LoginPage";
+import SignUpPage from "./pages/kim/SignUpPage";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/salary" component={SalaryPage} />
 
             <Route path="/login" component={LoginPage} />
+            <Route path="/signup" component={SignUpPage} />
         </div>
     );
 }
