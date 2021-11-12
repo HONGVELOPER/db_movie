@@ -1,16 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
     const movie = sequelize.define('M_MOVIE', {
-        M_ID: {
+        M_CODE: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-        },
-        M_CODE: {
-            type: DataTypes.STRING(50),
-            allowNull: false,
-            // primaryKey: true,
-            // autoIncrement: true,
         },
         M_NAME: {
             type: DataTypes.STRING(50),
@@ -29,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: 0,
         },
         M_RELEASE_DATE: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: false,
         },
         M_RUNNIG_TIME: {
@@ -42,7 +36,11 @@ module.exports = function(sequelize, DataTypes) {
         },
         M_AGE_LIMIT: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            defaultValue: -1,
+        },
+        M_POSTER: {
+            type: DataTypes.STRING(100),
+            allowNull: false,
         },
         M_STORY: {
             type: DataTypes.STRING(1000),
@@ -50,6 +48,10 @@ module.exports = function(sequelize, DataTypes) {
         },
         M_DIRECTOR: {
             type:DataTypes.STRING(50),
+            allowNull: false,
+        },
+        M_CAST: {
+            type: DataTypes.STRING(100),
             allowNull: false,
         },
         M_CRET_DT: {

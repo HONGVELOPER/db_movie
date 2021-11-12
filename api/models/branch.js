@@ -1,41 +1,29 @@
 module.exports = function(sequelize, DataTypes) {
-    const user = sequelize.define('U_USER', {
-        U_ID: {
-            type: DataTypes.INTEGER,
+    const branch = sequelize.define('B_BRANCH', {
+        B_CODE: {
+            type: DataTypes.INTEGER(30),
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        U_EMAIL: {
+        B_NAME: {
+            type: DataTypes.STRING(20),
+            allowNull: false,
+        },
+        B_NUMBER: {
+            type: DataTypes.STRING(12),
+            allowNull: false,
+        },
+        B_ADDRESS: {
             type: DataTypes.STRING(50),
-            allowNull: false,
+            allowNull: false
         },
-        U_PASSWORD: {
-            type: DataTypes.STRING(50),
-            allowNull: false,
-        },
-        U_NAME: {
-            type:DataTypes.STRING(50),
-            allowNull: false,
-        },
-        U_PH_NUM: {
-            type: DataTypes.STRING(13),
-            allowNull: false,
-        },
-        U_BIRTH: {
-            type: DataTypes.STRING(6),
-            allowNull: false,
-        },
-        U_DIVIDE: {
-            type: DataTypes.INTEGER,
-            defaultValue: 0
-        },
-        U_CRET_DT: {
+        B_CRET_DT: {
             type: DataTypes.DATE,
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: false,
         },
-        U_MOD_DT: {
+        B_MOD_DT: {
             type: DataTypes.DATE,
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: false,
@@ -46,8 +34,8 @@ module.exports = function(sequelize, DataTypes) {
         dateStrings: true,
         typeCast: true,
         freezeTableName: true,
-        tableName: 'U_USER',
+        tableName: 'B_BRANCH',
         timestamps: false,
     })
-    return user
+    return branch
 }
