@@ -35,7 +35,6 @@ const Button = styled.div`
         `
     `}
 `;
-
 const SignUpForm = styled.div`
     width: 512px;
     height: 768px;
@@ -81,9 +80,7 @@ const SignUpPage = () => {
     };
 
     const handleClick = async () => {
-        //alert("test");
-        //const result = await axios
-
+        // 비동기처리 async - await
         axios
             .post("/api/users/test", {
                 id: id,
@@ -100,12 +97,6 @@ const SignUpPage = () => {
                 // error
                 alert("fail!");
             });
-
-        // if (result.status === 200 || result.status === 201) {
-        //     alert("success!!");
-        // } else {
-        //     alert("fail");
-        // }
     };
 
     return (
