@@ -35,8 +35,9 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: 0,
         },
         MT_SCREEN_SPACE: { // 몇 관인지
-            type: DataTypes.STRING(10),
+            type: DataTypes.INTEGER(20),
             allowNull: false,
+            primaryKey: true,
         },
         MT_SCREEN_SIZE: { // 스크린 크기
             type: DataTypes.STRING(10),

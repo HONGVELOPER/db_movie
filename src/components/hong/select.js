@@ -4,6 +4,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -58,12 +59,9 @@ const Select = (props) => {
     }
 
     useEffect(() => {
-        console.log('USE EFFECT 접근 ~')
         if (movie.code && branch.code && !date.code) {
-            console.log('if 접근')
             getDate()
-        } else if (movie.code && branch.code & date.code) {
-            console.log('else if 접근')
+        } else if (movie.code && branch.code && date) {
             getTime()
         }
     }, [movie, branch, date, time])
@@ -77,7 +75,6 @@ const Select = (props) => {
             }
         })
     }
-
     const handlebranch = (event) => {
         setBranch((prevState) => {
             return {
@@ -105,19 +102,6 @@ const Select = (props) => {
             }
         })
     }
-
-    const apiTest = async () => {
-        const result = await axios.post('/api/reserve/test', {
-            movie: movie,
-            branch: branch,
-            date: date,
-            time: time
-        })
-        if (result.status === 200) {
-            alert('예매되었습니다.')
-        }
-    }
-
     const getDate = async () => {
         const dateInfo = await axios.get('/api/reserve/date', {
             params: {
@@ -127,7 +111,6 @@ const Select = (props) => {
         })
         setTotalDate(dateInfo.data)
     }
-
     const getTime = async () => {
         const timeInfo = await axios.get('/api/reserve/time', {
             params: {
@@ -136,9 +119,7 @@ const Select = (props) => {
                 theaterDate: date.name,
             }
         })
-        console.log(timeInfo)
         setTotalTime(timeInfo.data)
-        console.log(totalTime,' TOTAL')
     }
 
     return (
@@ -190,14 +171,26 @@ const Select = (props) => {
                         <div className={classes.header}>시간</div>
                         <div style={{padding: '10px'}}>
                             {totalTime.map((tt) => (
-                                <Button key={tt.MT_CODE} color="secondary" id={tt.MT_CODE} onClick={handleTime}>
+                                <Button key={tt.MT_CODE} id={tt.MT_CODE} color="secondary" onClick={handleTime}>
                                     {tt.MT_SCREEN_SPACE} {tt.MT_START_TIME} ({tt.MT_AVAIL_SEAT} / {tt.MT_TOTAL_SEAT}) 
                                 </Button>
                             ))}
                         </div>
                     </Grid>
                 </Grid>
-                <Button onClick={apiTest}>API TEST</Button>
+                <Button>
+                    <Link to={{
+                        pathname: "/movie/seat",
+                        state: {
+                            movie : movie,
+                            branch: branch,
+                            date: date,
+                            time: time
+                        }
+                    }}>
+                        좌석선택
+                    </Link>
+                </Button>
                 <div>영화 : {movie.name} | {movie.code}</div>
                 <div>극장 : {branch.name} | {branch.code}</div>
                 <div>일시 : {date.name} | {date.code}</div>

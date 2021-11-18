@@ -4,7 +4,7 @@ const models = require('../../models')
 
 // 영화 예매 관련 Router
 
-router.get('/getInfo', async (req, res) => {
+router.get('/movieInfo', async (req, res) => {
     const result = {}
     const movieInfo = await models.M_MOVIE.findAll({
         attributes: ['M_CODE', 'M_NAME'],
@@ -17,6 +17,17 @@ router.get('/getInfo', async (req, res) => {
     result.movie = movieInfo
     result.branch = branchInfo
     res.json(result)
+})
+
+router.get('/seatInfo', async (req, res) => {
+    const seatInfo = await models.M_SEAT.findAll({
+        raw: true,
+        where: {
+            MT_SCREEN_SPACE: req.query.mtScreenSpace,
+            B_CODE: req.query.bCode
+        }
+    })
+    res.json(seatInfo)
 })
 
 router.get('/date', async (req, res) => {

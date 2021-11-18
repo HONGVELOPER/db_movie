@@ -8,7 +8,7 @@ const Movie = () => {
 
     useEffect(() => {
         async function getMovieInfo() {
-            const result = await axios.get('api/reserve/getInfo')
+            const result = await axios.get('/api/reserve/movieInfo')
             setData(result)
         }
         getMovieInfo()
