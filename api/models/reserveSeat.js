@@ -1,29 +1,17 @@
 module.exports = function(sequelize, DataTypes) {
-    const seat = sequelize.define('M_SEAT', {
-        MS_CODE: {
+    const reserveSeat = sequelize.define('M_RESERVE_SEAT', {
+        MRS_CODE: {
             type: DataTypes.INTEGER(30),
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        MS_ROW: {
-            type: DataTypes.STRING(1),
-            allowNull: false,
-        },
-        MS_COL: {
-            type: DataTypes.INTEGER(2),
-            allowNull: false,
-        },
-        MS_DISTANCE: {
-            type: DataTypes.STRING(5),
-            allowNull: false,
-        },
-        MS_CRET_DT: {
+        MRS_CRET_DT: {
             type: DataTypes.DATE,
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: false,
         },
-        MS_MOD_DT: {
+        MRS_MOD_DT: {
             type: DataTypes.DATE,
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
             allowNull: false,
@@ -34,14 +22,18 @@ module.exports = function(sequelize, DataTypes) {
         dateStrings: true,
         typeCast: true,
         freezeTableName: true,
-        tableName: 'M_SEAT',
+        tableName: 'M_RESERVE_SEAT',
         timestamps: false,
     })
-    seat.associate = function(models) {
-        seat.belongsTo(models.M_THEATER, {
-            foreignKey: 'MT_CODE',
+    reserveSeat.associate = function(models) {
+        reserveSeat.belongsTo(models.M_SEAT, {
+            foreignKey: 'MS_CODE',
+            onDelete: 'cascade',
+        })
+        reserveSeat.belongsTo(models.M_RESERVE_INFO, {
+            foreignKey: 'MRI_CODE',
             onDelete: 'cascade',
         })
     }
-    return seat
+    return reserveSeat
 }

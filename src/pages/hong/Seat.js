@@ -10,8 +10,7 @@ const Seat = (props) => {
         async function getSeatInfo() {
             const result = await axios.get('/api/reserve/seatInfo', {
                 params: {
-                    mtScreenSpace: props.location.state.time.name.split(' ')[0],
-                    bCode: props.location.state.branch.code
+                    mtCode: props.location.state.date.code
                 }
             })
             setSeat(result)

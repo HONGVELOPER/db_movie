@@ -75,7 +75,7 @@ const Select = (props) => {
             }
         })
     }
-    const handlebranch = (event) => {
+    const handleBranch = (event) => {
         setBranch((prevState) => {
             return {
                 ...prevState,
@@ -148,7 +148,7 @@ const Select = (props) => {
                         <div style={{padding: '10px'}}>
                             <div style={{overflow: 'auto', height: '515px'}}>
                                 {locations.map((loc) => (
-                                    <Button key={loc.B_CODE} id={loc.B_CODE} color="secondary" style={{display: 'block'}} onClick={handlebranch}>
+                                    <Button key={loc.B_CODE} id={loc.B_CODE} color="secondary" style={{display: 'block'}} onClick={handleBranch}>
                                         {loc.B_NAME}
                                     </Button>
                                 ))}

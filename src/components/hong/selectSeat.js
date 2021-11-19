@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-// import Divider from '@mui/material/Divider';
+import axios from 'axios';
 
 const useStyles = makeStyles({
     root: {
@@ -28,6 +28,9 @@ const SelectSeat = (props) => {
 
     const [AdultSeat, setAdultSeat] = useState(0)
     const [childSeat, setChildSeat] = useState(0)
+    const [seatNum, setSeatNum] = useState(0)
+    const [seatCodes, setSeatCodes] = useState([])
+    
 
     const handleAdult = (event) => {
         setAdultSeat(event.target.textContent)
@@ -38,7 +41,6 @@ const SelectSeat = (props) => {
             }
         }
     }
-
     const handleChild = (event) => {
         setChildSeat(event.target.textContent)
         document.getElementById(event.target.id).style.backgroundColor = 'black'
@@ -48,28 +50,57 @@ const SelectSeat = (props) => {
             }
         }
     }
+    const handleSeat = (event) => {
+        if (document.getElementById(event.target.id).style.backgroundColor === 'orange') {
+            document.getElementById(event.target.id).style.backgroundColor = 'white'
+            setSeatNum(seatNum-1)
+            setSeatCodes(seatCodes.filter((e) => (e !== event.target.id)))
+        } else {
+            if (seatNum < parseInt(AdultSeat) + parseInt(childSeat)) {
+                document.getElementById(event.target.id).style.backgroundColor = 'orange'
+                setSeatNum(seatNum+1)
+                setSeatCodes([...seatCodes, event.target.id])
+            } else {
+                alert('인원을 초과하였습니다.')
+            }
+        }
+    }
+    const handlePay = async (event) => {
+        const result = await axios.post('/api/reserve/pay', {
+            params: {
+                mtCode: props.data.date.code,
+                msCode: seatCodes,
+            }
+        })
+        console.log(result)
+        if (result.status === 200) {
+            alert('정상적으로 예매되었습니다.')
+        }
+    }
 
     let rowSeat = null
-
     if (props.seat) {
+        if (!props.seat.data[0]) {
+            return alert('좌석 배정이 되지 않았습니다.')
+        }
         let row = props.seat.data[0].MS_ROW
-        let count = 0
         rowSeat = props.seat.data.map((seat, idx) => {
-            count += 1
             if (row !== seat.MS_ROW) {
                 row = seat.MS_ROW
                 return (
-                    <>
-                        <br key={idx} />
-                        <span>{seat.MS_ROW}</span>
-                        <Button variant="outlined" key={count}>{seat.MS_COL}</Button>
-                    </>
+                    <span key={seat.MS_CODE}>
+                        <br/>
+                        <span style={{border: '1px solid black', marginRight: '10px'}}>{seat.MS_ROW}</span>
+                        <Button variant="outlined" id={seat.MS_CODE} onClick={handleSeat}>
+                            {seat.MS_COL}
+                        </Button>
+                    </span>
                 )
             }
             return (
-                <>
-                    <Button variant="outlined" key={count}>{seat.MS_COL}</Button>
-                </>
+                <Button variant="outlined" key={seat.MS_CODE} id={seat.MS_CODE} onClick={handleSeat}>
+                    {seat.MS_COL}
+                </Button>
             )
         })
     }
@@ -111,7 +142,6 @@ const SelectSeat = (props) => {
                                 <Button id="child-8" variant="outlined" onClick={handleChild} style={{borderRadius: 0, margin: 3, padding: 0, maxWidth: '30px', minWidth: '30px'}}>8</Button>                       
                             </span>
                         </div>
-                        {/* <Divider orientation="vertical" style={{position: 'relative', bottom: '65px'}} /> */}
                     </Grid>
                     <Grid item xs={6}>
                         <div>
@@ -121,7 +151,6 @@ const SelectSeat = (props) => {
                                 {props.data.date.name}&nbsp;
                                 {props.data.time.name}&nbsp;
                             </span>
-                                {/* <Divider orientation="vertical" /> */}
                         </div>
                     </Grid>
                     <Grid item xs={12} style={{border: '1px solid black'}}>
@@ -130,9 +159,15 @@ const SelectSeat = (props) => {
                             <div>{childSeat}</div>
                             <div style={{border: '1px solid black', textAlign: 'center'}}>Screen</div>
                         </div>   
+                        <span style={{border: '1px solid black', marginRight: '9px'}}>A</span>
                         {rowSeat}
                     </Grid>
                 </Grid>
+                <Button onClick={handlePay}>
+                    결제하기
+                </Button>
+                <div>{seatCodes}</div>
+                <div>{seatNum}</div>
             </Container>
         </>
     )
