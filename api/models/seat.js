@@ -42,6 +42,7 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey: 'MT_CODE',
             onDelete: 'cascade',
         })
+        // seat.hasMany(models.M_RESERVE_SEAT)
     }
     return seat
 }

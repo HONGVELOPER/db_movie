@@ -65,7 +65,7 @@ const SelectSeat = (props) => {
             }
         }
     }
-    const handlePay = async (event) => {
+    const handlePay = async () => {
         const result = await axios.post('/api/reserve/pay', {
             params: {
                 mtCode: props.data.date.code,
@@ -80,13 +80,14 @@ const SelectSeat = (props) => {
 
     let rowSeat = null
     if (props.seat) {
-        if (!props.seat.data[0]) {
+        if (!props.seat.data.seat[0]) {
             return alert('좌석 배정이 되지 않았습니다.')
         }
-        let row = props.seat.data[0].MS_ROW
-        rowSeat = props.seat.data.map((seat, idx) => {
+        let row = props.seat.data.seat[0].MS_ROW
+        rowSeat = props.seat.data.seat.map((seat) => {
             if (row !== seat.MS_ROW) {
                 row = seat.MS_ROW
+                // RESERVED SEAT 은 BACKGROUND COLOR CHANGE 랑 CLICK 막기
                 return (
                     <span key={seat.MS_CODE}>
                         <br/>

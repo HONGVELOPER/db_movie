@@ -34,6 +34,10 @@ module.exports = function(sequelize, DataTypes) {
             foreignKey: 'MRI_CODE',
             onDelete: 'cascade',
         })
+        reserveSeat.belongsTo(models.M_THEATER, {
+            foreignKey: 'MT_CODE',
+            onDelete: 'cascade',
+        })
     }
     return reserveSeat
 }

@@ -14,6 +14,7 @@ const Seat = (props) => {
                 }
             })
             setSeat(result)
+            console.log(result, 'result')
         }
         getSeatInfo()
     }, [])
@@ -26,4 +27,4 @@ const Seat = (props) => {
     )
 }
 
-export default Seat;    
+export default Seat;
