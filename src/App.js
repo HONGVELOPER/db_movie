@@ -8,10 +8,11 @@ import CommutePage from "./pages/choi/CommutePage";
 import SalaryPage from "./pages/choi/SalaryPage";
 import LoginPage from "./pages/kim/LoginPage";
 import SignUpPage from "./pages/kim/SignUpPage";
+import { RecoilRoot } from "recoil";
 
 function App() {
     return (
-        <div>
+        <RecoilRoot>
             <Route exact path="/" component={Home} />
             <Route exact path="/movie" component={Movie} />
             <Route path="/movie/seat" component={Seat} />
@@ -21,7 +22,7 @@ function App() {
 
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={SignUpPage} />
-        </div>
+        </RecoilRoot>
     );
 }
 
