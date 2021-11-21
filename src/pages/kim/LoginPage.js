@@ -1,83 +1,74 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { Button } from "../../components/kim/Button";
+import { Input, Footer } from "../../components/kim/Input";
+import { Form } from "../../components/kim/Form";
 
-const Input = styled.input`
-    display: inline-flex;
-    position: relative;
-    overflow: hidden;
-    width: 50%;
-    height: 40px;
-    margin: 10px 0 8px;
-    padding: 5px 39px 5px 11px;
-    border: solid 1px #dadada;
-    background: #fff;
+const LoginPage = ({ history }) => {
+    const [inputs, setInputs] = useState({
+        email: "",
+        password: "",
+    });
+    const { email, password } = inputs;
 
-    justify-content: center;
-`;
-const Button = styled.div`
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 49px;
-    display: block;
-    width: 50%;
-    height: 49px;
-    margin: 16px 0 7px;
+    const handleInputs = (e) => {
+        const { value, name } = e.target;
+        setInputs({
+            ...inputs,
+            [name]: value,
+        });
+    };
 
-    cursor: pointer;
-    text-align: center;
-    color: #fff;
-    border: none;
-    border-radius: 0;
-    background-color: #03c75a;
-    ${({ disabled }) =>
-        disabled &&
-        `
-    `}
-`;
+    const handleClick = () => {
+        if (email === "" || password === "") {
+            window.alert("이메일과 비밀번호를 입력하세요");
+            return;
+        }
 
-const LoginForm = styled.div`
-    width: 512px;
-    height: 768px;
-
-    position: relative; /* 추후 박스 하단에 추가 버튼을 위치시키기 위한 설정 */
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
-
-    margin: 0 auto; /* 페이지 중앙에 나타나도록 설정 */
-
-    margin-top: 96px;
-    margin-bottom: 32px;
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-    h1 {
-        margin-bottom: 500;
-        font-size: 36px;
-        color: #343a40;
-    }
-`;
-
-const LoginPage = () => {
+        axios
+            .post("/api/users/login", {
+                email: email,
+                password: password,
+            })
+            .then((res) => {
+                // response
+                alert("로그인 성공" + JSON.stringify(res));
+                history.push("/");
+            })
+            .catch((err) => {
+                // error
+                alert("아이디 또는 비밀번호를 확인해주세요.");
+            });
+    };
     return (
-        <LoginForm>
-            <h1> Login Page </h1>
+        <Form>
+            <h1> Login 로그인 </h1>
             <Input
-                id="id"
-                name="id"
-                placeholder="아이디를 입력해주세요 "
+                onChange={handleInputs}
+                id="email"
+                name="email"
+                placeholder="이메일을 입력해주세요 "
             ></Input>
             <Input
+                onChange={handleInputs}
+                type="password"
                 id="password"
                 name="password"
-                type="passowrd"
                 placeholder="비밀번호를 입력해주세요"
             />
-            <Button onClick={() => alert("login!")}>login</Button>
-            <Button onClick={() => alert("sign up!")}>Sign up</Button>
-        </LoginForm>
+            <Button onClick={handleClick}>로그인</Button>
+            {/* <Button
+                onClick={() => {
+                    history.push("/signup");
+                }}
+            >
+                signup
+            </Button> */}
+            <Footer>
+                <Link to="/signup">회원가입</Link>
+            </Footer>
+        </Form>
     );
 };
 

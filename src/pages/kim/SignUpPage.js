@@ -1,75 +1,20 @@
 import axios from "axios";
 import React, { useState } from "react";
-import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { Button } from "../../components/kim/Button";
+import { Input, Footer } from "../../components/kim/Input";
+import { Form } from "../../components/kim/Form";
 
-const Input = styled.input`
-    display: inline-flex;
-    position: relative;
-    overflow: hidden;
-    width: 50%;
-    height: 40px;
-    margin: 10px 0 8px;
-    padding: 5px 39px 5px 11px;
-    border: solid 1px #dadada;
-    background: #fff;
-
-    justify-content: center;
-`;
-const Button = styled.div`
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 49px;
-    display: block;
-    width: 50%;
-    height: 49px;
-    margin: 16px 0 7px;
-
-    cursor: pointer;
-    text-align: center;
-    color: #fff;
-    border: none;
-    border-radius: 0;
-    background-color: #03c75a;
-    ${({ disabled }) =>
-        disabled &&
-        `
-    `}
-`;
-const SignUpForm = styled.div`
-    width: 512px;
-    height: 768px;
-
-    position: relative; /* 추후 박스 하단에 추가 버튼을 위치시키기 위한 설정 */
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.04);
-
-    margin: 0 auto; /* 페이지 중앙에 나타나도록 설정 */
-
-    margin-top: 96px;
-    margin-bottom: 32px;
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
-    h1 {
-        margin-bottom: 500;
-        font-size: 36px;
-        color: #343a40;
-    }
-`;
-
-const SignUpPage = () => {
+const SignUpPage = ({ history }) => {
     const [inputs, setInputs] = useState({
-        id: "",
-        name: "",
+        email: "",
+        username: "",
         password: "",
         birth: "",
         phone: "",
     });
 
-    const { id, name, password, birth, phone } = inputs;
+    const { email, password, username, phone, birth } = inputs;
 
     const handleInputs = (e) => {
         const { value, name } = e.target;
@@ -79,12 +24,12 @@ const SignUpPage = () => {
         });
     };
 
-    const handleClick = async () => {
-        // 비동기처리 async - await
+    const handleClick = () => {
         axios
-            .post("/api/users/test", {
-                id: id,
-                name: name,
+            .post("/api/users/member", {
+                //id: id,
+                email: email,
+                username: username,
                 password: password,
                 birth: birth,
                 phone: phone,
@@ -95,39 +40,33 @@ const SignUpPage = () => {
             })
             .catch(function (err) {
                 // error
-                alert("fail!");
+                alert("fail : " + err);
             });
     };
 
     return (
-        <SignUpForm>
-            <h1> Sign Up Page </h1>
+        <Form>
+            <h1> Sign Up 회원가입 </h1>
             <Input
                 onChange={handleInputs}
-                value={id}
-                id="id"
-                name="id"
-                placeholder="아이디를 입력해주세요 "
-            />
-            <Input
-                onChange={handleInputs}
-                value={name}
-                name="name"
-                placeholder="이름을 입력해주세요"
+                value={email}
+                id="email"
+                name="email"
+                placeholder="이메일을 입력해주세요 "
             />
             <Input
                 onChange={handleInputs}
                 value={password}
+                type="password"
                 id="password"
                 name="password"
-                type="passowrd"
                 placeholder="비밀번호를 입력해주세요"
             />
             <Input
                 onChange={handleInputs}
-                value={birth}
-                name="birth"
-                placeholder="생년월일을 입력해주세요"
+                value={username}
+                name="username"
+                placeholder="이름을 입력해주세요"
             />
             <Input
                 onChange={handleInputs}
@@ -135,14 +74,24 @@ const SignUpPage = () => {
                 name="phone"
                 placeholder="전화번호를 입력해주세요"
             />
-            <Button onClick={handleClick}>Sign up</Button>
-
-            <b>id : {id}</b>
-            <b>name : {name}</b>
-            <b>password : {password}</b>
-            <b>birth : {birth}</b>
-            <b>phone : {phone}</b>
-        </SignUpForm>
+            <Input
+                onChange={handleInputs}
+                value={birth}
+                name="birth"
+                placeholder="생년월일을 입력해주세요"
+            />
+            <Button onSubmit={handleClick}>회원가입</Button>
+            {/* <Button
+                onClick={() => {
+                    history.push("/login");
+                }}
+            >
+                login
+            </Button> */}
+            <Footer>
+                <Link to="/login">로그인</Link>
+            </Footer>
+        </Form>
     );
 };
 
