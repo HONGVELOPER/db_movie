@@ -14,7 +14,6 @@ const Seat = (props) => {
                 }
             })
             setSeat(result)
-            console.log(result, 'result')
         }
         getSeatInfo()
     }, [])

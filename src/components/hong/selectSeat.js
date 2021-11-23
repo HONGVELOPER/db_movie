@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from "@mui/styles";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -30,7 +30,17 @@ const SelectSeat = (props) => {
     const [childSeat, setChildSeat] = useState(0)
     const [seatNum, setSeatNum] = useState(0)
     const [seatCodes, setSeatCodes] = useState([])
-    
+
+    // useEffect(() => {
+
+    //     // if (reserved) {
+    //     //     for (const reserved of props.seat.data.reservedSeat) {
+    //     //         console.log('hi~')
+    //     //         document.getElementById(reserved.MS_CODE).style.backgroundColor = 'gray'
+    //     //     //     // document.getElementById(reserved.MS_CODE).disabled = 'true'
+    //     //     }
+    //     // }
+    // }, [props.seat])    
 
     const handleAdult = (event) => {
         setAdultSeat(event.target.textContent)
@@ -87,7 +97,6 @@ const SelectSeat = (props) => {
         rowSeat = props.seat.data.seat.map((seat) => {
             if (row !== seat.MS_ROW) {
                 row = seat.MS_ROW
-                // RESERVED SEAT 은 BACKGROUND COLOR CHANGE 랑 CLICK 막기
                 return (
                     <span key={seat.MS_CODE}>
                         <br/>
@@ -97,13 +106,21 @@ const SelectSeat = (props) => {
                         </Button>
                     </span>
                 )
+            } else {
+                return (
+                    <Button variant="outlined" key={seat.MS_CODE} id={seat.MS_CODE} onClick={handleSeat}>
+                        {seat.MS_COL}
+                    </Button>
+                )
             }
-            return (
-                <Button variant="outlined" key={seat.MS_CODE} id={seat.MS_CODE} onClick={handleSeat}>
-                    {seat.MS_COL}
-                </Button>
-            )
         })
+        setTimeout (() => {
+            for (const reserved of props.seat.data.reservedSeat) {
+                console.log('hi~')
+                document.getElementById(reserved.MS_CODE).style.backgroundColor = 'gray'
+                document.getElementById(reserved.MS_CODE).disabled = 'true'
+            }
+        }, 100)
     }
 
     return (
