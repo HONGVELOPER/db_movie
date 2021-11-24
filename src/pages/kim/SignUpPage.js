@@ -26,7 +26,7 @@ const SignUpPage = ({ history }) => {
 
     const handleClick = () => {
         axios
-            .post("/api/users/member", {
+            .post("/api/users/register", {
                 //id: id,
                 email: email,
                 username: username,
@@ -38,9 +38,9 @@ const SignUpPage = ({ history }) => {
                 // response
                 alert("success!!");
             })
-            .catch(function (err) {
+            .catch(function (error) {
                 // error
-                alert("fail : " + err);
+                alert("fail : " + error.response.data.message);
             });
     };
 
@@ -80,7 +80,7 @@ const SignUpPage = ({ history }) => {
                 name="birth"
                 placeholder="생년월일을 입력해주세요"
             />
-            <Button onSubmit={handleClick}>회원가입</Button>
+            <Button onClick={handleClick}>회원가입</Button>
             {/* <Button
                 onClick={() => {
                     history.push("/login");

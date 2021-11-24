@@ -8,7 +8,7 @@ import CommutePage from "./pages/choi/CommutePage";
 import SalaryPage from "./pages/choi/SalaryPage";
 import LoginPage from "./pages/kim/LoginPage";
 import SignUpPage from "./pages/kim/SignUpPage";
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, atom, useRecoilState } from "recoil";
 
 function App() {
     return (

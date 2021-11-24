@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 import { Button } from "../../components/kim/Button";
 import { Input, Footer } from "../../components/kim/Input";
 import { Form } from "../../components/kim/Form";
+import { RecoilRoot, atom, useRecoilState } from "recoil";
+import { loginState } from "../../loginState";
 
 const LoginPage = ({ history }) => {
+    const [isLogin, setIsLogin] = useRecoilState(loginState);
+
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
@@ -33,8 +37,11 @@ const LoginPage = ({ history }) => {
             })
             .then((res) => {
                 // response
-                alert("로그인 성공" + JSON.stringify(res));
+                alert("로그인 성공");
+                // useState
+                setIsLogin(true);
                 history.push("/");
+                console.log(isLogin);
             })
             .catch((err) => {
                 // error
@@ -58,13 +65,6 @@ const LoginPage = ({ history }) => {
                 placeholder="비밀번호를 입력해주세요"
             />
             <Button onClick={handleClick}>로그인</Button>
-            {/* <Button
-                onClick={() => {
-                    history.push("/signup");
-                }}
-            >
-                signup
-            </Button> */}
             <Footer>
                 <Link to="/signup">회원가입</Link>
             </Footer>
