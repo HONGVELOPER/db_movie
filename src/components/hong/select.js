@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
-        paddingTop: '100px',
+        paddingTop: '50px',
     },
     grid: {
-        border: '1px solid red',
+        border: '1px solid black',
         height: '560px'
     },
     header: {
@@ -23,6 +23,13 @@ const useStyles = makeStyles({
         border: '1px sold black',
         textAlign: 'left',
         marginBottom: '5px',
+    },
+    navBar: {
+        backgroundColor: 'black',
+        color: 'white',
+        height: '150px',
+        paddingTop: '20px',
+        marginTop: '10px'
     }
 })
 
@@ -33,6 +40,7 @@ const Select = (props) => {
     const [movie, setMovie] = useState({
         code: '',
         name: '',
+        age: '',
     })
     const [branch, setBranch] = useState({
         code: '',
@@ -68,10 +76,20 @@ const Select = (props) => {
 
     const handleMovie = (event) => {
         setMovie((prevState) => {
-            return {
-                ...prevState,
-                code: event.target.id,
-                name: event.target.textContent
+            if (event.target.id.split('/')[1] === '-1') {
+                return {
+                    ...prevState,
+                    code: event.target.id.split('/')[0],
+                    name: event.target.textContent,
+                    age: '없음',
+                }
+            } else {
+                return {
+                    ...prevState,
+                    code: event.target.id.split('/')[0],
+                    name: event.target.textContent,
+                    age: event.target.id.split('/')[1],
+                }
             }
         })
     }
@@ -136,7 +154,7 @@ const Select = (props) => {
                             </div>
                             <div style={{overflow: 'auto', height: '470px'}}>
                                 {movieNames.map((movieName) => (
-                                    <Button key={movieName.M_CODE} id={movieName.M_CODE} color="secondary" style={{display: 'block'}} onClick={handleMovie}>
+                                    <Button key={movieName.M_CODE} id={`${movieName.M_CODE}/${movieName.M_AGE_LIMIT}`}  color="secondary" style={{display: 'block'}} onClick={handleMovie}>
                                         {movieName.M_NAME}
                                     </Button>
                                 ))}
@@ -178,24 +196,43 @@ const Select = (props) => {
                         </div>
                     </Grid>
                 </Grid>
-                <Button>
-                    <Link to={{
-                        pathname: "/movie/seat",
-                        state: {
-                            movie : movie,
-                            branch: branch,
-                            date: date,
-                            time: time
-                        }
-                    }}>
-                        좌석선택
-                    </Link>
-                </Button>
-                <div>영화 : {movie.name} | {movie.code}</div>
-                <div>극장 : {branch.name} | {branch.code}</div>
-                <div>일시 : {date.name} | {date.code}</div>
-                <div>시간 : {time.name} | {time.code}</div> 
             </Container>
+            <div className={classes.navBar}>
+                <Container>
+                    <Grid container>
+                        <Grid item xs={3}>
+                            <div style={{height: '100px', borderRight: '1px solid white', marginLeft: '20%'}}>
+                                <div>예매정보</div>
+                                <div>제목 : {movie.name}</div>
+                                <div>나이 제한 : {movie.age}</div>
+                            </div>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <div style={{height: '100px', borderRight: '1px solid white', marginLeft: '20%'}}>
+                                <div>극장 : {branch.name}</div>
+                                <div>일시 : {date.name} {time.name.split(' ')[2]}</div>
+                                <div>상영관 : {time.name.split(' ')[0]} {time.name.split(' ')[1]}</div>
+                            </div>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <div> -> 좌석 선택 -> 결제</div>
+                            <Button>
+                                <Link to={{
+                                    pathname: "/movie/seat",
+                                    state: {
+                                        movie : movie,
+                                        branch: branch,
+                                        date: date,
+                                        time: time
+                                    }
+                                }}>
+                                    좌석선택
+                                </Link>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </div>
         </>
     )
 }

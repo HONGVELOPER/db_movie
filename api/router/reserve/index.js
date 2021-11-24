@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const reserverFunctions = require('./reserveFunction.js');
 const models = require('../../models')
-const { Op } = require("sequelize");
+const { sequelize } = require('../../models');
 
 // 영화 예매 관련 Router
 
@@ -10,7 +10,7 @@ router.get('/movieInfo', async (req, res) => {
     try {
         const movieInfo = await models.M_MOVIE.findAll({
             raw: true,
-            attributes: ['M_CODE', 'M_NAME'],
+            attributes: ['M_CODE', 'M_NAME', 'M_AGE_LIMIT'],
         })
         const branchInfo = await models.B_BRANCH.findAll({
             raw: true,
@@ -41,10 +41,6 @@ router.get('/seatInfo', async (req, res) => {
         })
         result.seat = seatInfo
         result.reservedSeat = reservedSeatInfo
-        // seatInfo.reserved = reservedSeatInfo
-        // console.log(seatInfo, 'SSSSSSS')
-        // if (reservedSeatInfo) {
-            // }
         } catch (err) {
             console.error(err)
         }
@@ -89,12 +85,21 @@ router.post('/pay', async (req, res) => {
             MT_CODE: req.body.params.mtCode
         })
         for (const seat of req.body.params.msCode) {
-            const reserveSeatInfo = await models.M_RESERVE_SEAT.create({
+            await models.M_RESERVE_SEAT.create({
                 MS_CODE: seat,
                 MRI_CODE: reserveInfo.dataValues.MRI_CODE,
                 MT_CODE: reserveInfo.dataValues.MT_CODE
             })
         }
+        console.log(req.body.params.msCode.length, 'params length check')
+        await models.M_THEATER.update({
+            MT_AVAIL_SEAT: sequelize.literal(`MT_AVAIL_SEAT - ${req.body.params.msCode.length}`),
+            MT_RESERVED_SEAT: sequelize.literal(`MT_RESERVED_SEAT + ${req.body.params.msCode.length}`),
+        }, {
+            where: {
+                MT_CODE: req.body.params.mtCode,
+            }
+        })       
         res.status(200).send()
     } catch (err) {
         console.error(err)

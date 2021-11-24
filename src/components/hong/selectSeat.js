@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from "@mui/styles";
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 
 const useStyles = makeStyles({
@@ -25,22 +26,12 @@ const SelectSeat = (props) => {
     console.log(props, 'props !!!!!!!!!!!!!!!!!')
     
     const classes = useStyles()
+    const history = useHistory()
 
     const [AdultSeat, setAdultSeat] = useState(0)
     const [childSeat, setChildSeat] = useState(0)
     const [seatNum, setSeatNum] = useState(0)
-    const [seatCodes, setSeatCodes] = useState([])
-
-    // useEffect(() => {
-
-    //     // if (reserved) {
-    //     //     for (const reserved of props.seat.data.reservedSeat) {
-    //     //         console.log('hi~')
-    //     //         document.getElementById(reserved.MS_CODE).style.backgroundColor = 'gray'
-    //     //     //     // document.getElementById(reserved.MS_CODE).disabled = 'true'
-    //     //     }
-    //     // }
-    // }, [props.seat])    
+    const [seatCodes, setSeatCodes] = useState([])  
 
     const handleAdult = (event) => {
         setAdultSeat(event.target.textContent)
@@ -61,13 +52,13 @@ const SelectSeat = (props) => {
         }
     }
     const handleSeat = (event) => {
-        if (document.getElementById(event.target.id).style.backgroundColor === 'orange') {
+        if (document.getElementById(event.target.id).style.backgroundColor === 'black') {
             document.getElementById(event.target.id).style.backgroundColor = 'white'
             setSeatNum(seatNum-1)
             setSeatCodes(seatCodes.filter((e) => (e !== event.target.id)))
         } else {
             if (seatNum < parseInt(AdultSeat) + parseInt(childSeat)) {
-                document.getElementById(event.target.id).style.backgroundColor = 'orange'
+                document.getElementById(event.target.id).style.backgroundColor = 'black'
                 setSeatNum(seatNum+1)
                 setSeatCodes([...seatCodes, event.target.id])
             } else {
@@ -85,6 +76,7 @@ const SelectSeat = (props) => {
         console.log(result)
         if (result.status === 200) {
             alert('정상적으로 예매되었습니다.')
+            history.push("/")
         }
     }
 
@@ -100,15 +92,15 @@ const SelectSeat = (props) => {
                 return (
                     <span key={seat.MS_CODE}>
                         <br/>
-                        <span style={{border: '1px solid black', marginRight: '10px'}}>{seat.MS_ROW}</span>
-                        <Button variant="outlined" id={seat.MS_CODE} onClick={handleSeat}>
-                            {seat.MS_COL}
-                        </Button>
+                            <span style={{display: 'inline-block', width: '30px'}}>{seat.MS_ROW}</span>
+                            <Button variant="outlined" id={seat.MS_CODE} onClick={handleSeat} style={{borderRadius: 0, margin: 3, padding: 0, maxWidth: '30px', minWidth: '30px', backgroundColor: 'white'}}>
+                                {seat.MS_COL}
+                            </Button>
                     </span>
                 )
             } else {
                 return (
-                    <Button variant="outlined" key={seat.MS_CODE} id={seat.MS_CODE} onClick={handleSeat}>
+                    <Button variant="outlined" key={seat.MS_CODE} id={seat.MS_CODE} onClick={handleSeat} style={{borderRadius: 0, margin: 3, padding: 0, maxWidth: '30px', minWidth: '30px', backgroundColor: 'white'}}>
                         {seat.MS_COL}
                     </Button>
                 )
@@ -116,9 +108,9 @@ const SelectSeat = (props) => {
         })
         setTimeout (() => {
             for (const reserved of props.seat.data.reservedSeat) {
-                console.log('hi~')
                 document.getElementById(reserved.MS_CODE).style.backgroundColor = 'gray'
                 document.getElementById(reserved.MS_CODE).disabled = 'true'
+                document.getElementById(reserved.MS_CODE).style.cursor = 'not-allowed'
             }
         }, 100)
     }
@@ -173,19 +165,17 @@ const SelectSeat = (props) => {
                     </Grid>
                     <Grid item xs={12} style={{border: '1px solid black'}}>
                         <div>
-                            <div>{AdultSeat}</div>
-                            <div>{childSeat}</div>
-                            <div style={{border: '1px solid black', textAlign: 'center'}}>Screen</div>
+                            <div style={{border: '1px solid black', textAlign: 'center', width: '500px', marginLeft: '30%'}}>Screen</div>
                         </div>   
-                        <span style={{border: '1px solid black', marginRight: '9px'}}>A</span>
-                        {rowSeat}
+                        <div style={{marginLeft: '30%', padding: '50px'}}>
+                            <span style={{display: 'inline-block', width: '30px'}}>A</span>
+                            {rowSeat}
+                        </div>
                     </Grid>
                 </Grid>
                 <Button onClick={handlePay}>
                     결제하기
                 </Button>
-                <div>{seatCodes}</div>
-                <div>{seatNum}</div>
             </Container>
         </>
     )
