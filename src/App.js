@@ -8,6 +8,7 @@ import CommutePage from "./pages/choi/CommutePage";
 import SalaryPage from "./pages/choi/SalaryPage";
 import LoginPage from "./pages/kim/LoginPage";
 import SignUpPage from "./pages/kim/SignUpPage";
+import MyPage from "./pages/kim/MyPage";
 import { RecoilRoot, atom, useRecoilState } from "recoil";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={SignUpPage} />
+            <Route path="/mypage" component={MyPage} />
         </RecoilRoot>
     );
 }

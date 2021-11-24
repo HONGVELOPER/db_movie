@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../../components/kim/Button";
 import { Input, Footer } from "../../components/kim/Input";
 import { Form } from "../../components/kim/Form";
-import { RecoilRoot, atom, useRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { loginState } from "../../loginState";
 
 const LoginPage = ({ history }) => {
@@ -37,11 +37,17 @@ const LoginPage = ({ history }) => {
             })
             .then((res) => {
                 // response
-                alert("로그인 성공");
+                alert(`로그인 성공 ${res.data.U_NAME}`);
                 // useState
-                setIsLogin(true);
+                setIsLogin({
+                    id: res.data.U_ID,
+                    email: res.data.U_EMAIL,
+                    name: res.data.U_NAME,
+                    phone: res.data.U_PH_NUM,
+                    birth: res.data.U_BIRTH,
+                    // id, email, password, name, phnumber, birth, divide?
+                });
                 history.push("/");
-                console.log(isLogin);
             })
             .catch((err) => {
                 // error

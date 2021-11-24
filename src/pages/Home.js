@@ -10,7 +10,7 @@ const Home = ({ history }) => {
     return (
         <>
             <h1>Home page</h1>
-            <h3>환영합니다 {`${isLogin}`} 님</h3>
+            <h3>환영합니다 {`${isLogin.name}`} 님</h3>
             <Button variant="contained">
                 <Link to="/movie">예매</Link>
             </Button>
@@ -26,6 +26,9 @@ const Home = ({ history }) => {
                 variant="contained"
             >
                 {isLogin ? "로그아웃" : "로그인"}
+            </Button>
+            <Button variant="contained">
+                <Link to="/mypage">마이페이지</Link>
             </Button>
         </>
     );

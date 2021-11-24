@@ -1,7 +1,5 @@
 const Joi = require("joi");
 const models = require("../../models/");
-// const isLogin = require("../../../src/loginState");
-// conmodelsSER = require("../../modser");
 
 const register = async (req, res) => {
     // Request Body Check
@@ -46,24 +44,22 @@ const register = async (req, res) => {
     res.status(201).send(); // 201 Created
 };
 
+// const [isLogin, setIsLogin] = useRecoilState(loginState);
+
 const login = async (req, res) => {
     // login
-    console.log("login button click!!");
-    // console.log("isLogin : " + isLogin);
+    // console.log("login button click!!");
     const userInfo = await models.U_USER.findAll({
         raw: true,
-        attributes: ["U_EMAIL", "U_PASSWORD", "U_NAME"],
+        // attributes: ["U_EMAIL", "U_PASSWORD", "U_NAME", "U_ID"],
         where: {
             U_EMAIL: req.body.email,
             U_PASSWORD: req.body.password,
         },
     });
-    //console.log("userInfo : " + JSON.stringify(userInfo));
     if (userInfo[0]) {
-        res.status(200).send();
+        res.status(200).send(userInfo[0]);
     } else res.status(401).send();
 };
-
-//const check = () => cl
 
 module.exports = { register, login };
