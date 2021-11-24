@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import { useHistory } from "react-router-dom";
 import axios from 'axios';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const useStyles = makeStyles({
     root: {
@@ -19,6 +20,17 @@ const useStyles = makeStyles({
         padding: 0,
         maxWidth: '30px',
         minWidth: '30px',
+    },
+    navBar: {
+        backgroundColor: 'black',
+        color: 'white',
+        height: '150px',
+        paddingTop: '20px',
+        marginTop: '10px'
+    },
+    select: {
+        paddingTop: '10px',
+        fontSize: '23px',
     }
 })
 
@@ -28,10 +40,11 @@ const SelectSeat = (props) => {
     const classes = useStyles()
     const history = useHistory()
 
-    const [AdultSeat, setAdultSeat] = useState(0)
+    const [adultSeat, setAdultSeat] = useState(0)
     const [childSeat, setChildSeat] = useState(0)
     const [seatNum, setSeatNum] = useState(0)
-    const [seatCodes, setSeatCodes] = useState([])  
+    const [seatCodes, setSeatCodes] = useState([])
+    const [selectSeat, setSelectSeat] = useState([])
 
     const handleAdult = (event) => {
         setAdultSeat(event.target.textContent)
@@ -52,15 +65,18 @@ const SelectSeat = (props) => {
         }
     }
     const handleSeat = (event) => {
+        console.log(document.getElementsByName(event.target.name), 'check')
         if (document.getElementById(event.target.id).style.backgroundColor === 'black') {
             document.getElementById(event.target.id).style.backgroundColor = 'white'
             setSeatNum(seatNum-1)
             setSeatCodes(seatCodes.filter((e) => (e !== event.target.id)))
+            setSelectSeat(selectSeat.filter((e) => (e !== event.target.name)))
         } else {
-            if (seatNum < parseInt(AdultSeat) + parseInt(childSeat)) {
+            if (seatNum < parseInt(adultSeat) + parseInt(childSeat)) {
                 document.getElementById(event.target.id).style.backgroundColor = 'black'
                 setSeatNum(seatNum+1)
                 setSeatCodes([...seatCodes, event.target.id])
+                setSelectSeat([...selectSeat, event.target.name])
             } else {
                 alert('인원을 초과하였습니다.')
             }
@@ -100,7 +116,7 @@ const SelectSeat = (props) => {
                 )
             } else {
                 return (
-                    <Button variant="outlined" key={seat.MS_CODE} id={seat.MS_CODE} onClick={handleSeat} style={{borderRadius: 0, margin: 3, padding: 0, maxWidth: '30px', minWidth: '30px', backgroundColor: 'white'}}>
+                    <Button variant="outlined" key={seat.MS_CODE} id={seat.MS_CODE} name={`${seat.MS_ROW}${seat.MS_COL}`} onClick={handleSeat} style={{borderRadius: 0, margin: 3, padding: 0, maxWidth: '30px', minWidth: '30px', backgroundColor: 'white'}}>
                         {seat.MS_COL}
                     </Button>
                 )
@@ -112,7 +128,7 @@ const SelectSeat = (props) => {
                 document.getElementById(reserved.MS_CODE).disabled = 'true'
                 document.getElementById(reserved.MS_CODE).style.cursor = 'not-allowed'
             }
-        }, 100)
+        }, 200)
     }
 
     return (
@@ -173,10 +189,50 @@ const SelectSeat = (props) => {
                         </div>
                     </Grid>
                 </Grid>
-                <Button onClick={handlePay}>
-                    결제하기
-                </Button>
             </Container>
+            <div className={classes.navBar}>
+                <Container>
+                    <Grid container>
+                        <Grid item xs={2}>
+                            <div style={{height: '100px', borderRight: '1px solid white', marginLeft: '20%'}}>
+                                <div>예매정보</div>
+                                <div>제목 : {props.data.movie.name}</div>
+                                <div>나이 제한 : {props.data.movie.age}</div>
+                            </div>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <div style={{height: '100px', borderRight: '1px solid white', marginLeft: '20%'}}>
+                                <div>극장 : {props.data.branch.name}</div>
+                                <div>일시 : {props.data.date.name} {props.data.time.name.split(' ')[2]}</div>
+                                <div>상영관 : {props.data.time.name.split(' ')[0]} {props.data.time.name.split(' ')[1]}</div>
+                                <div>인원 : 일반 {adultSeat}명, 청소년 {childSeat}명</div>
+                            </div>
+                        </Grid>
+                        {seatNum ? (
+                            <Grid item xs={7}>
+                                <div style={{paddingTop: '10px', marginLeft: '5%'}}>
+                                    좌석번호 : {selectSeat}
+                                    <Button variant="contained" color="error" onClick={handlePay} style={{maxWidth: '100px', minWidth: '100px', marginLeft: '35%', borderRadius: 0, minHeight: '100px', maxHeight: '100px'}}>
+                                        결제하기
+                                    </Button>
+                                </div>
+                            </Grid> 
+                        ): (
+                            <Grid item xs={7} style={{color: '#808080'}}>
+                                <div style={{paddingTop: '10px', marginLeft: '5%'}}>
+                                    <ArrowForwardIosIcon />
+                                    <span className={classes.select}>&nbsp;좌석 선택&nbsp;</span>
+                                    <ArrowForwardIosIcon />
+                                    <span className={classes.select}>&nbsp;결제&nbsp;</span>
+                                    <Button variant="contained" color="error" onClick={handlePay} style={{maxWidth: '100px', minWidth: '100px', marginLeft: '35%', borderRadius: 0, minHeight: '100px', maxHeight: '100px'}}>
+                                        결제하기
+                                    </Button>
+                                </div>
+                            </Grid>
+                        )}
+                    </Grid>
+                </Container>
+            </div>
         </>
     )
 }

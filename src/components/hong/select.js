@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const useStyles = makeStyles({
     root: {
@@ -30,6 +31,10 @@ const useStyles = makeStyles({
         height: '150px',
         paddingTop: '20px',
         marginTop: '10px'
+    },
+    select: {
+        paddingTop: '10px',
+        fontSize: '23px',
     }
 })
 
@@ -200,7 +205,7 @@ const Select = (props) => {
             <div className={classes.navBar}>
                 <Container>
                     <Grid container>
-                        <Grid item xs={3}>
+                        <Grid item xs={2}>
                             <div style={{height: '100px', borderRight: '1px solid white', marginLeft: '20%'}}>
                                 <div>예매정보</div>
                                 <div>제목 : {movie.name}</div>
@@ -214,21 +219,26 @@ const Select = (props) => {
                                 <div>상영관 : {time.name.split(' ')[0]} {time.name.split(' ')[1]}</div>
                             </div>
                         </Grid>
-                        <Grid item xs={6}>
-                            <div> -> 좌석 선택 -> 결제</div>
-                            <Button>
-                                <Link to={{
-                                    pathname: "/movie/seat",
-                                    state: {
-                                        movie : movie,
-                                        branch: branch,
-                                        date: date,
-                                        time: time
-                                    }
-                                }}>
-                                    좌석선택
-                                </Link>
-                            </Button>
+                        <Grid item xs={7} style={{color: '#808080'}}>
+                            <div style={{paddingTop: '10px', marginLeft: '5%'}}>
+                                <ArrowForwardIosIcon />
+                                <span className={classes.select}>&nbsp;좌석 선택&nbsp;</span>
+                                <ArrowForwardIosIcon />
+                                <span className={classes.select}>&nbsp;결제&nbsp;</span>
+                                <Button variant="contained" color="error" style={{maxWidth: '100px', minWidth: '100px', marginLeft: '35%', borderRadius: 0, minHeight: '100px', maxHeight: '100px'}}>
+                                    <Link style={{textDecoration: 'none'}} to={{
+                                        pathname: "/movie/seat",
+                                        state: {
+                                            movie : movie,
+                                            branch: branch,
+                                            date: date,
+                                            time: time
+                                        }
+                                    }}>
+                                        좌석선택
+                                    </Link>
+                                </Button>
+                            </div>
                         </Grid>
                     </Grid>
                 </Container>
