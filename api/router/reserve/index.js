@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const reserverFunctions = require('./reserveFunction.js');
+const models = require('../../models');
 
-// 영화 관련 Router
+// 영화 예매 관련 Router
 
 router.get('/list', async (req, res) => {
     console.log('진입!')

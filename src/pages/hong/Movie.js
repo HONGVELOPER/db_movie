@@ -1,4 +1,4 @@
-import Select from '../../components/hong/select.js';
+import Select from '../../components/hong/select';
 
 
 const Movie = () => {

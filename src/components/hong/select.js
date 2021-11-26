@@ -153,10 +153,10 @@ const Select = () => {
                     </Grid>
                 </Grid>
                 <Button onClick={apiTest}>API TEST</Button>
-                <div>{movie}</div>
-                <div>{theater}</div>
-                <div>{date}</div>
-                <div>{time}</div>
+                <div>영회 : {movie}</div>
+                <div>극장 : {theater}</div>
+                <div>일시 : {date}</div>
+                <div>시간 : {time}</div>
                 
             </Container>
         </>
