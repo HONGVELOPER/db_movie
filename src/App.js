@@ -1,5 +1,4 @@
 import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import { Route } from "react-router-dom";
 import Home from "./pages/Home";
@@ -17,24 +16,26 @@ import BoardWrite from "./pages/lim/BoardWrite";
 import BoardDetail from "./pages/lim/BoardDetail";
 
 function App() {
-  return (
-    <RecoilRoot>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/movie" component={Movie} />
-      <Route path="/movie/seat" component={Seat} />
+    return (
+        // <div className="App">
+        <RecoilRoot>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/movie" component={Movie} />
+            <Route path="/movie/seat" component={Seat} />
 
-      <Route path="/commute" component={CommutePage} />
-      <Route path="/salary" component={SalaryPage} />
+            <Route path="/commute" component={CommutePage} />
+            <Route path="/salary" component={SalaryPage} />
 
-      <Route path="/login" component={LoginPage} />
-      <Route path="/signup" component={SignUpPage} />
-      <Route path="/mypage" component={MyPage} />
-      <Route path="/check" component={CheckBox} />
-      <Route path="/board" component={BoardList} />
-      <Route path="/boardwrite" component={BoardWrite} />
-      <Route path="/boarddetail" component={BoardDetail} />
-    </RecoilRoot>
-  );
+            <Route path="/login" component={LoginPage} />
+            <Route path="/signup" component={SignUpPage} />
+            <Route path="/mypage" component={MyPage} />
+            <Route path="/check" component={CheckBox} />
+            <Route path="/board" component={BoardList} />
+            <Route path="/boardwrite" component={BoardWrite} />
+            <Route path="/boarddetail" component={BoardDetail} />
+        </RecoilRoot>
+        // </div>
+    );
 }
 
 export default App;
