@@ -76,7 +76,7 @@ const SignUpPage = ({ history }) => {
         <div className="container">
             <Form>
                 <h1> Sign Up 회원가입 </h1>
-                <div class="form-row">
+                <div className="form-row">
                     <div className="col-md-12 mb-3">
                         <label className="col-md-4">이메일</label>
                         <Input
@@ -103,7 +103,7 @@ const SignUpPage = ({ history }) => {
                         />
                         <small
                             id="passwordHelpInline"
-                            class="form-text text-muted"
+                            className ="form-text text-muted"
                         >
                             Must be 8-20 characters long.
                         </small>
