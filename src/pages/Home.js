@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import LogInOut from "../components/kim/LogInOut";
-
+ 
 const Home = () => {
     return (
         <>
