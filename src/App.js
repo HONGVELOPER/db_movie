@@ -7,6 +7,7 @@ import Seat from "./pages/hong/Seat";
 import CommutePage from "./pages/choi/CommutePage";
 import SalaryPage from "./pages/choi/SalaryPage";
 import Checkbox from "./pages/lee/Checkbox";
+
 function App() {
   return (
     <div>
