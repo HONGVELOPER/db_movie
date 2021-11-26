@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Checkbox.css";
+import { Link } from 'react-router-dom';
 
 const Checkbox = () => {
   const q1 = "현재 확진 판정을 받고 치료 중에 있습니까?";
@@ -181,7 +182,7 @@ const Checkbox = () => {
         type="button"
         id="passBtn"
       >
-        다음
+        <Link to="/movie">다음</Link>
       </button>
     </>
   );

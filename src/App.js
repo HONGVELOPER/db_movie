@@ -17,6 +17,7 @@ function App() {
       <Route path="/commute" component={CommutePage} />
       <Route path="/salary" component={SalaryPage} />
       <Route path="/check" component={Checkbox} />
+      
     </div>
   );
 }
