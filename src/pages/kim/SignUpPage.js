@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../../components/kim/Button";
+import Button from "react-bootstrap/Button";
+// import { Button } from "../../components/kim/Button";
 import { Input, Footer } from "../../components/kim/Input";
 import { Form } from "../../components/kim/Form";
 
@@ -156,7 +157,9 @@ const SignUpPage = ({ history }) => {
                 </div>
                 <Button onClick={handleClick}>회원가입</Button>
                 <Footer>
-                    <Link to="/login">로그인</Link>
+                    <Link to="/login" style={{ textDecoration: "none" }}>
+                        로그인
+                    </Link>
                 </Footer>
             </Form>
         </div>

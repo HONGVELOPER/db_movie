@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Button } from "../../components/kim/Button";
+import Button from "react-bootstrap/Button";
+// import { Button } from "../../components/kim/Button";
 import { Input, Footer } from "../../components/kim/Input";
 import { Form } from "../../components/kim/Form";
 import { useRecoilState } from "recoil";
@@ -72,7 +73,9 @@ const LoginPage = ({ history }) => {
             />
             <Button onClick={handleClick}>로그인</Button>
             <Footer>
-                <Link to="/signup">회원가입</Link>
+                <Link to="/signup" style={{ textDecoration: "none" }}>
+                    회원가입
+                </Link>
             </Footer>
         </Form>
     );
