@@ -23,3 +23,9 @@ yarn-debug.log*
 yarn-error.log*
 
 config/
+
+
+/yarn.lock
+/package-lock.json
+/api/config/config.json
+
