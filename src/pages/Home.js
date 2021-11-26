@@ -27,9 +27,11 @@ const Home = ({ history }) => {
             >
                 {isLogin ? "로그아웃" : "로그인"}
             </Button>
-            <Button variant="contained">
-                <Link to="/mypage">마이페이지</Link>
-            </Button>
+            {isLogin && (
+                <Button variant="contained">
+                    <Link to="/mypage">마이페이지</Link>
+                </Button>
+            )}
         </>
     );
 };

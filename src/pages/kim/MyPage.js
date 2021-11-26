@@ -11,8 +11,10 @@ const MyPage = () => {
     return (
         <Form>
             <h1> 마이페이지 </h1>
-            <h3>이름 : {`${isLogin.name}`}</h3>
-            <h3>이메일 :{isLogin.email} </h3>
+            <h3>이름 : {isLogin.name}</h3>
+            <h3>이메일 : {isLogin.email} </h3>
+            <h3>생년월일 : {isLogin.birth} </h3>
+            <h3>핸드폰 번호 : {isLogin.phone} </h3>
             <h3>예매 내역</h3>
             <Button>수정하기</Button>
             <Button>탈퇴하기</Button>
