@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const reserverFunctions = require('./reserveFunction.js');
+// const reserverFunctions = require('./reserveFunction.js');
 const models = require('../../models')
 const { sequelize } = require('../../models');
 
