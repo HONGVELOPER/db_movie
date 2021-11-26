@@ -4,15 +4,15 @@ import { useRecoilState } from "recoil";
 import { loginState } from "../../loginState";
 import { useHistory } from "react-router";
 
-
 const LogInOut = () => {
     const [isLogin, setIsLogin] = useRecoilState(loginState);
 
-    const history = useHistory()
+    const history = useHistory();
 
     return (
         <div>
-            <h3>환영합니다 {`${isLogin.name}`} 님</h3>
+            <h3>환영합니다</h3>
+            {isLogin && <h3>{`${isLogin.name}`} 님</h3>}
             <Button
                 type="button"
                 // class="btn btn-outline-dark"
@@ -28,12 +28,19 @@ const LogInOut = () => {
                 {isLogin ? "로그아웃" : "로그인"}
             </Button>
 
-            {isLogin && (
-                <Button type="button">
-                    <Link to="/mypage" />
-                    마이페이지
-                </Button>
-            )}
+            <Button
+                type="button"
+                onClick={() => {
+                    if (!isLogin) {
+                        // 회원가입
+                        history.push("/signup");
+                    } else {
+                        history.push("/mypage");
+                    }
+                }}
+            >
+                {isLogin ? "마이페이지" : "회원가입"}
+            </Button>
         </div>
     );
 };

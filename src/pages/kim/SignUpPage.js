@@ -101,12 +101,12 @@ const SignUpPage = ({ history }) => {
                             name="password"
                             placeholder="비밀번호를 입력하세요"
                         />
-                        <small
+                        {/* <small
                             id="passwordHelpInline"
                             className ="form-text text-muted"
                         >
                             Must be 8-20 characters long.
-                        </small>
+                        </small> */}
                     </div>
                     <div className="col-md-12 mb-3">
                         <label
