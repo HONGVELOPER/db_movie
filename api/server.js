@@ -2,6 +2,7 @@ const express = require("express"); // express 모듈 선언
 const app = express(); // express 객체로 선언
 const port = process.env.PORT || 3001;
 
+
 // DB ORM 연동
 const sequelize = require("./models/index").sequelize;
 sequelize.sync();
@@ -13,11 +14,13 @@ app.use(express.json());
 const reserve = require("./router/reserve/index");
 const commute = require("./router/commute/index");
 const users = require("./router/users/index");
+const board = require('./router/board/index')
 
 // 라우팅 분기
 app.use("/api/reserve", reserve);
 app.use("/api/commute", commute);
 app.use("/api/users", users);
+app.use('/api/board', board)
 
 // 포트 선언
 app.listen(port, () => {

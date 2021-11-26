@@ -4,13 +4,15 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const useStyles = makeStyles({
     root: {
-        paddingTop: '100px',
+        paddingTop: '50px',
     },
     grid: {
-        border: '1px solid red',
+        border: '1px solid black',
         height: '560px'
     },
     header: {
@@ -22,6 +24,17 @@ const useStyles = makeStyles({
         border: '1px sold black',
         textAlign: 'left',
         marginBottom: '5px',
+    },
+    navBar: {
+        backgroundColor: 'black',
+        color: 'white',
+        height: '150px',
+        paddingTop: '20px',
+        marginTop: '10px'
+    },
+    select: {
+        paddingTop: '10px',
+        fontSize: '23px',
     }
 })
 
@@ -32,6 +45,7 @@ const Select = (props) => {
     const [movie, setMovie] = useState({
         code: '',
         name: '',
+        age: '',
     })
     const [branch, setBranch] = useState({
         code: '',
@@ -58,27 +72,33 @@ const Select = (props) => {
     }
 
     useEffect(() => {
-        console.log('USE EFFECT 접근 ~')
         if (movie.code && branch.code && !date.code) {
-            console.log('if 접근')
             getDate()
-        } else if (movie.code && branch.code & date.code) {
-            console.log('else if 접근')
+        } else if (movie.code && branch.code && date) {
             getTime()
         }
     }, [movie, branch, date, time])
 
     const handleMovie = (event) => {
         setMovie((prevState) => {
-            return {
-                ...prevState,
-                code: event.target.id,
-                name: event.target.textContent
+            if (event.target.id.split('/')[1] === '-1') {
+                return {
+                    ...prevState,
+                    code: event.target.id.split('/')[0],
+                    name: event.target.textContent,
+                    age: '없음',
+                }
+            } else {
+                return {
+                    ...prevState,
+                    code: event.target.id.split('/')[0],
+                    name: event.target.textContent,
+                    age: event.target.id.split('/')[1],
+                }
             }
         })
     }
-
-    const handlebranch = (event) => {
+    const handleBranch = (event) => {
         setBranch((prevState) => {
             return {
                 ...prevState,
@@ -105,19 +125,6 @@ const Select = (props) => {
             }
         })
     }
-
-    const apiTest = async () => {
-        const result = await axios.post('/api/reserve/test', {
-            movie: movie,
-            branch: branch,
-            date: date,
-            time: time
-        })
-        if (result.status === 200) {
-            alert('예매되었습니다.')
-        }
-    }
-
     const getDate = async () => {
         const dateInfo = await axios.get('/api/reserve/date', {
             params: {
@@ -127,7 +134,6 @@ const Select = (props) => {
         })
         setTotalDate(dateInfo.data)
     }
-
     const getTime = async () => {
         const timeInfo = await axios.get('/api/reserve/time', {
             params: {
@@ -136,9 +142,7 @@ const Select = (props) => {
                 theaterDate: date.name,
             }
         })
-        console.log(timeInfo)
         setTotalTime(timeInfo.data)
-        console.log(totalTime,' TOTAL')
     }
 
     return (
@@ -155,7 +159,7 @@ const Select = (props) => {
                             </div>
                             <div style={{overflow: 'auto', height: '470px'}}>
                                 {movieNames.map((movieName) => (
-                                    <Button key={movieName.M_CODE} id={movieName.M_CODE} color="secondary" style={{display: 'block'}} onClick={handleMovie}>
+                                    <Button key={movieName.M_CODE} id={`${movieName.M_CODE}/${movieName.M_AGE_LIMIT}`}  color="secondary" style={{display: 'block'}} onClick={handleMovie}>
                                         {movieName.M_NAME}
                                     </Button>
                                 ))}
@@ -167,7 +171,7 @@ const Select = (props) => {
                         <div style={{padding: '10px'}}>
                             <div style={{overflow: 'auto', height: '515px'}}>
                                 {locations.map((loc) => (
-                                    <Button key={loc.B_CODE} id={loc.B_CODE} color="secondary" style={{display: 'block'}} onClick={handlebranch}>
+                                    <Button key={loc.B_CODE} id={loc.B_CODE} color="secondary" style={{display: 'block'}} onClick={handleBranch}>
                                         {loc.B_NAME}
                                     </Button>
                                 ))}
@@ -190,19 +194,55 @@ const Select = (props) => {
                         <div className={classes.header}>시간</div>
                         <div style={{padding: '10px'}}>
                             {totalTime.map((tt) => (
-                                <Button key={tt.MT_CODE} color="secondary" id={tt.MT_CODE} onClick={handleTime}>
+                                <Button key={tt.MT_CODE} id={tt.MT_CODE} color="secondary" onClick={handleTime}>
                                     {tt.MT_SCREEN_SPACE} {tt.MT_START_TIME} ({tt.MT_AVAIL_SEAT} / {tt.MT_TOTAL_SEAT}) 
                                 </Button>
                             ))}
                         </div>
                     </Grid>
                 </Grid>
-                <Button onClick={apiTest}>API TEST</Button>
-                <div>영화 : {movie.name} | {movie.code}</div>
-                <div>극장 : {branch.name} | {branch.code}</div>
-                <div>일시 : {date.name} | {date.code}</div>
-                <div>시간 : {time.name} | {time.code}</div> 
             </Container>
+            <div className={classes.navBar}>
+                <Container>
+                    <Grid container>
+                        <Grid item xs={2}>
+                            <div style={{height: '100px', borderRight: '1px solid white', marginLeft: '20%'}}>
+                                <div>예매정보</div>
+                                <div>제목 : {movie.name}</div>
+                                <div>나이 제한 : {movie.age}</div>
+                            </div>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <div style={{height: '100px', borderRight: '1px solid white', marginLeft: '20%'}}>
+                                <div>극장 : {branch.name}</div>
+                                <div>일시 : {date.name} {time.name.split(' ')[2]}</div>
+                                <div>상영관 : {time.name.split(' ')[0]} {time.name.split(' ')[1]}</div>
+                            </div>
+                        </Grid>
+                        <Grid item xs={7} style={{color: '#808080'}}>
+                            <div style={{paddingTop: '10px', marginLeft: '5%'}}>
+                                <ArrowForwardIosIcon />
+                                <span className={classes.select}>&nbsp;좌석 선택&nbsp;</span>
+                                <ArrowForwardIosIcon />
+                                <span className={classes.select}>&nbsp;결제&nbsp;</span>
+                                <Button variant="contained" color="error" style={{maxWidth: '100px', minWidth: '100px', marginLeft: '35%', borderRadius: 0, minHeight: '100px', maxHeight: '100px'}}>
+                                    <Link style={{textDecoration: 'none'}} to={{
+                                        pathname: "/movie/seat",
+                                        state: {
+                                            movie : movie,
+                                            branch: branch,
+                                            date: date,
+                                            time: time
+                                        }
+                                    }}>
+                                        좌석선택
+                                    </Link>
+                                </Button>
+                            </div>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </div>
         </>
     )
 }

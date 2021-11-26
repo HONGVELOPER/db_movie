@@ -1,0 +1,8 @@
+.activebtn{
+  background-color: #0095f6;
+}
+
+.unactivebtn {
+  background-color: white;
+  display: none;
+}
