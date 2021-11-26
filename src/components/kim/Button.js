@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.div`
+const Button = styled.div`
     font-size: 18px;
     font-weight: 700;
     line-height: 49px;
@@ -20,3 +20,5 @@ export const Button = styled.div`
         `
     `}
 `;
+
+export default Button;
