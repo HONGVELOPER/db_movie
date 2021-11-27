@@ -38,4 +38,10 @@ function App() {
     );
 }
 
+// !  package.js 중복되는 deps
+// "react": "^16.8.6",
+// "react-dom": "^16.8.6",
+// "react-router-dom": "^5.0.1",
+// "react-scripts": "3.0.1",
+// "styled-components": "^4.3.2"
 export default App;
