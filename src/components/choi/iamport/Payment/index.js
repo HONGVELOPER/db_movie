@@ -15,7 +15,7 @@ import { getMethods, getQuotas } from './utils';
 const { Item } = Form;
 const { Option } = Select;
 
-function Payment({ history, form, ua }) {
+function Payment({ history, form, ua, data}) {
   const [methods, setMethods] = useState(METHODS_FOR_INICIS);
   const [quotas, setQuotas] = useState(QUOTAS_FOR_INICIS_AND_KCP);
   const [isQuotaRequired, setIsQuotaRequired] = useState(true);

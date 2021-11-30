@@ -109,7 +109,7 @@ const SelectSeat = (props) => {
   let rowSeat = null;
   if (props.seat) {
     if (!props.seat.data.seat[0]) {
-      // return alert('좌석 배정이 되지 않았습니다.')
+      return alert("좌석 배정이 되지 않았습니다.");
     }
     let row = props.seat.data.seat[0].MS_ROW;
     rowSeat = props.seat.data.seat.map((seat) => {
