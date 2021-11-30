@@ -9,4 +9,10 @@ const loginState = atom({
     effects_UNSTABLE: [persistAtom],
 });
 
-export { loginState };
+const qrState = atom({
+    key: "qrState",
+    default: 0,
+    effects_UNSTABLE: [persistAtom],
+})
+
+export { loginState, qrState };
