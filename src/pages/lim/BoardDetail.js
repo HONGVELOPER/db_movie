@@ -219,12 +219,11 @@ function BoardDetail(props){
                     }
                   }}
                 >
-                  <Button block style={marginBottom}>
+                  <Button style={marginBottom}>
                     글 수정
                   </Button>
                 </NavLink>
-                <Button block style={marginBottom}
-                  block
+                <Button style={marginBottom}
                   onClick={deleteBoard.bind(
                     null,
                     props.location.query.ID

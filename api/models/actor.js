@@ -1,16 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
     const actor = sequelize.define('M_ACTOR', {
-        MA_ID: {
+        MA_CODE: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-        },
-        MA_CODE: {
-            type: DataTypes.STRING(50),
-            allowNull: false,
-            // primaryKey: true,
-            // autoIncrement: true,
         },
         MA_NAME: {
             type: DataTypes.STRING(50),
@@ -45,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
     })
     actor.associate = function(models) {
         actor.belongsTo(models.M_MOVIE, {
-            foreignKey: 'fk_M_ID',
+            foreignKey: 'M_CODE',
             onDelete: 'cascade',
         })
     }
