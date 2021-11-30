@@ -39,8 +39,8 @@ const useStyles = makeStyles({
 })
 
 const Select = (props) => {
-
-    console.log(props, 'props check')
+    // console.log(props, 'moive component props check')
+    
     const classes = useStyles()
     const [movie, setMovie] = useState({
         code: '',
@@ -232,7 +232,8 @@ const Select = (props) => {
                                             movie : movie,
                                             branch: branch,
                                             date: date,
-                                            time: time
+                                            time: time,
+                                            email: props.email
                                         }
                                     }}>
                                         좌석선택

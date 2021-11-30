@@ -35,7 +35,6 @@ const useStyles = makeStyles({
 })
 
 const SelectSeat = (props) => {
-    console.log(props, 'props !!!!!!!!!!!!!!!!!')
     
     const classes = useStyles()
     const history = useHistory()
@@ -45,8 +44,9 @@ const SelectSeat = (props) => {
     const [seatNum, setSeatNum] = useState(0)
     const [seatCodes, setSeatCodes] = useState([])
     const [selectSeat, setSelectSeat] = useState([])
+    const [price, setPrice] = useState(0)
 
-    const handleAdult = (event) => {
+    const handleAdult = async (event) => {
         setAdultSeat(event.target.textContent)
         document.getElementById(event.target.id).style.backgroundColor = 'black'
         for (let i = 0; i < 9; i++) {
@@ -65,7 +65,6 @@ const SelectSeat = (props) => {
         }
     }
     const handleSeat = (event) => {
-        console.log(document.getElementsByName(event.target.name), 'check')
         if (document.getElementById(event.target.id).style.backgroundColor === 'black') {
             document.getElementById(event.target.id).style.backgroundColor = 'white'
             setSeatNum(seatNum-1)
@@ -81,18 +80,27 @@ const SelectSeat = (props) => {
                 alert('인원을 초과하였습니다.')
             }
         }
+        setPrice(parseInt(adultSeat) * 12000 + parseInt(childSeat) * 9000)
     }
     const handlePay = async () => {
         const result = await axios.post('/api/reserve/pay', {
             params: {
                 mtCode: props.data.date.code,
                 msCode: seatCodes,
+                email: props.data.email,
+                price: price
             }
         })
-        console.log(result)
+        console.log(result, 'pay result')
         if (result.status === 200) {
-            alert('정상적으로 예매되었습니다.')
-            history.push("/")
+            history.push({
+                pathname: '/payment/payment',
+                state: {
+                    mpReserveNum: result.data.mriCode,
+                    mpEmail: result.data.email,
+                    mpPrice: result.data.price 
+                }
+            })
         }
     }
 
@@ -206,6 +214,7 @@ const SelectSeat = (props) => {
                                 <div>일시 : {props.data.date.name} {props.data.time.name.split(' ')[2]}</div>
                                 <div>상영관 : {props.data.time.name.split(' ')[0]} {props.data.time.name.split(' ')[1]}</div>
                                 <div>인원 : 일반 {adultSeat}명, 청소년 {childSeat}명</div>
+                                <div>가격 : {price}</div>
                             </div>
                         </Grid>
                         {seatNum ? (

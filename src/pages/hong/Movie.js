@@ -2,7 +2,7 @@ import Select from '../../components/hong/select';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Movie = () => {
+const Movie = (props) => {
 
     const [data, setData] = useState(null)
 
@@ -16,7 +16,7 @@ const Movie = () => {
 
     return (
         <>
-            <Select data={data} />
+            <Select data={data} email={props.history.location.state.email} />
         </>
     )
 }
