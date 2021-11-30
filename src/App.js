@@ -9,7 +9,7 @@ import SalaryPage from "./pages/choi/SalaryPage";
 import LoginPage from "./pages/kim/LoginPage";
 import SignUpPage from "./pages/kim/SignUpPage";
 import MyPage from "./pages/kim/MyPage";
-import CheckBox from "./pages/lee/Checkbox";
+// import CheckBox from "./pages/lee/Checkbox";
 import { RecoilRoot, atom, useRecoilState } from "recoil";
 import BoardList from "./pages/lim/BoardList";
 import BoardWrite from "./pages/lim/BoardWrite";
@@ -36,7 +36,7 @@ function App() {
       <Route path="/login" component={LoginPage} />
       <Route path="/signup" component={SignUpPage} />
       <Route path="/mypage" component={MyPage} />
-      <Route path="/check" component={CheckBox} />
+      {/* <Route path="/check" component={CheckBox} /> */}
       <Route path="/board" component={BoardList} />
       <Route path="/boardwrite" component={BoardWrite} />
       <Route path="/boarddetail" component={BoardDetail} />
