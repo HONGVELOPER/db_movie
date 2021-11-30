@@ -22,7 +22,7 @@ function App() {
 
       <Route path="/board" component={BoardList} />
       <Route path="/boardwrite" component={BoardWrite} />
-      <Route path="/boarddetail" component={BoardDetail} />
+      <Route path="/boarddetail" component={BoardDetail} /> 
     </div>
   );
 }
