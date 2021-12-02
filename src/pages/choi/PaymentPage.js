@@ -3,20 +3,24 @@ import Payment from "../../components/choi/iamport/Payment/Payment";
 
 const PaymentPage = (props) => {
   console.log("PaymentPage props", props);
-  const reserveData = props.location.state;
-  console.log("reserveData", reserveData);
+  // const reserveData = props.location.state;
+  // console.log("reserveData", reserveData);
 
-  const [data, setData] = useState({});
+  const [reserveData, setReserveData] = useState({
+    mpReserveNum: -1,
+    mpEmail: "",
+    mpPrice: -1,
+  });
 
   useEffect(() => {
-    setData(reserveData);
+    setReserveData(props.location.state);
   }, []);
 
-  console.log("data", data);
+  console.log("reserveData", reserveData);
 
   return (
     <>
-      <Payment data={data} />
+      <Payment reserveData={reserveData} />
     </>
   );
 };

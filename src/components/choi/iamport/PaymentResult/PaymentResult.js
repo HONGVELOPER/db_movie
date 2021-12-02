@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { Icon, Button } from "antd";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
+import axios from "axios";
 
 function PaymentResult({ history }) {
-  console.log("props (PaymentResult.js)", history);
-  useEffect(() => {}, []);
+  // console.log("props (PaymentResult.js)", props);
+  // ! reserveData props 로 전달이 어려움..
+  // ! 아톰으로 불러와야 할듯...
 
   const { location } = history;
   const { search } = location;
@@ -14,6 +16,30 @@ function PaymentResult({ history }) {
 
   const { merchant_uid, error_msg, imp_uid } = query;
   console.log("주문번호 (PaymentResult.js)", merchant_uid);
+  useEffect(() => {
+    sendPaymentData(merchant_uid);
+    console.log("sendPaymentData", "하ㅏ하핳하");
+  }, []);
+
+  const sendPaymentData = (merchant_uid) => {
+    axios
+      .post("/api/pay/savePaymentInfo", {
+        //id: id,
+        paymentCode: 123,
+        paymentType: "카카오페이",
+        email: "ttt",
+        price: "ttt",
+        reserveNumber: 123,
+      })
+      .then(function (res) {
+        // response
+        alert("결제내역 저장 완료!");
+      })
+      .catch(function (error) {
+        // error
+        alert(error.response.data.message);
+      });
+  };
 
   const isSuccessed = getIsSuccessed();
   function getIsSuccessed() {
