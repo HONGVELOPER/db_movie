@@ -31,37 +31,42 @@ function App() {
 
       <RecoilRoot>
         <div id="main">
+
           <div class="top1">
-            <div class="container">
-              <div class="row">
-                <div class="span12">
-                  <div class="top1_inner clearfix">
-                    <header>
-                      <div class="logo_wrapper">
-                        <a href="index.html" class="logo">
-                          <img src="assets/images/main_banner.png" alt="" />
-                        </a>
+			<div class="container">
+				<div class="row">
+					<div class="span12">
+						<div class="top1_inner clearfix">
+            <header>
+								<div class="logo_wrapper">
+                  <div class ="logocss">
+                    <a href="index.html" class="logo"><img src="mainLogo.png" alt="Data NoBase"
+											/></a>
                       </div>
-                    </header>
-                    {/* <div class="top2 clearfix">
-            <div class="search-form-wrapper clearfix">
-              <form id="search-form" action="search.php" method="GET" accept-charset="utf-8" class="navbar-form" >
-                <input type="text" name="s" value='Search' onBlur="if(this.value=='') this.value='Search'" onFocus="if(this.value =='Search' ) this.value=''"/>
-                <a href="#" onClick="document.getElementById('search-form').submit()"></a>
-              </form>
-            </div>
-            <div class="social_wrapper">
-              <ul class="social clearfix">
-                <li><a href="#"><img src="assets/images/social_ic1.png"/></a></li>
-                <li><a href="#"><img src="assets/images/social_ic2.png"/></a></li>
-              </ul>
-            </div>
-          </div> */}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                      </div>
+							</header>
+							<div class="top2 clearfix">
+								<div class="search-form-wrapper clearfix">
+									<form id="search-form" action="search.php" method="GET" accept-charset="utf-8" class="navbar-form">
+										<input type="text" name="s" value='Search' onBlur="if(this.value=='') this.value='Search'"
+											onFocus="if(this.value =='Search' ) this.value=''"/>
+										<a href="#" onClick="document.getElementById('search-form').submit()"></a>
+									</form>
+								</div>
+								<div class="social_wrapper">
+									<ul class="social clearfix">
+										<li><a href="https://www.facebook.com/HanyangUniversityErica/"><img
+													src="assets/images/social_ic1.png"/></a></li>
+										<li><a href="https://www.instagram.com/hanyang_erica/"><img src="assets/images/social_ic2.png"/></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
           <div class="hl1"></div>
           <div class="hl2">
@@ -115,7 +120,7 @@ function App() {
                           </div>
                         </div>
                       </div>
-                      {/* <div id="slider_wrapper">
+                      <div id="slider_wrapper">
                         <div id="slider" class="clearfix">
                           <div id="camera_wrap">
                             <div data-src="https://via.placeholder.com/932x476">
@@ -145,7 +150,7 @@ function App() {
                           </div>
                         </div>
                         <div class="slider_shadow"><img src="assets/images/slider_shadow.png" alt="" /></div>
-                      </div> */}
+                      </div>
                       <div class="page_title">
                         <div class="page_title_left"></div>
                         <div class="page_title_px">현재 상영작</div>
@@ -290,53 +295,33 @@ function App() {
                       path="/certification/result"
                       component={CertificationResult}
                     />
-                    {/* <h4>
-                      Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
-                    </h4>
-
-                    <div class="thumb1">
-                      <div class="thumbnail clearfix">
-                        <figure class="img-polaroid img-rounded"><img src="https://via.placeholder.com/218x167" alt="" /></figure>
-                        <div class="caption">
-                          <p>
-                            Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ipsum dolor sit amet conse ctetur adipisic t conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna al ing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat consectetuer adipiscing elit.
-                          </p>
-                          <p>
-                            <a href="#">Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. </a>
-                          </p>
-                          <div class="text-right"><a href="#" class="button1">read more<em></em></a></div>
+                  </div>
+                </div>
+                <ul class="thumbnails thumbnails2">
+                  <div class="span4">
+                    <div class="box2">
+                        <div class="box2_title">
+                          <h3>Event</h3>
+                        </div>
+                        <div class="box2_inner">
+                          <li>
+                            <div class="thumbnail clearfix">
+                              <figure class="">
+                                <img src="./eventSpeedMovie.png" alt="" />
+                              </figure>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="thumbnail clearfix">
+                              <figure class="">
+                                <img src="./eventToss.png" alt="" />
+                              </figure>
+                            </div>
+                          </li>
                         </div>
                       </div>
-                    </div> */}
                   </div>
-                </div>
-                <div class="span4">
-                  <div class="box2">
-                    <div class="box2">
-                      <div class="box2_title">
-                        <h3>Event</h3>
-                      </div>
-                      <div class="box2_inner">
-                        <ul class="ul0">
-                          <div class="thumb4">
-                            <div class="thumbnail clearfix">
-                              <figure class="img-polaroid img-rounded">
-                                <img src="./eventLPoint.png" alt="" />
-                              </figure>
-                            </div>
-                          </div>
-                          <div class="thumb4 last">
-                            <div class="thumbnail clearfix">
-                              <figure class="img-polaroid img-rounded">
-                                <img src="./eventUser.png" alt="" />
-                              </figure>
-                            </div>
-                          </div>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                </ul>
               </div>
             </div>
           </div>
