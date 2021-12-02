@@ -6,7 +6,6 @@ import { useHistory } from "react-router";
 
 const LogInOut = () => {
     const [isLogin, setIsLogin] = useRecoilState(loginState);
-
     const history = useHistory();
 
     return (

@@ -1,14 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
     const reserveInfo = sequelize.define('M_RESERVE_INFO', {
         MRI_CODE: {
-            type: DataTypes.INTEGER(30),
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        MRI_MEMBER: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true,
+        MRI_EMAIL: {
+            type: DataTypes.STRING(50),
+            allowNull: false,
         },
         MRI_ReserveDate: {
             type: DataTypes.DATE,

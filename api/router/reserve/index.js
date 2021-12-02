@@ -80,9 +80,11 @@ router.get('/time', async (req, res) => {
 })
 
 router.post('/pay', async (req, res) => {
+    const result = {}
     try {
         const reserveInfo = await models.M_RESERVE_INFO.create({
-            MT_CODE: req.body.params.mtCode
+            MT_CODE: req.body.params.mtCode,
+            MRI_EMAIL: req.body.params.email,
         })
         for (const seat of req.body.params.msCode) {
             await models.M_RESERVE_SEAT.create({
@@ -91,7 +93,6 @@ router.post('/pay', async (req, res) => {
                 MT_CODE: reserveInfo.dataValues.MT_CODE
             })
         }
-        console.log(req.body.params.msCode.length, 'params length check')
         await models.M_THEATER.update({
             MT_AVAIL_SEAT: sequelize.literal(`MT_AVAIL_SEAT - ${req.body.params.msCode.length}`),
             MT_RESERVED_SEAT: sequelize.literal(`MT_RESERVED_SEAT + ${req.body.params.msCode.length}`),
@@ -99,8 +100,11 @@ router.post('/pay', async (req, res) => {
             where: {
                 MT_CODE: req.body.params.mtCode,
             }
-        })       
-        res.status(200).send()
+        })
+        result.mriCode = reserveInfo.dataValues.MRI_CODE
+        result.email = reserveInfo.dataValues.MRI_EMAIL
+        result.price = req.body.params.price
+        res.status(200).json(result)
     } catch (err) {
         console.error(err)
     }

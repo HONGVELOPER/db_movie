@@ -1,50 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- <meta charset="utf-8" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta
-            name="description"
-            content="Web site created using create-react-app"
-        />
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
-        <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-        <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
-        <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+  <head>
+    <title>DataNoBase</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your description">
+    <meta name="keywords" content="Your keywords">
+    <meta name="author" content="Your name">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-        <title>Movie Pages</title>
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, user-scalable=no"
-        />
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <noscript
-            ><link rel="stylesheet" href="assets/css/noscript.css"
-        /></noscript>
-        <!-- <link
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-            crossorigin="anonymous"
-        /> -->
-    </head>
-    <body class="landing is-preload">
-        <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
-        <div id="root"></div>
-        <!--
+    <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="assets/css/bootstrap-responsive.css" type="text/css" media="screen">    
+    <link rel="stylesheet" href="assets/css/camera.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" media="screen">
+
+    <script type="text/javascript" src="assets/js/jquery.js"></script>  
+    <script type="text/javascript" src="assets/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="assets/js/superfish.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery.ui.totop.js"></script>
+
+    <script type="text/javascript" src="assets/js/camera.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.mobile.customized.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery.caroufredsel.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.touchSwipe.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        // camera
+        $('#camera_wrap').camera({
+          //thumbnails: true
+          autoAdvance			: true,		
+          mobileAutoAdvance	: true,
+          //fx					: 'simpleFade',
+          height: '51%',
+          hover: false,
+          loader: 'none',
+          navigation: true,
+          navigationHover: true,
+          mobileNavHover: true,
+          playPause: false,
+          pauseOnClick: false,
+          pagination			: false,
+          time: 7000,
+          transPeriod: 1000,
+          minHeight: '200px'
+        });
+      
+        //	carouFredSel
+        $('#slider3 .carousel.main ul').carouFredSel({
+          auto: {
+            timeoutDuration: 8000					
+          },
+          responsive: true,
+          prev: '.prev3',
+          next: '.next3',
+          width: '100%',
+          scroll: {
+            items: 1,
+            duration: 1000,
+            easing: "easeOutExpo"
+          },			
+          items: {
+                width: '320',
+            height: 'variable',	//	optionally resize item-height			  
+            visible: {
+              min: 1,
+              max: 4
+            }
+          },
+          mousewheel: false,
+          swipe: {
+            onMouse: true,
+            onTouch: true
+            }
+        });
+        $(window).bind("resize",updateSizes_vat).bind("load",updateSizes_vat);
+        function updateSizes_vat(){		
+          $('#slider3 .carousel.main ul').trigger("updateSizes");
+        }
+        updateSizes_vat();
+      
+      }); //
+      $(window).load(function() {
+        //
+      
+      }); //
+      </script>		
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -54,257 +102,5 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-        <div id="page-wrapper">
-            <!-- Header -->
-            <header id="header" class="alt">
-                <h1><a href="index.html">NoBase</a></h1>
-                <nav id="nav">
-                    <ul>
-                        <li class="special">
-                            <a href="#menu" class="menuToggle"
-                                ><span>Menu</span></a
-                            >
-                            <div id="menu">
-                                <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="generic.html">Reserve</a></li>
-                                    <li>
-                                        <a href="elements.html">My page</a>
-                                    </li>
-                                    <li><a href="#">Sign Up</a></li>
-                                    <li><a href="#">Log In</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-
-            <!-- Banner -->
-            <section id="banner">
-                <div class="inner">
-                    <h2>NoBase Movie Page</h2>
-                    <ul class="actions special">
-                        <li><a href="./movie" class="button primary">예약하기</a></li>
-                    </ul>
-                </div>
-                <a href="#one" class="more scrolly">Learn More</a>
-            </section>
-
-            <!-- One -->
-            <section id="one" class="wrapper style1 special">
-                <div class="inner">
-                    <header class="major">
-                        <h2>
-                            Arcu aliquet vel lobortis ata nisl<br />
-                            eget augue amet aliquet nisl cep donec
-                        </h2>
-                        <p>
-                            Aliquam ut ex ut augue consectetur interdum. Donec
-                            amet imperdiet eleifend<br />
-                            fringilla tincidunt. Nullam dui leo Aenean mi
-                            ligula, rhoncus ullamcorper.
-                        </p>
-                    </header>
-                    <ul class="icons major">
-                        <li>
-                            <span class="icon fa-gem major style1"
-                                ><span class="label">Lorem</span></span
-                            >
-                        </li>
-                        <li>
-                            <span class="icon fa-heart major style2"
-                                ><span class="label">Ipsum</span></span
-                            >
-                        </li>
-                        <li>
-                            <span class="icon solid fa-code major style3"
-                                ><span class="label">Dolor</span></span
-                            >
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Two -->
-            <section id="two" class="wrapper alt style2">
-                <section class="spotlight">
-                    <div class="image">
-                        <img src="images/pic01.jpg" alt="" />
-                    </div>
-                    <div class="content">
-                        <h2>
-                            Magna primis lobortis<br />
-                            sed ullamcorper
-                        </h2>
-                        <p>
-                            Aliquam ut ex ut augue consectetur interdum. Donec
-                            hendrerit imperdiet. Mauris eleifend fringilla
-                            nullam aenean mi ligula.
-                        </p>
-                    </div>
-                </section>
-                <section class="spotlight">
-                    <div class="image">
-                        <img src="images/pic02.jpg" alt="" />
-                    </div>
-                    <div class="content">
-                        <h2>
-                            Tortor dolore feugiat<br />
-                            elementum magna
-                        </h2>
-                        <p>
-                            Aliquam ut ex ut augue consectetur interdum. Donec
-                            hendrerit imperdiet. Mauris eleifend fringilla
-                            nullam aenean mi ligula.
-                        </p>
-                    </div>
-                </section>
-                <section class="spotlight">
-                    <div class="image">
-                        <img src="images/pic03.jpg" alt="" />
-                    </div>
-                    <div class="content">
-                        <h2>
-                            Augue eleifend aliquet<br />
-                            sed condimentum
-                        </h2>
-                        <p>
-                            Aliquam ut ex ut augue consectetur interdum. Donec
-                            hendrerit imperdiet. Mauris eleifend fringilla
-                            nullam aenean mi ligula.
-                        </p>
-                    </div>
-                </section>
-            </section>
-
-            <!-- Three -->
-            <section id="three" class="wrapper style3 special">
-                <div class="inner">
-                    <header class="major">
-                        <h2>Accumsan mus tortor nunc aliquet</h2>
-                        <p>
-                            Aliquam ut ex ut augue consectetur interdum. Donec
-                            amet imperdiet eleifend<br />
-                            fringilla tincidunt. Nullam dui leo Aenean mi
-                            ligula, rhoncus ullamcorper.
-                        </p>
-                    </header>
-                    <ul class="features">
-                        <li class="icon fa-paper-plane">
-                            <h3>Arcu accumsan</h3>
-                            <p>
-                                Augue consectetur sed interdum imperdiet et
-                                ipsum. Mauris lorem tincidunt nullam amet leo
-                                Aenean ligula consequat consequat.
-                            </p>
-                        </li>
-                        <li class="icon solid fa-laptop">
-                            <h3>Ac Augue Eget</h3>
-                            <p>
-                                Augue consectetur sed interdum imperdiet et
-                                ipsum. Mauris lorem tincidunt nullam amet leo
-                                Aenean ligula consequat consequat.
-                            </p>
-                        </li>
-                        <li class="icon solid fa-code">
-                            <h3>Mus Scelerisque</h3>
-                            <p>
-                                Augue consectetur sed interdum imperdiet et
-                                ipsum. Mauris lorem tincidunt nullam amet leo
-                                Aenean ligula consequat consequat.
-                            </p>
-                        </li>
-                        <li class="icon solid fa-headphones-alt">
-                            <h3>Mauris Imperdiet</h3>
-                            <p>
-                                Augue consectetur sed interdum imperdiet et
-                                ipsum. Mauris lorem tincidunt nullam amet leo
-                                Aenean ligula consequat consequat.
-                            </p>
-                        </li>
-                        <li class="icon fa-heart">
-                            <h3>Aenean Primis</h3>
-                            <p>
-                                Augue consectetur sed interdum imperdiet et
-                                ipsum. Mauris lorem tincidunt nullam amet leo
-                                Aenean ligula consequat consequat.
-                            </p>
-                        </li>
-                        <li class="icon fa-flag">
-                            <h3>Tortor Ut</h3>
-                            <p>
-                                Augue consectetur sed interdum imperdiet et
-                                ipsum. Mauris lorem tincidunt nullam amet leo
-                                Aenean ligula consequat consequat.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- CTA -->
-            <section id="cta" class="wrapper style4">
-                <div class="inner">
-                    <header>
-                        <h2>Arcue ut vel commodo</h2>
-                        <p>
-                            Aliquam ut ex ut augue consectetur interdum endrerit
-                            imperdiet amet eleifend fringilla.
-                        </p>
-                    </header>
-                    <ul class="actions stacked">
-                        <li>
-                            <a href="#" class="button fit primary">Activate</a>
-                        </li>
-                        <li><a href="#" class="button fit">Learn More</a></li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Footer -->
-            <footer id="footer">
-                <ul class="icons">
-                    <li>
-                        <a href="#" class="icon brands fa-twitter"
-                            ><span class="label">Twitter</span></a
-                        >
-                    </li>
-                    <li>
-                        <a href="#" class="icon brands fa-facebook-f"
-                            ><span class="label">Facebook</span></a
-                        >
-                    </li>
-                    <li>
-                        <a href="#" class="icon brands fa-instagram"
-                            ><span class="label">Instagram</span></a
-                        >
-                    </li>
-                    <li>
-                        <a href="#" class="icon brands fa-dribbble"
-                            ><span class="label">Dribbble</span></a
-                        >
-                    </li>
-                    <li>
-                        <a href="#" class="icon solid fa-envelope"
-                            ><span class="label">Email</span></a
-                        >
-                    </li>
-                </ul>
-                <ul class="copyright">
-                    <li>&copy; Untitled</li>
-                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                </ul>
-            </footer>
-        </div>
-
-        <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.scrollex.min.js"></script>
-        <script src="assets/js/jquery.scrolly.min.js"></script>
-        <script src="assets/js/browser.min.js"></script>
-        <script src="assets/js/breakpoints.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>
-    </body>
+  </body>
 </html>
