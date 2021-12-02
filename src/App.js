@@ -29,16 +29,20 @@ function App() {
     <div>
       {/* template */}
 
-
       <RecoilRoot>
         <div id="main">
-
           <div class="top1">
             <div class="container">
               <div class="row">
                 <div class="span12">
                   <div class="top1_inner clearfix">
-                    <header><div class="logo_wrapper"><a href="index.html" class="logo"><img src="assets/images/main_banner.png" alt="" /></a></div></header>
+                    <header>
+                      <div class="logo_wrapper">
+                        <a href="index.html" class="logo">
+                          <img src="assets/images/main_banner.png" alt="" />
+                        </a>
+                      </div>
+                    </header>
                     {/* <div class="top2 clearfix">
             <div class="search-form-wrapper clearfix">
               <form id="search-form" action="search.php" method="GET" accept-charset="utf-8" class="navbar-form" >
@@ -81,27 +85,32 @@ function App() {
                     <div class="hl1_inner2">
                       <div class="navbar navbar_">
                         <div class="navbar-inner navbar-inner_">
-                          <a class="btn btn-navbar btn-navbar_" data-toggle="collapse" data-target=".nav-collapse_">
+                          <a
+                            class="btn btn-navbar btn-navbar_"
+                            data-toggle="collapse"
+                            data-target=".nav-collapse_"
+                          >
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                           </a>
                           <div class="nav-collapse nav-collapse_ collapse">
                             <ul class="nav sf-menu clearfix">
-                              <li class="active"><a href="index.html">home</a></li>
-                              <li class="sub-menu sub-menu-1"><a href="index-1.html">about</a>
-                                <ul>
-                                  <li><a href="index-1.html">who we are</a></li>
-                                  <li><a href="index-1.html">our staff</a></li>
-                                  <li><a href="index-1.html">history</a></li>
-                                  <li><a href="index-1.html">Products</a></li>
-                                </ul>
+                              <li>
+                                <a href="index.html">Home</a>
                               </li>
-                              <li><a href="index-2.html">our cakes</a></li>
-                              <li><a href="index-3.html">services</a></li>
-                              <li><a href="index-4.html">MENU</a></li>
-                              <li><a href="index-5.html">contacts</a></li>
-
+                              <li>
+                                <a href="index-1.html">Introduce</a>
+                              </li>
+                              <li>
+                                <a href="index-3.html">Reserve</a>
+                              </li>
+                              <li>
+                                <a href="index-4.html">Event</a>
+                              </li>
+                              <li>
+                                <a href="index-5.html">Contacts</a>
+                              </li>
                             </ul>
                           </div>
                         </div>
@@ -137,7 +146,11 @@ function App() {
                         </div>
                         <div class="slider_shadow"><img src="assets/images/slider_shadow.png" alt="" /></div>
                       </div> */}
-                      <div class="page_title"><div class="page_title_left"></div><div class="page_title_px">현재 상영작</div><div class="page_title_right"></div></div>
+                      <div class="page_title">
+                        <div class="page_title_left"></div>
+                        <div class="page_title_px">현재 상영작</div>
+                        <div class="page_title_right"></div>
+                      </div>
                       <div id="slider3">
                         <a class="prev3" href="#"></a>
                         <a class="next3" href="#"></a>
@@ -150,7 +163,10 @@ function App() {
                                     <div class="thumbnail clearfix">
                                       <a href="/movie">
                                         <figure>
-                                          <img src="/assets/images/프렌치디스패치.jpeg" alt="" />
+                                          <img
+                                            src="/assets/images/프렌치디스패치.jpeg"
+                                            alt=""
+                                          />
                                         </figure>
                                         <div class="caption">
                                           프렌치 디스패치
@@ -164,11 +180,12 @@ function App() {
                                     <div class="thumbnail clearfix">
                                       <a href="#">
                                         <figure>
-                                          <img src="/assets/images/eternals.jpeg" alt="" />
+                                          <img
+                                            src="/assets/images/eternals.jpeg"
+                                            alt=""
+                                          />
                                         </figure>
-                                        <div class="caption">
-                                          이터널스
-                                        </div>
+                                        <div class="caption">이터널스</div>
                                       </a>
                                     </div>
                                   </div>
@@ -178,7 +195,10 @@ function App() {
                                     <div class="thumbnail clearfix">
                                       <a href="#">
                                         <figure>
-                                          <img src="/assets/images/연애빠진로맨스.jpeg" alt="" />
+                                          <img
+                                            src="/assets/images/연애빠진로맨스.jpeg"
+                                            alt=""
+                                          />
                                         </figure>
                                         <div class="caption">
                                           연애빠진 로맨스
@@ -192,11 +212,12 @@ function App() {
                                     <div class="thumbnail clearfix">
                                       <a href="#">
                                         <figure>
-                                          <img src="/assets/images/유체이탈자.jpeg" alt="" />
+                                          <img
+                                            src="/assets/images/유체이탈자.jpeg"
+                                            alt=""
+                                          />
                                         </figure>
-                                        <div class="caption">
-                                          유체이탈자
-                                        </div>
+                                        <div class="caption">유체이탈자</div>
                                       </a>
                                     </div>
                                   </div>
@@ -206,7 +227,10 @@ function App() {
                                     <div class="thumbnail clearfix">
                                       <a href="#">
                                         <figure>
-                                          <img src="/assets/images/엔칸토.jpeg" alt="" />
+                                          <img
+                                            src="/assets/images/엔칸토.jpeg"
+                                            alt=""
+                                          />
                                         </figure>
                                         <div class="caption">
                                           엔칸토: 마법의 세계
@@ -251,8 +275,16 @@ function App() {
 
                     <Route exact path="/payment" component={PaymentHome} />
                     <Route exact path="/payment/payment" component={Payment} />
-                    <Route exact path="/payment/result" component={PaymentResult} />
-                    <Route exact path="/certification" component={Certification} />
+                    <Route
+                      exact
+                      path="/payment/result"
+                      component={PaymentResult}
+                    />
+                    <Route
+                      exact
+                      path="/certification"
+                      component={Certification}
+                    />
                     <Route
                       exact
                       path="/certification/result"
@@ -276,24 +308,32 @@ function App() {
                         </div>
                       </div>
                     </div> */}
-
-
                   </div>
                 </div>
                 <div class="span4">
                   <div class="box2">
-                    <div class="box2_title"><h3>Services</h3></div>
-                    <div class="box2_inner">
-                      <ul class="ul0">
-                        <li><a href="#">Celebration Cakes</a></li>
-                        <li><a href="#">Cupcakes</a></li>
-                        <li><a href="#">Biscuits & Favours</a></li>
-                        <li><a href="#">Chocolates & Cookies</a></li>
-                        <li><a href="#">Strawberry Cakes</a></li>
-                        <li><a href="#">Flavor Cakes</a></li>
-                        <li><a href="#">Wedding Cakes</a></li>
-                        <li><a href="#">Delivery</a></li>
-                      </ul>
+                    <div class="box2">
+                      <div class="box2_title">
+                        <h3>Event</h3>
+                      </div>
+                      <div class="box2_inner">
+                        <ul class="ul0">
+                          <div class="thumb4">
+                            <div class="thumbnail clearfix">
+                              <figure class="img-polaroid img-rounded">
+                                <img src="./eventLPoint.png" alt="" />
+                              </figure>
+                            </div>
+                          </div>
+                          <div class="thumb4 last">
+                            <div class="thumbnail clearfix">
+                              <figure class="img-polaroid img-rounded">
+                                <img src="./eventUser.png" alt="" />
+                              </figure>
+                            </div>
+                          </div>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -308,18 +348,33 @@ function App() {
                   <div class="bot1_inner">
                     <div class="menu_bot">
                       <ul id="menu_bot" class="clearfix">
-                        <li><a href="index.html">home</a></li>
-                        <li><a href="/movie">reserve</a></li>
-                        <li><a href="/board">공지사항</a></li>
-                        <li><a href="index-5.html">contacts</a></li>
-                        <li><a href="/login">login</a></li>
-                        <li><a href="/signup">sign up</a></li>
+                        <li>
+                          <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                          <a href="index-1.html">Introduce</a>
+                        </li>
+                        <li>
+                          <a href="index-3.html">Reserve</a>
+                        </li>
+                        <li>
+                          <a href="index-4.html">Event</a>
+                        </li>
+                        <li>
+                          <a href="index-5.html">Contacts</a>
+                        </li>
                       </ul>
                     </div>
                   </div>
                 </div>
                 <footer>
-                  <div class="copyright">Copyright © 2020 <a href="https://gridgum.com/themes/category/free/">Free Bootstrap Templates</a>. All rights reserved.</div>
+                  <div class="copyright">
+                    (15588) 경기도 안산시 상록구 한양대학로 55
+                    <br />
+                    대표: 홍영진 | 호스팅사업자: 한양대 에리카 DataNoBase |
+                    개인정보보호 책임자: 김한나 | 대표 이메일:
+                    DataNoBase@hanyang.ac.kr | 고객센터: 031-400-5114
+                  </div>
                 </footer>
               </div>
             </div>
