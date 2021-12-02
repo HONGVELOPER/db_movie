@@ -4,45 +4,52 @@ import { Icon, Button } from "antd";
 import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 import axios from "axios";
-import { loginState } from "../../../../../src/loginState";
 import { useRecoilState } from "recoil";
+import { reserveState as recoilReserveState } from "../../../../../src/reserveState";
 
 function PaymentResult({ history }) {
   // console.log("props (PaymentResult.js)", props);
   // ! reserveData props 로 전달이 어려움..
   // ! 아톰으로 불러와야 할듯...
-  const [isLogin, setIsLogin] = useRecoilState(loginState);
+
+  const [reserveState, setReserveState] = useRecoilState(recoilReserveState);
 
   const { location } = history;
   const { search } = location;
   const query = queryString.parse(search);
-  console.log("query쿼리", query);
+  // console.log("query쿼리", query);
+  // console.log("reserveState", reserveState);
 
   const { merchant_uid, error_msg, imp_uid, pg_provider } = query;
-  console.log("주문번호 (PaymentResult.js)", merchant_uid);
+  // console.log("주문번호 (PaymentResult.js)", merchant_uid);
 
   const min_Number = merchant_uid.split("_");
   const numberOnly = Number(min_Number[1]);
-  console.log("numberOnly (PaymentResult.js)", numberOnly);
+  // console.log("numberOnly (PaymentResult.js)", numberOnly);
   // if (merchant_uid !== undefined) {
   // } else {
   //   numberOnly = -9999;
   // }
 
   useEffect(() => {
-    sendPaymentData(numberOnly);
+    sendPaymentData(
+      numberOnly,
+      reserveState.mpEmail,
+      reserveState.mpPrice,
+      reserveState.mpReserveNum
+    );
     console.log("sendPaymentData", "하ㅏ하핳하");
   }, []);
 
-  const sendPaymentData = (numberOnly) => {
+  const sendPaymentData = (numberOnly, mpEmail, mpPrice, mpReserveNum) => {
     axios
       .post("/api/pay/savePaymentInfo", {
         //id: id,
         paymentCode: numberOnly,
         paymentType: pg_provider,
-        email: String(isLogin.email),
-        price: "ttt",
-        reserveNumber: 123,
+        email: mpEmail,
+        price: mpPrice,
+        reserveNumber: mpReserveNum,
       })
       .then(function (res) {
         // response

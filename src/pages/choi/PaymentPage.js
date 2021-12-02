@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Payment from "../../components/choi/iamport/Payment/Payment";
+import { useRecoilState } from "recoil";
+import { reserveState as recoilReserveState } from "../../reserveState";
 
 const PaymentPage = (props) => {
   console.log("PaymentPage props", props);
@@ -12,8 +14,11 @@ const PaymentPage = (props) => {
     mpPrice: -1,
   });
 
+  const [reserveState, setReserveState] = useRecoilState(recoilReserveState);
+
   useEffect(() => {
     setReserveData(props.location.state);
+    setReserveState(props.location.state);
   }, []);
 
   console.log("reserveData", reserveData);
