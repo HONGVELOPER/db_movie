@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Payment from "../../components/choi/iamport/Payment";
+import Payment from "../../components/choi/iamport/Payment/Payment";
 
 const PaymentPage = (props) => {
   console.log("PaymentPage props", props);
+  const reserveData = props.location.state;
+  console.log("reserveData", reserveData);
+
   const [data, setData] = useState({});
+
   useEffect(() => {
-    setData(props);
+    setData(reserveData);
   }, []);
+
+  console.log("data", data);
 
   return (
     <>

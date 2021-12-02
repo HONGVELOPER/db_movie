@@ -1,27 +1,32 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Icon, Button } from 'antd';
-import { withRouter } from 'react-router-dom';
-import queryString from 'query-string';
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import { Icon, Button } from "antd";
+import { withRouter } from "react-router-dom";
+import queryString from "query-string";
 
 function PaymentResult({ history }) {
+  console.log("props (PaymentResult.js)", history);
+  useEffect(() => {}, []);
+
   const { location } = history;
   const { search } = location;
   const query = queryString.parse(search);
-  
+
   const { merchant_uid, error_msg, imp_uid } = query;
+  console.log("주문번호 (PaymentResult.js)", merchant_uid);
+
   const isSuccessed = getIsSuccessed();
   function getIsSuccessed() {
     const { success, imp_success } = query;
-    if (typeof imp_success === 'string') return imp_success === 'true';
-    if (typeof imp_success === 'boolean') return imp_success === true;
-    if (typeof success === 'string') return success === 'true';
-    if (typeof success === 'boolean') return success === true;
+    if (typeof imp_success === "string") return imp_success === "true";
+    if (typeof imp_success === "boolean") return imp_success === true;
+    if (typeof success === "string") return success === "true";
+    if (typeof success === "boolean") return success === true;
   }
 
-  const iconType = isSuccessed ? 'check-circle' : 'exclamation-circle';
-  const resultType = isSuccessed ? '성공' : '실패';
-  const colorType = isSuccessed ? '#52c41a' : '#f5222d';
+  const iconType = isSuccessed ? "check-circle" : "exclamation-circle";
+  const resultType = isSuccessed ? "성공" : "실패";
+  const colorType = isSuccessed ? "#52c41a" : "#f5222d";
   return (
     <Wrapper>
       <Container colorType={colorType}>
@@ -32,7 +37,7 @@ function PaymentResult({ history }) {
             <span>주문번호</span>
             <span>{merchant_uid}</span>
           </li>
-          {isSuccessed  ? (
+          {isSuccessed ? (
             <li>
               <span>아임포트 번호</span>
               <span>{imp_uid}</span>
@@ -44,7 +49,7 @@ function PaymentResult({ history }) {
             </li>
           )}
         </ul>
-        <Button size="large" onClick={() => history.push('/')}>
+        <Button size="large" onClick={() => history.push("/")}>
           <Icon type="arrow-left" />
           돌아가기
         </Button>
@@ -79,7 +84,7 @@ const Container = styled.div`
     font-size: 10rem;
     text-align: center;
     margin-bottom: 2rem;
-    color: ${props => props.colorType};
+    color: ${(props) => props.colorType};
   }
   p {
     font-size: 2rem;
@@ -106,9 +111,10 @@ const Container = styled.div`
     }
   }
 
-  button, button:hover {
-    border-color: ${props => props.colorType};
-    color: ${props => props.colorType};
+  button,
+  button:hover {
+    border-color: ${(props) => props.colorType};
+    color: ${(props) => props.colorType};
   }
   button:hover {
     opacity: 0.7;
