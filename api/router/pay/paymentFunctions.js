@@ -1,23 +1,24 @@
 const Joi = require("joi");
 const models = require("../../models");
 
-const savePaymentInfo = async (req, res) => {
+const SavePaymentInfo = async (req, res) => {
   // Request Body Check
-  const schema = Joi.object().keys({
-    paymentCode: Joi.number().required(),
-    paymentType: Joi.string().required(),
-    email: Joi.string().required(),
-    price: Joi.string().required(),
-    reserveNumber: Joi.number().required(),
-  });
-  const result = schema.validate(req.body);
-  if (result.error) {
-    // 403 Forbidden
-    res.status(403).send({
-      message: "schema.validate 에러 (savePaymentInfo)",
-    });
-    return;
-  }
+  // const schema = Joi.object().keys({
+  //   paymentCode: Joi.number().required(),
+  //   // paymentCode: Joi.string().required(),
+  //   paymentType: Joi.string().required(),
+  //   email: Joi.string().required(),
+  //   price: Joi.string().required(),
+  //   reserveNumber: Joi.number().required(),
+  // });
+  // const result = schema.validate(req.body);
+  // if (result.error) {
+  //   // 403 Forbidden
+  //   res.status(403).send({
+  //     message: "schema.validate 에러 (savePaymentInfo)",
+  //   });
+  //   return;
+  // }
 
   const { paymentCode, paymentType, email, price, reserveNumber } = req.body;
   console.log("req", req);
@@ -36,7 +37,7 @@ const savePaymentInfo = async (req, res) => {
   // }
 
   await models.M_PAYMENT.create({
-    // MP_CODE: paymentCode,
+    MP_CODE: paymentCode,
     MP_TYPE: paymentType,
     MP_EMAIL: email,
     MP_PRICE: price,
@@ -45,4 +46,4 @@ const savePaymentInfo = async (req, res) => {
   res.status(201).send(); // 201 Created
 };
 
-module.exports = { savePaymentInfo };
+module.exports = { SavePaymentInfo };
