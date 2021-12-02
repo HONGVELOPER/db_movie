@@ -30,10 +30,6 @@ function App() {
     <div>
       {/* template */}
       <RecoilRoot>
-        <SignUpPage 
-          show = {modalShow} 
-          onHide = { () =>setModalShow(false)}
-        />
         <div id="main">
           <div class="top1">
             <div class="container">
@@ -48,7 +44,7 @@ function App() {
                             <div class="menu_bot">
                               <ul id="menu_bot" class="clearfix">
                                 <li><a href="/login">login</a></li>
-                                <li><a onClick={() => setModalShow(true)}>sign up</a></li>
+                                <li><a href="/signup">sign up</a></li>
                               </ul>
                             </div>
                           </div>

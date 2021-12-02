@@ -76,7 +76,7 @@ const SignUpPage = ({ show, onHide}) => {
     return (
 
         <div className="container">
-            <Modal
+            {/* <Modal
                 show = {show}
                 onHide = {onHide}
                 size="lg"
@@ -99,8 +99,8 @@ const SignUpPage = ({ show, onHide}) => {
                 <Modal.Footer>
                     <Button onClick={onHide}>Close</Button>
                 </Modal.Footer>
-            </Modal>
-            {/* <Form>
+            </Modal> */}
+            <Form>
                 <h1> Sign Up 회원가입 </h1>
                 <div className="form-row">
                     <div className="col-md-12 mb-3">
@@ -127,12 +127,6 @@ const SignUpPage = ({ show, onHide}) => {
                             name="password"
                             placeholder="비밀번호를 입력하세요"
                         />
-                         <small
-                            id="passwordHelpInline"
-                            className ="form-text text-muted"
-                        >
-                            Must be 8-20 characters long.
-                        </small> 
                     </div>
                     <div className="col-md-12 mb-3">
                         <label
@@ -187,7 +181,7 @@ const SignUpPage = ({ show, onHide}) => {
                         로그인
                     </Link>
                 </Footer>
-            </Form> */}
+            </Form>
         </div>
     );
 };
