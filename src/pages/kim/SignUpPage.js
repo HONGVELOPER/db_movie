@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import { Modal } from "react-bootstrap";
 // import { Button } from "../../components/kim/Button";
 import { Input, Footer } from "../../components/kim/Input";
 import { Form } from "../../components/kim/Form";
 
-const SignUpPage = ({ history }) => {
+const SignUpPage = ({ show, onHide}) => {
     const [inputs, setInputs] = useState({
         email: "",
         username: "",
@@ -73,7 +74,32 @@ const SignUpPage = ({ history }) => {
     };
 
     return (
+
         <div className="container">
+            {/* <Modal
+                show = {show}
+                onHide = {onHide}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Modal heading
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h4>Centered Modal</h4>
+                    <p>
+                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+                        consectetur ac, vestibulum at eros.
+                    </p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={onHide}>Close</Button>
+                </Modal.Footer>
+            </Modal> */}
             <Form>
                 <h1> Sign Up 회원가입 </h1>
                 <div className="form-row">
@@ -101,12 +127,6 @@ const SignUpPage = ({ history }) => {
                             name="password"
                             placeholder="비밀번호를 입력하세요"
                         />
-                        {/* <small
-                            id="passwordHelpInline"
-                            className ="form-text text-muted"
-                        >
-                            Must be 8-20 characters long.
-                        </small> */}
                     </div>
                     <div className="col-md-12 mb-3">
                         <label
