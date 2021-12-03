@@ -40,7 +40,6 @@ const Home = (props) => {
                     <Button type="button" onClick={toMovie}>
                         예매
                     </Button>
-                    <LogInOut />
                     <button onClick={qrFail}>
                         fail
                     </button>

@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 import Home from "./pages/Home";
 import Movie from "./pages/hong/Movie";
 import Seat from "./pages/hong/Seat";
@@ -9,6 +10,8 @@ import SalaryPage from "./pages/choi/SalaryPage";
 import LoginPage from "./pages/kim/LoginPage";
 import SignUpPage from "./pages/kim/SignUpPage";
 import MyPage from "./pages/kim/MyPage";
+import LogInOut from "./components/kim/LogInOut";
+
 // import CheckBox from "./pages/lee/Checkbox";
 import { RecoilRoot, atom, useRecoilState } from "recoil";
 import BoardList from "./pages/lim/BoardList";
@@ -17,17 +20,21 @@ import BoardDetail from "./pages/lim/BoardDetail";
 
 // ? iamport 이식 - 수민
 import PaymentHome from "./components/choi/iamport/Home";
-import Payment from "./components/choi/iamport/Payment";
-import PaymentResult from "./components/choi/iamport/PaymentResult";
-import Certification from "./components/choi/iamport/Certification";
+import PaymentPage from "./pages/choi/PaymentPage"; // ! 결제페이지
+import PaymentResult from "./pages/choi/PaymentResultPage"; // ! 결제 결과페이지
+import CertificationPage from "./pages/choi/CertificationPage"; // ! 인증페이지
 import CertificationResult from "./components/choi/iamport/CertificationResult";
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
   return (
     // <div className="App">
-    
+
     <div>
+      {/* <SignUpPage
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      /> */}
       {/* template */}
       <RecoilRoot>
         <div id="main">
@@ -43,8 +50,7 @@ function App() {
                           <div class="bot1_inner">
                             <div class="menu_bot">
                               <ul id="menu_bot" class="clearfix">
-                                <li><a href="/login">login</a></li>
-                                <li><a href="/signup">sign up</a></li>
+                                <LogInOut/>
                               </ul>
                             </div>
                           </div>
@@ -74,7 +80,7 @@ function App() {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                           </a>
-                          <div class="nav-collapse nav-collapse_ collapse">
+                          <div class="nav-collapse nav-collapse_ collapse" style={{border: '1px solid black'}}>
                             <ul class="nav sf-menu clearfix">
                               <li>
                                 <a href="index.html">Home</a>
@@ -290,7 +296,10 @@ function App() {
                           <a href="index-4.html">Event</a>
                         </li>
                         <li>
-                          <a href="index-5.html">Contacts</a>
+                          <a href="index-5.html">address</a>
+                        </li>
+                        <li>
+                          <a href="/board">board</a>
                         </li>
                       </ul>
                     </div>
@@ -324,16 +333,17 @@ function App() {
         <Route path="/boardwrite" component={BoardWrite} />
         <Route path="/boarddetail" component={BoardDetail} />
 
-        <Route exact path="/payment" component={PaymentHome} />
-        <Route exact path="/payment/payment" component={Payment} />
-        <Route exact path="/payment/result" component={PaymentResult} />
-        <Route exact path="/certification" component={Certification} />
-        <Route
-          exact
-          path="/certification/result"
-          component={CertificationResult}
-        /> */}
-      </RecoilRoot>
+
+      <Route exact path="/payment" component={PaymentHome} />
+      <Route exact path="/payment/payment" component={PaymentPage} />
+      <Route exact path="/payment/result" component={PaymentResult} />
+      <Route exact path="/certification" component={CertificationPage} />
+      <Route
+        exact
+        path="/certification/result"
+        component={CertificationResult}
+      />
+    </RecoilRoot>
     </div>
   );
 }
