@@ -223,7 +223,6 @@ function App() {
                   <div class="box1">
                     <Route exact path="/movie" component={Movie} />
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/movie" component={Movie} />
                     <Route path="/movie/seat" component={Seat} />
 
                     <Route path="/commute" component={CommutePage} />
@@ -260,6 +259,7 @@ function App() {
                     />
                   </div>
                 </div>
+                
                 <ul class="thumbnails thumbnails2">
                   <div class="span4">
                     <div class="box2">
