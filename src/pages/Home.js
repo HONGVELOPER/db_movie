@@ -17,7 +17,7 @@ const Home = (props) => {
             alert("로그인이 필요합니다.")
         } else if (!props.location.state.safe) {
             alert("you are not safe")
-        }else {
+        } else {
             history.push({
                 pathname: '/movie',
                 state: {

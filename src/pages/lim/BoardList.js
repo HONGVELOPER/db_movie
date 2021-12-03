@@ -1,11 +1,12 @@
-
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { loginState } from "../../loginState";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-function BoardRow(props) {
+function BoardRow(props) {  
   return (
     <tr>
       <td>
@@ -35,6 +36,8 @@ function BoardRow(props) {
 
 function BoardList() {
   const [boardList, setboardList] = useState();
+  const [isLogin, setIsLogin] = useRecoilState(loginState);
+  console.log(isLogin, 'is login')
   
   useEffect( () => {
     getBoardList();
@@ -95,11 +98,20 @@ function BoardList() {
           </thead>
           <tbody>{boardList}</tbody>
         </Table>
-        <NavLink to="/boardWrite">
-          <Button style={buttonStyle} variant="primary">
-            글쓰기
+        {/* <NavLink to="/board">
+          <Button style={buttonStyle} onClick={getBoardList} variant="primary">
+            글목록
           </Button>
-        </NavLink>
+        </NavLink> */}
+        {isLogin.admin ? (
+          <NavLink to="/boardWrite">
+            <Button style={buttonStyle} variant="primary">
+              글쓰기
+            </Button>
+          </NavLink>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

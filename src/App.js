@@ -69,28 +69,38 @@ function App() {
             </div>
           </div>
 
-          <div className="hl2">
-            <div className="hl2_inner">
-              <div className="container">
-                <div className="row">
-                  <div className="span12">
-                    <div className="hl1_inner2">
-                      <div className="navbar navbar_">
-                        <div className="navbar-inner navbar-inner_">
-                          <a
-                            className="btn btn-navbar btn-navbar_"
+          <div class="hl1"></div>
+          <div class="hl2">
+            <div class="hl2_2">
+              <div class="container">
+                <div class="row">
+                  <div class="span12">
+                    <div class="hl2_2_inner">
+                      <div class="hl2_2_left"></div>
+                      <div class="hl2_2_px"></div>
+                      <div class="hl2_2_right"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hl2_inner">
+              <div class="container">
+                <div class="row">
+                  <div class="span12">
+                    <div class="hl1_inner2">
+                      <div class="navbar navbar_" style={{border: '1px solid black'}}>
+                        <div class="navbar-inner navbar-inner_" style={{textAlign: 'center', width: '100%'}}>
+                          {/* <a
+                            class="btn btn-navbar btn-navbar_"
                             data-toggle="collapse"
                             data-target=".nav-collapse_"
                           >
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                          </a>
-                          <div
-                            className="nav-collapse nav-collapse_ collapse"
-                            style={{ border: "1px solid black" }}
-                          >
-                            <ul className="nav sf-menu clearfix">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </a> */}
+                            <ul class="nav sf-menu clearfix" style={{textAlign: 'center'}}>
                               <li>
                                 <a href="index.html">Home</a>
                               </li>
@@ -107,7 +117,8 @@ function App() {
                                 <a href="index-5.html">Contacts</a>
                               </li>
                             </ul>
-                          </div>
+                          {/* <div class="nav-collapse nav-collapse_ collapse">
+                          </div> */}
                         </div>
                       </div>
                       <div className="page_title">

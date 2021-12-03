@@ -39,15 +39,27 @@ const LoginPage = ({ history }) => {
             .then((res) => {
                 // response
                 alert(`로그인 성공 ${res.data.U_NAME}`);
-                // useState
-                setIsLogin({
-                    id: res.data.U_ID,
-                    email: res.data.U_EMAIL,
-                    name: res.data.U_NAME,
-                    phone: res.data.U_PH_NUM,
-                    birth: res.data.U_BIRTH,
-                    // id, email, password, name, phnumber, birth, divide?
-                });
+                if (res.data.admin) {
+                    console.log('접근')
+                    setIsLogin({
+                        id: res.data.U_ID,
+                        email: res.data.U_EMAIL,
+                        name: res.data.U_NAME,
+                        phone: res.data.U_PH_NUM,
+                        birth: res.data.U_BIRTH,
+                        admin: res.data.admin
+                    });
+                } else {
+                    console.log("else")
+                    setIsLogin({
+                        id: res.data.U_ID,
+                        email: res.data.U_EMAIL,
+                        name: res.data.U_NAME,
+                        phone: res.data.U_PH_NUM,
+                        birth: res.data.U_BIRTH,
+                        admin: false,
+                    });
+                }
                 history.push("/");
             })
             .catch((err) => {
