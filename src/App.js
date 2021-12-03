@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Movie from "./pages/hong/Movie";
@@ -23,63 +23,32 @@ import Certification from "./components/choi/iamport/Certification";
 import CertificationResult from "./components/choi/iamport/CertificationResult";
 
 function App() {
+  const [modalShow, setModalShow] = useState(false);
   return (
     // <div className="App">
-
+    
     <div>
       {/* template */}
-
       <RecoilRoot>
         <div id="main">
           <div class="top1">
             <div class="container">
               <div class="row">
                 <div class="span12">
-                  <div class="top1_inner clearfix">
-                    <header>
-                      <div class="logo_wrapper">
-                        <div class="logocss">
-                          <a href="index.html" class="logo">
-                            <img src="mainLogo.png" alt="Data NoBase" />
-                          </a>
-                        </div>
-                      </div>
-                    </header>
-                    <div class="top2 clearfix">
-                      <div class="search-form-wrapper clearfix">
-                        <form
-                          id="search-form"
-                          action="search.php"
-                          method="GET"
-                          accept-charset="utf-8"
-                          class="navbar-form"
-                        >
-                          <input
-                            type="text"
-                            name="s"
-                            value="Search"
-                            onBlur="if(this.value=='') this.value='Search'"
-                            onFocus="if(this.value =='Search' ) this.value=''"
-                          />
-                          <a
-                            href="#"
-                            onClick="document.getElementById('search-form').submit()"
-                          ></a>
-                        </form>
-                      </div>
+                  <div class="top2_inner clearfix">
+                    <header><div class="logo_wrapper"><a href="index.html" class="logo"><img src="assets/images/main_banner.png" alt="" /></a></div></header>
+                    <div class="top3 clearfix">
                       <div class="social_wrapper">
-                        <ul class="social clearfix">
-                          <li>
-                            <a href="https://www.facebook.com/HanyangUniversityErica/">
-                              <img src="assets/images/social_ic1.png" />
-                            </a>
-                          </li>
-                          <li>
-                            <a href="https://www.instagram.com/hanyang_erica/">
-                              <img src="assets/images/social_ic2.png" />
-                            </a>
-                          </li>
-                        </ul>
+                      <div class="bot1">
+                          <div class="bot1_inner">
+                            <div class="menu_bot">
+                              <ul id="menu_bot" class="clearfix">
+                                <li><a href="/login">login</a></li>
+                                <li><a href="/signup">sign up</a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
