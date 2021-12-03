@@ -50,7 +50,7 @@ const Checkbox = () => {
   return (
     <>
       <div className="title">
-        <h3>모두 "아니요" 가 아니면 예매가 불가능합니다.</h3>
+        <h2>모두 "아니요" 가 아니면 예매가 불가능합니다.</h2>
       </div>
       {q1}
       <br />
