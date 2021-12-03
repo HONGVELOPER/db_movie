@@ -332,8 +332,7 @@ function App() {
                     (15588) 경기도 안산시 상록구 한양대학로 55
                     <br />
                     대표: 홍영진 | 호스팅사업자: 한양대 에리카 DataNoBase |
-                    개인정보보호 책임자: 김한나 | 대표 이메일:
-                    DataNoBase@hanyang.ac.kr | 고객센터: 031-400-5114
+                    개인정보보호 책임자: 김한나 | 대표 이메일: DataNoBase@hanyang.ac.kr | 고객센터: 031-400-5114
                   </div>
                 </footer>
               </div>
