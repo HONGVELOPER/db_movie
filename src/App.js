@@ -327,7 +327,7 @@ function App() {
 
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignUpPage} />
-        <Route path="/mypage" component={MyPage} /> */}
+        <Route path="/mypage" component={MyPage} />
         {/* <Route path="/check" component={CheckBox} /> */}
         {/* <Route path="/board" component={BoardList} />
         <Route path="/boardwrite" component={BoardWrite} />
@@ -342,7 +342,7 @@ function App() {
         exact
         path="/certification/result"
         component={CertificationResult}
-      />
+      /> */}
     </RecoilRoot>
     </div>
   );
