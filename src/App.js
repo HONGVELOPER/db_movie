@@ -259,7 +259,7 @@ function App() {
                     />
                   </div>
                 </div>
-                
+
                 <ul class="thumbnails thumbnails2">
                   <div class="span4">
                     <div class="box2">
@@ -309,10 +309,10 @@ function App() {
                           <a href="index-4.html">Event</a>
                         </li>
                         <li>
-                          <a href="index-5.html">address</a>
+                          <a href="index-5.html">Address</a>
                         </li>
                         <li>
-                          <a href="/board">board</a>
+                          <a href="/board">Board</a>
                         </li>
                       </ul>
                     </div>
