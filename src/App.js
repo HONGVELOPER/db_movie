@@ -83,9 +83,9 @@ function App() {
                 <div class="row">
                   <div class="span12">
                     <div class="hl1_inner2">
-                      <div class="navbar navbar_">
-                        <div class="navbar-inner navbar-inner_">
-                          <a
+                      <div class="navbar navbar_" style={{border: '1px solid black'}}>
+                        <div class="navbar-inner navbar-inner_" style={{textAlign: 'center', width: '100%'}}>
+                          {/* <a
                             class="btn btn-navbar btn-navbar_"
                             data-toggle="collapse"
                             data-target=".nav-collapse_"
@@ -93,9 +93,8 @@ function App() {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
-                          </a>
-                          <div class="nav-collapse nav-collapse_ collapse">
-                            <ul class="nav sf-menu clearfix">
+                          </a> */}
+                            <ul class="nav sf-menu clearfix" style={{textAlign: 'center'}}>
                               <li>
                                 <a href="index.html">Home</a>
                               </li>
@@ -112,7 +111,8 @@ function App() {
                                 <a href="index-5.html">Contacts</a>
                               </li>
                             </ul>
-                          </div>
+                          {/* <div class="nav-collapse nav-collapse_ collapse">
+                          </div> */}
                         </div>
                       </div>
                       <div class="page_title">
