@@ -43,14 +43,20 @@ function App() {
               <div class="row">
                 <div class="span12">
                   <div class="top2_inner clearfix">
-                    <header><div class="logo_wrapper"><a href="index.html" class="logo"><img src="assets/images/main_banner.png" alt="" /></a></div></header>
+                    <header>
+                      <div class="logo_wrapper">
+                        <a href="index.html" class="logo">
+                          <img src="assets/images/main_banner.png" alt="" />
+                        </a>
+                      </div>
+                    </header>
                     <div class="top3 clearfix">
                       <div class="social_wrapper">
-                      <div class="bot1">
+                        <div class="bot1">
                           <div class="bot1_inner">
                             <div class="menu_bot">
                               <ul id="menu_bot" class="clearfix">
-                                <LogInOut/>
+                                <LogInOut />
                               </ul>
                             </div>
                           </div>
@@ -94,7 +100,10 @@ function App() {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                           </a>
-                          <div class="nav-collapse nav-collapse_ collapse" style={{border: '1px solid black'}}>
+                          <div
+                            class="nav-collapse nav-collapse_ collapse"
+                            style={{ border: "1px solid black" }}
+                          >
                             <ul class="nav sf-menu clearfix">
                               <li>
                                 <a href="index.html">Home</a>
@@ -243,7 +252,11 @@ function App() {
                     <Route path="/boarddetail" component={BoardDetail} />
 
                     <Route exact path="/payment" component={PaymentHome} />
-                    <Route exact path="/payment/payment" component={Payment} />
+                    <Route
+                      exact
+                      path="/payment/payment"
+                      component={PaymentPage}
+                    />
                     <Route
                       exact
                       path="/payment/result"
@@ -252,7 +265,7 @@ function App() {
                     <Route
                       exact
                       path="/certification"
-                      component={Certification}
+                      component={CertificationPage}
                     />
                     <Route
                       exact
@@ -353,7 +366,7 @@ function App() {
           </div>
         </div>
         <script type="text/javascript" src="js/bootstrap.js"></script>
-        {/* <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/movie" component={Movie} />
         <Route path="/movie/seat" component={Seat} />
 
@@ -362,23 +375,22 @@ function App() {
 
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignUpPage} />
-        <Route path="/mypage" component={MyPage} /> */}
+        <Route path="/mypage" component={MyPage} />
         {/* <Route path="/check" component={CheckBox} /> */}
-        {/* <Route path="/board" component={BoardList} />
+        <Route path="/board" component={BoardList} />
         <Route path="/boardwrite" component={BoardWrite} />
         <Route path="/boarddetail" component={BoardDetail} />
 
-
-      <Route exact path="/payment" component={PaymentHome} />
-      <Route exact path="/payment/payment" component={PaymentPage} />
-      <Route exact path="/payment/result" component={PaymentResult} />
-      <Route exact path="/certification" component={CertificationPage} />
-      <Route
-        exact
-        path="/certification/result"
-        component={CertificationResult}
-      />
-    </RecoilRoot>
+        <Route exact path="/payment" component={PaymentHome} />
+        <Route exact path="/payment/payment" component={PaymentPage} />
+        <Route exact path="/payment/result" component={PaymentResult} />
+        <Route exact path="/certification" component={CertificationPage} />
+        <Route
+          exact
+          path="/certification/result"
+          component={CertificationResult}
+        />
+      </RecoilRoot>
     </div>
   );
 }
