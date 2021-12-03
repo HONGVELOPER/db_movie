@@ -94,7 +94,7 @@ function App() {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                           </a>
-                          <div class="nav-collapse nav-collapse_ collapse" style={{border: '1px solid black'}}>
+                          <div class="nav-collapse nav-collapse_ collapse">
                             <ul class="nav sf-menu clearfix">
                               <li>
                                 <a href="index.html">Home</a>
