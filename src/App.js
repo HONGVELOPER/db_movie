@@ -158,7 +158,7 @@ function App() {
                                 <li>
                                   <div class="thumb-carousel banner1">
                                     <div class="thumbnail clearfix">
-                                      <a href="#">
+                                      <a href="/movie">
                                         <figure>
                                           <img
                                             src="/assets/images/eternals.jpeg"
@@ -173,7 +173,7 @@ function App() {
                                 <li>
                                   <div class="thumb-carousel banner1">
                                     <div class="thumbnail clearfix">
-                                      <a href="#">
+                                      <a href="/movie">
                                         <figure>
                                           <img
                                             src="/assets/images/연애빠진로맨스.jpeg"
@@ -190,7 +190,7 @@ function App() {
                                 <li>
                                   <div class="thumb-carousel banner1">
                                     <div class="thumbnail clearfix">
-                                      <a href="#">
+                                      <a href="/movie">
                                         <figure>
                                           <img
                                             src="/assets/images/유체이탈자.jpeg"
@@ -205,7 +205,7 @@ function App() {
                                 <li>
                                   <div class="thumb-carousel banner1">
                                     <div class="thumbnail clearfix">
-                                      <a href="#">
+                                      <a href="/movie">
                                         <figure>
                                           <img
                                             src="/assets/images/엔칸토.jpeg"
