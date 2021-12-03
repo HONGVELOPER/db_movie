@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 import Home from "./pages/Home";
 import Movie from "./pages/hong/Movie";
 import Seat from "./pages/hong/Seat";
@@ -9,6 +10,8 @@ import SalaryPage from "./pages/choi/SalaryPage";
 import LoginPage from "./pages/kim/LoginPage";
 import SignUpPage from "./pages/kim/SignUpPage";
 import MyPage from "./pages/kim/MyPage";
+import LogInOut from "./components/kim/LogInOut";
+
 // import CheckBox from "./pages/lee/Checkbox";
 import { RecoilRoot, atom, useRecoilState } from "recoil";
 import BoardList from "./pages/lim/BoardList";
@@ -26,8 +29,12 @@ function App() {
   const [modalShow, setModalShow] = useState(false);
   return (
     // <div className="App">
-    
+
     <div>
+      {/* <SignUpPage
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      /> */}
       {/* template */}
       <RecoilRoot>
         <div id="main">
@@ -43,8 +50,7 @@ function App() {
                           <div class="bot1_inner">
                             <div class="menu_bot">
                               <ul id="menu_bot" class="clearfix">
-                                <li><a href="/login">login</a></li>
-                                <li><a href="/signup">sign up</a></li>
+                                <LogInOut/>
                               </ul>
                             </div>
                           </div>
@@ -88,7 +94,7 @@ function App() {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                           </a>
-                          <div class="nav-collapse nav-collapse_ collapse">
+                          <div class="nav-collapse nav-collapse_ collapse" style={{border: '1px solid black'}}>
                             <ul class="nav sf-menu clearfix">
                               <li>
                                 <a href="index.html">Home</a>
@@ -109,37 +115,6 @@ function App() {
                           </div>
                         </div>
                       </div>
-                      {/* <div id="slider_wrapper">
-                        <div id="slider" class="clearfix">
-                          <div id="camera_wrap">
-                            <div data-src="https://via.placeholder.com/932x476">
-                              <div class="camera_caption fadeIn">
-                                <div class="txt1">Best Cakes for Every Occasion</div>
-                                <div class="txt2">Taste the Difference</div>
-                              </div>
-                            </div>
-                            <div data-src="https://via.placeholder.com/932x476">
-                              <div class="camera_caption fadeIn">
-                                <div class="txt1">Best Cakes for Every Occasion</div>
-                                <div class="txt2">Taste the Difference</div>
-                              </div>
-                            </div>
-                            <div data-src="https://via.placeholder.com/932x476">
-                              <div class="camera_caption fadeIn">
-                                <div class="txt1">Best Cakes for Every Occasion</div>
-                                <div class="txt2">Taste the Difference</div>
-                              </div>
-                            </div>
-                            <div data-src="https://via.placeholder.com/932x476">
-                              <div class="camera_caption fadeIn">
-                                <div class="txt1">Best Cakes for Every Occasion</div>
-                                <div class="txt2">Taste the Difference</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="slider_shadow"><img src="assets/images/slider_shadow.png" alt="" /></div>
-                      </div> */}
                       <div class="page_title">
                         <div class="page_title_left"></div>
                         <div class="page_title_px">현재 상영작</div>
@@ -355,7 +330,10 @@ function App() {
                           <a href="index-4.html">Event</a>
                         </li>
                         <li>
-                          <a href="index-5.html">Contacts</a>
+                          <a href="index-5.html">address</a>
+                        </li>
+                        <li>
+                          <a href="/board">board</a>
                         </li>
                       </ul>
                     </div>
