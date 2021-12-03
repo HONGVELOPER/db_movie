@@ -1,35 +1,31 @@
 module.exports = function (sequelize, DataTypes) {
-  const paymentInfo = sequelize.define(
-    "M_PAYMENT",
+  const commute = sequelize.define(
+    "UC_COMMUTE",
     {
-      MP_CODE: {
-        type: DataTypes.BIGINT(100),
+      UC_CODE: {
+        type: DataTypes.INTEGER(30),
         allowNull: false,
         primaryKey: true,
-        //   autoIncrement: true,
+        autoIncrement: true,
       },
-      MP_TYPE: {
-        type: DataTypes.STRING(10),
-        allowNull: false,
-      },
-      MP_EMAIL: {
+      UC_NAME: {
         type: DataTypes.STRING(20),
         allowNull: false,
       },
-      MP_PRICE: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
+      UC_IN: {
+        type: DataTypes.STRING(40),
+        allowNull: true,
       },
-      MP_RESERVE_NUM: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+      UC_OUT: {
+        type: DataTypes.STRING(40),
+        allowNull: true,
       },
-      MP_CRET_DT: {
+      UC_CRET_DT: {
         type: DataTypes.DATE,
         defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
         allowNull: false,
       },
-      MP_MOD_DT: {
+      UC_MOD_DT: {
         type: DataTypes.DATE,
         defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
         allowNull: false,
@@ -41,9 +37,9 @@ module.exports = function (sequelize, DataTypes) {
       dateStrings: true,
       typeCast: true,
       freezeTableName: true,
-      tableName: "M_PAYMENT",
+      tableName: "UC_COMMUTE",
       timestamps: false,
     }
   );
-  return paymentInfo;
+  return commute;
 };

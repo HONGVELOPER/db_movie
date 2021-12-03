@@ -1,10 +1,8 @@
-const router = require('express').Router();
-const commuteFunctions = require('./commuteFunction.js');
+const commuteFunctions = require("./commuteFunctions.js");
+const router = require("express").Router();
 
-// 직원 관련 Router
-
-router.get('/attend', (req, res) => {
-    res.json({username:'출근 했습니다.'})
-})
+//router 요청 받고, axios는 요청 보내는 거
+router.post("/In", commuteFunctions.In);
+router.post("/Out", commuteFunctions.Out);
 
 module.exports = router;
