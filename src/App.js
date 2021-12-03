@@ -26,10 +26,18 @@ import CertificationPage from "./pages/choi/CertificationPage"; // ! 인증페�
 import CertificationResult from "./components/choi/iamport/CertificationResult";
 
 function App() {
+
 	return (
 		<div>
 			<RecoilRoot>
 				<div id="main">
+					<div class="clearfix" style={{marginLeft: '79%', paddingTop: '20px'}}>
+						<div>
+							<ul id="menu_bot" class="clearfix">
+								<LogInOut />
+							</ul>
+						</div>
+					</div>
 					<div class="top1">
 						<div class="container">
 							<div class="row">
@@ -48,22 +56,6 @@ function App() {
 												</a>
 											</div>
 										</header>
-										<div class="top3 clearfix">
-											<div class="social_wrapper">
-												<div class="bot1">
-													<div class="bot1_inner">
-														<div class="menu_bot">
-															<ul
-																id="menu_bot"
-																class="clearfix"
-															>
-																<LogInOut />
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -91,7 +83,7 @@ function App() {
 									<div class="span12">
 										<div class="hl1_inner2">
 											<div class="navbar navbar_">
-												<div class="navbar-inner navbar-inner_" style={{textAlign: 'center', width: '100%'}} >
+												<div class="navbar-inner navbar-inner_" style={{textAlign: 'center', width: '100%', bottom: '10px', position: 'relative'}} >
 													{/* <a
 														class="btn btn-navbar btn-navbar "
 														data-toggle="collapse"
