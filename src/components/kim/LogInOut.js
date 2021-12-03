@@ -10,8 +10,7 @@ const LogInOut = () => {
 
     return (
         <div>
-            <h3>환영합니다</h3>
-            {isLogin && <h3>{`${isLogin.name}`} 님</h3>}
+            <p>환영합니다 {isLogin && `  ${isLogin.name} 님` }</p>
             <Button
                 type="button"
                 // class="btn btn-outline-dark"

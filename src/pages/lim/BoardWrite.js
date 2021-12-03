@@ -143,10 +143,6 @@ function BoardWriteForm(props) {
 			<Button style={buttonStyle} onClick={writeBoard}>
 				저장하기
 			</Button>
-			<div>{board.boardWriter}</div>
-			<div>{board.boardTitle}</div>
-			<div>{board.boardContent}</div>
-			<div>{content}</div>
 		</div>
 	);
 }
