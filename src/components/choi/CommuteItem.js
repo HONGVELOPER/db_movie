@@ -1,9 +1,46 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 const CommuteItem = ({ name, position }) => {
   const [punchIn, setPunchIn] = useState("-");
   const [punchOut, setPunchOut] = useState("-");
+
+  // useEffect(() => {
+  //   sendPunchIn();
+  // }, [punchIn]);
+
+  // useEffect(() => {
+  //   sendPunchOut();
+  // }, [punchOut]);
+
+  const sendPunchIn = (name, dateTime) => {
+    console.log("sendPunchIn:", name, dateTime);
+
+    axios
+      .post("/api/commute/In", {
+        userName: name,
+        inTime: dateTime,
+      })
+      .catch((err) => {
+        // error
+        console.log("sendPunchIn ERR:", err);
+      });
+  };
+
+  const sendPunchOut = (name, dateTime) => {
+    console.log("sendPunchOut:", name, dateTime);
+
+    axios
+      .post("/api/commute/Out", {
+        userName: name,
+        outTime: dateTime,
+      })
+      .catch((err) => {
+        // error
+        console.log("sendPunchOut ERR:", err);
+      });
+  };
 
   const Container = styled.div`
     display: flex;
@@ -45,14 +82,16 @@ const CommuteItem = ({ name, position }) => {
 
   const recordCurrentTime = (type) => {
     const currentTime = new Date();
-    console.log(currentTime.toTimeString());
-    console.log(typeof currentTime.toTimeString());
+    const ms = Date.now();
+    // console.log(currentTime.toTimeString());
+    // console.log(typeof currentTime.toTimeString());
 
     if (type === "In") {
       setPunchIn(currentTime.toLocaleTimeString());
 
       if (punchOut !== "-") {
         setPunchOut("-");
+        sendPunchIn(name, ms.toString());
       }
     }
 
@@ -61,6 +100,7 @@ const CommuteItem = ({ name, position }) => {
         alert("출근 시각을 먼저 기입해주세요");
       } else {
         setPunchOut(currentTime.toLocaleTimeString());
+        sendPunchOut(name, ms.toString());
       }
     }
   };
