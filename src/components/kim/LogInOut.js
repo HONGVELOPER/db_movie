@@ -54,6 +54,8 @@ const LogInOut = () => {
         {isLogin ? "마이페이지" : "회원가입"}
       </Button>
     </div>
+
+    
   );
 };
 

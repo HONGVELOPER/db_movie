@@ -13,11 +13,12 @@ const Home = (props) => {
     const history = useHistory();
 
     const toMovie = () => {
-        if (!isLogin) {
+        if (isLogin) {
             alert("로그인이 필요합니다.")
         } else if (!props.location.state.safe) {
             alert("you are not safe")
         } else {
+            console.log(qrCheck);
             history.push({
                 pathname: '/movie',
                 state: {
@@ -34,12 +35,17 @@ const Home = (props) => {
 
     return (
         <>
-            {qrCheck? (
-                <>
-                    <h1>Home page</h1>
-                    <Button type="button" onClick={toMovie}>
+        <Button type="button" onClick={qrFail}>
                         예매
                     </Button>
+            {qrCheck ? (
+                <>
+                    {/* <Button type="button" onClick={toMovie}>
+                        예매
+                    </Button> */}
+                    {/* <button onClick={qrFail}>
+                        예매전 QRCode
+                    </button> */}
                 </>
             ) : (
                 <QR />
