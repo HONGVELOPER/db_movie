@@ -74,11 +74,10 @@ const SignUpPage = ({ show, onHide}) => {
     };
 
     return (
-
-        <div className="container">
+        <>
             {/* <Modal
-                show = {show}
-                onHide = {onHide}
+                show={show}
+                onHide={onHide}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
@@ -100,89 +99,91 @@ const SignUpPage = ({ show, onHide}) => {
                     <Button onClick={onHide}>Close</Button>
                 </Modal.Footer>
             </Modal> */}
-            <Form>
-                <h1> Sign Up 회원가입 </h1>
-                <div className="form-row">
-                    <div className="col-md-12 mb-3">
-                        <label className="col-md-4">이메일</label>
-                        <Input
-                            onChange={handleInputs}
-                            value={email}
-                            id="email"
-                            name="email"
-                            placeholder="이메일을 입력하세요"
-                        />
+            <div className="container">
+                <Form>
+                    <h1> Sign Up 회원가입 </h1>
+                    <div className="form-row">
+                        <div className="col-md-12 mb-3">
+                            <label className="col-md-4">이메일</label>
+                            <Input
+                                onChange={handleInputs}
+                                value={email}
+                                id="email"
+                                name="email"
+                                placeholder="이메일을 입력하세요"
+                            />
+                        </div>
+                        <div className="col-md-12 mb-3">
+                            <label className="col-md-4" htmlFor="passwordInput">
+                                패스워드
+                            </label>
+                            <Input
+                                onChange={handleInputs}
+                                value={password}
+                                type="password"
+                                id="passwordInput"
+                                className="form-control"
+                                aria-describedby="passwordHelpInline"
+                                name="password"
+                                placeholder="비밀번호를 입력하세요"
+                            />
+                        </div>
+                        <div className="col-md-12 mb-3">
+                            <label
+                                htmlFor="confirmPasswordInput"
+                                class="col-sm-2 control-label"
+                                className="col-md-4"
+                            >
+                                패스워드 확인
+                            </label>
+                            <Input
+                                onChange={handleInputs}
+                                value={confirmPassword}
+                                type="password"
+                                className={`form-control ${confirmPasswordClassName()}`}
+                                id="confirmPasswordInput"
+                                name="confirmPassword"
+                                placeholder="비밀번호를 재입력하세요"
+                            />
+                            {renderFeedbackMessage()}
+                        </div>
+                        <div className="col-md-12 mb-3">
+                            <label className="col-md-4">이름</label>
+                            <Input
+                                onChange={handleInputs}
+                                value={username}
+                                name="username"
+                                placeholder="이름을 입력하세요"
+                            />
+                        </div>
+                        <div className="col-md-12 mb-3">
+                            <label className="col-md-4">전화번호</label>
+                            <Input
+                                onChange={handleInputs}
+                                value={phone}
+                                name="phone"
+                                placeholder="전화번호를 입력하세요"
+                            />
+                        </div>
+                        <div className="col-md-12 mb-3">
+                            <label className="col-md-4">생년월일</label>
+                            <Input
+                                onChange={handleInputs}
+                                value={birth}
+                                name="birth"
+                                placeholder="생년월일을 입력하세요"
+                            />
+                        </div>
                     </div>
-                    <div className="col-md-12 mb-3">
-                        <label className="col-md-4" htmlFor="passwordInput">
-                            패스워드
-                        </label>
-                        <Input
-                            onChange={handleInputs}
-                            value={password}
-                            type="password"
-                            id="passwordInput"
-                            className="form-control"
-                            aria-describedby="passwordHelpInline"
-                            name="password"
-                            placeholder="비밀번호를 입력하세요"
-                        />
-                    </div>
-                    <div className="col-md-12 mb-3">
-                        <label
-                            htmlFor="confirmPasswordInput"
-                            class="col-sm-2 control-label"
-                            className="col-md-4"
-                        >
-                            패스워드 확인
-                        </label>
-                        <Input
-                            onChange={handleInputs}
-                            value={confirmPassword}
-                            type="password"
-                            className={`form-control ${confirmPasswordClassName()}`}
-                            id="confirmPasswordInput"
-                            name="confirmPassword"
-                            placeholder="비밀번호를 재입력하세요"
-                        />
-                        {renderFeedbackMessage()}
-                    </div>
-                    <div className="col-md-12 mb-3">
-                        <label className="col-md-4">이름</label>
-                        <Input
-                            onChange={handleInputs}
-                            value={username}
-                            name="username"
-                            placeholder="이름을 입력하세요"
-                        />
-                    </div>
-                    <div className="col-md-12 mb-3">
-                        <label className="col-md-4">전화번호</label>
-                        <Input
-                            onChange={handleInputs}
-                            value={phone}
-                            name="phone"
-                            placeholder="전화번호를 입력하세요"
-                        />
-                    </div>
-                    <div className="col-md-12 mb-3">
-                        <label className="col-md-4">생년월일</label>
-                        <Input
-                            onChange={handleInputs}
-                            value={birth}
-                            name="birth"
-                            placeholder="생년월일을 입력하세요"
-                        />
-                    </div>
-                </div>
-                <Button onClick={handleClick}>회원가입</Button>
-                <Footer>
-                    <Link to="/login" style={{ textDecoration: "none" }}>
-                        로그인
-                    </Link>
-                </Footer>
-            </Form>
-        </div>
+                    <Button onClick={handleClick}>회원가입</Button>
+                    <Footer>
+                        <Link to="/login" style={{ textDecoration: "none" }}>
+                            로그인
+                        </Link>
+                    </Footer>
+                </Form>
+            </div>
+        </>
     );
 };
 

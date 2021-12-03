@@ -3,18 +3,27 @@ import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { loginState } from "../../loginState";
 import { useHistory } from "react-router";
+import React, { useState } from "react";
+
+import SignUpPage from "../../pages/kim/SignUpPage";
 
 const LogInOut = () => {
     const [isLogin, setIsLogin] = useRecoilState(loginState);
     const history = useHistory();
+    const [signUpModalOn, setSignUpModal] = useState(false);
 
     return (
         <div>
+            {/* <SignUpPage 
+                show={signUpModalOn}
+                onHide={() => setSignUpModal(false)}
+            /> */}
             <p>환영합니다 {isLogin && `  ${isLogin.name} 님` }</p>
             <Button
                 type="button"
                 // class="btn btn-outline-dark"
                 onClick={() => {
+                    // setSignUpModal(true)
                     if (!isLogin) history.push("/login");
                     else {
                         // logout!!
