@@ -106,7 +106,7 @@ header{float: left;}
 
 
 /* ============================= content ====================== */
-#content{padding-top: 30px; padding-bottom: 20px;}
+#content{padding-top: 30px; padding-bottom: 20px}
 
 .box1{margin-bottom: 20px; background: #faf7f2; border: 3px solid #d3c9bb; border-radius:20px; -moz-border-radius:20px; -webkit-border-radius:20px; padding: 0 30px 20px 30px;}
 
