@@ -13,12 +13,12 @@ const Home = (props) => {
     const history = useHistory();
 
     const toMovie = () => {
-        console.log('진입')
-        if (!isLogin) {
+        if (isLogin) {
             alert("로그인이 필요합니다.")
         } else if (!qrCheck.safe) {
             alert("코로나 위험이 있습니다")
         } else {
+            console.log(qrCheck);
             history.push({
                 pathname: '/movie',
                 state: {
@@ -39,25 +39,21 @@ const Home = (props) => {
 
     return (
         <>
-            <div>
-                {qrCheck.check? (
-                    <>
-                        <h1>Home page</h1>
-                        <li
-                            type="button"
-                            onClick={toMovie}
-                            style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}
-                        >
-                            Reserve
-                        </li>
-                        <button onClick={qrFail}>
-                            fail
-                        </button>
-                    </>
-                ) : (
-                    <QR />
-                )}
-            </div>
+        <Button type="button" onClick={qrFail}>
+                        예매
+                    </Button>
+            {qrCheck ? (
+                <>
+                    {/* <Button type="button" onClick={toMovie}>
+                        예매
+                    </Button> */}
+                    {/* <button onClick={qrFail}>
+                        예매전 QRCode
+                    </button> */}
+                </>
+            ) : (
+                <QR />
+            )}
         </>
     );
 };

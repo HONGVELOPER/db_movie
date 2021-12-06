@@ -40,22 +40,23 @@ const LogInOut = () => {
                 {isLogin ? "logout" : "login"}
             </li>
 
-            <li
-                type="button"
-                onClick={() => {
-                    if (!isLogin) {
-                        // 회원가입
-                        history.push("/signup");
-                    } else {
-                        history.push("/mypage");
-                    }
-                }}
-                style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}
-            >
-                {isLogin ? "my page" : "sign up"}
-            </li>
-        </div>
-    );
+      <Button
+        type="button"
+        onClick={() => {
+          if (!isLogin) {
+            // 회원가입
+            history.push("/signup");
+          } else {
+            history.push("/mypage");
+          }
+        }}
+      >
+        {isLogin ? "마이페이지" : "회원가입"}
+      </Button>
+    </div>
+
+    
+  );
 };
 
 export default LogInOut;
