@@ -22,39 +22,40 @@ const LogInOut = () => {
     }
 }
 
-  return (
-    <div>
-      <p>환영합니다 {isLogin && `  ${isLogin.name} 님`}</p>
-      <Button
-        type="button"
-        // class="btn btn-outline-dark"
-        onClick={() => {
-          if (!isLogin) history.push("/login");
-          else {
-            // logout!!
-            setIsLogin(false);
-            alert("로그아웃");
-          }
-        }}
-      >
-        {isLogin ? "로그아웃" : "로그인"}
-      </Button>
+    return (
+        <div>
+            {/* <p style={{display: 'inline-block',fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}>welcome {isLogin && `  ${isLogin.name} 님`}</p> */}
+            <li
+                type="button"
+                onClick={() => {
+                    if (!isLogin) history.push("/login");
+                    else {
+                        // logout!!
+                        setIsLogin(false);
+                        alert("로그아웃");
+                    }
+                }}
+                style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}
+            >
+                {isLogin ? "logout" : "login"}
+            </li>
 
-      <Button
-        type="button"
-        onClick={() => {
-          if (!isLogin) {
-            // 회원가입
-            history.push("/signup");
-          } else {
-            history.push("/mypage");
-          }
-        }}
-      >
-        {isLogin ? "마이페이지" : "회원가입"}
-      </Button>
-    </div>
-  );
+            <li
+                type="button"
+                onClick={() => {
+                    if (!isLogin) {
+                        // 회원가입
+                        history.push("/signup");
+                    } else {
+                        history.push("/mypage");
+                    }
+                }}
+                style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}
+            >
+                {isLogin ? "my page" : "sign up"}
+            </li>
+        </div>
+    );
 };
 
 export default LogInOut;

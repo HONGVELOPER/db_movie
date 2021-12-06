@@ -41,17 +41,27 @@ const Checkbox = () => {
 			console.log(checkedInputs);
 		}
 	};
-
+	
+	const isAllChecked = checkedInputs.length === 6;
 	const qrSuccess = () => {
-		setQrCheck(true)
+		if (isAllChecked) {
+			setQrCheck({
+				check: true,
+				safe: true
+			})
+		} else {
+			setQrCheck({
+				check: true,
+				safe: false
+			})
+		}
 		console.log(qrCheck)
 	}
 
-	const isAllChecked = checkedInputs.length === 6;
 
 	return (
 		<>
-			<h3>모두 "아니요" 가 아니면 예매가 불가능합니다.</h3>
+			<h3 style={{fontFamily: 'Thysen', fontWeight: 400, fontSize: '24px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}>모두 "아니요" 가 아니면 예매가 불가능합니다.</h3>
 			{q1}
 			<br />
 			<input
@@ -186,20 +196,19 @@ const Checkbox = () => {
 			/>
 			<label htmlFor="radio">아니요</label>
 			<br />
-			<button
-				// className={isAllChecked ? "activebtn" : "unactivebtn"}
+			<li
 				type="button"
 				id="passBtn"
+				style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}
 			>
-				<Link onClick={qrSuccess} to={{
-					pathname: "/",
-					state: {
-						safe: isAllChecked,
-					}
-				}} >
+				<Link
+					onClick={qrSuccess}
+					to={"/"} 
+					style={{textDecoration: "none", color: '#7b533f'}}
+				>
 					다음
 				</Link>
-			</button>
+			</li>
 		</>
 	);
 };

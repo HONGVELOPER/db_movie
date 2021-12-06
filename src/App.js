@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Home from "./pages/Home";
@@ -26,23 +26,25 @@ import CertificationPage from "./pages/choi/CertificationPage"; // ! 인증페�
 import CertificationResult from "./components/choi/iamport/CertificationResult";
 
 function App() {
-  const [modalShow, setModalShow] = useState(false);
   return (
-    // <div className="App">
-
     <div>
-      {/* <SignUpPage
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      /> */}
-      {/* template */}
       <RecoilRoot>
         <div id="main">
-          <div className="top1">
-            <div className="container">
-              <div className="row">
-                <div className="span12">
-                  <div className="top2_inner clearfix">
+          <div
+            class="clearfix"
+            style={{ marginLeft: "79%", paddingTop: "20px" }}
+          >
+            <div>
+              <ul id="menu_bot" class="clearfix">
+                <LogInOut />
+              </ul>
+            </div>
+          </div>
+          <div class="top1">
+            <div class="container">
+              <div class="row">
+                <div class="span12">
+                  <div class="top2_inner clearfix">
                     <header>
                       <div className="logo_wrapper">
                         <a href="index.html" className="logo">
@@ -50,19 +52,6 @@ function App() {
                         </a>
                       </div>
                     </header>
-                    <div className="top3 clearfix">
-                      <div className="social_wrapper">
-                        <div className="bot1">
-                          <div className="bot1_inner">
-                            <div className="menu_bot">
-                              <ul id="menu_bot" className="clearfix">
-                                <LogInOut />
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -89,36 +78,42 @@ function App() {
                 <div class="row">
                   <div class="span12">
                     <div class="hl1_inner2">
-                      <div class="navbar navbar_" style={{border: '1px solid black'}}>
-                        <div class="navbar-inner navbar-inner_" style={{textAlign: 'center', width: '100%'}}>
+                      <div class="navbar navbar_">
+                        <div
+                          class="navbar-inner navbar-inner_"
+                          style={{
+                            textAlign: "center",
+                            width: "100%",
+                            bottom: "10px",
+                            position: "relative",
+                          }}
+                        >
                           {/* <a
-                            class="btn btn-navbar btn-navbar_"
-                            data-toggle="collapse"
-                            data-target=".nav-collapse_"
-                          >
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                          </a> */}
-                            <ul class="nav sf-menu clearfix" style={{textAlign: 'center'}}>
-                              <li>
-                                <a href="index.html">Home</a>
-                              </li>
-                              <li>
-                                <a href="index-1.html">Introduce</a>
-                              </li>
-                              <li>
-                                <a href="index-3.html">Reserve</a>
-                              </li>
-                              <li>
-                                <a href="index-4.html">Event</a>
-                              </li>
-                              <li>
-                                <a href="index-5.html">Contacts</a>
-                              </li>
-                            </ul>
-                          {/* <div class="nav-collapse nav-collapse_ collapse">
-                          </div> */}
+														class="btn btn-navbar btn-navbar "
+														data-toggle="collapse"
+														data-target=".nav-collapse_"
+													>
+														<span class="icon-bar" />
+														<span class="icon-bar" />
+														<span class="icon-bar" />
+													</a> */}
+                          <ul class="nav sf-menu clearfix">
+                            <li>
+                              <a href="index.html">Home</a>
+                            </li>
+                            <li>
+                              <a href="index-1.html">Introduce</a>
+                            </li>
+                            <li>
+                              <a href="/movie">Reserve</a>
+                            </li>
+                            <li>
+                              <a href="index-4.html">Event</a>
+                            </li>
+                            <li>
+                              <a href="index-5.html">Contacts</a>
+                            </li>
+                          </ul>
                         </div>
                       </div>
                       <div className="page_title">
@@ -228,11 +223,10 @@ function App() {
           <div className="hl3"></div>
 
           <div id="content">
-            <div className="container">
-              <div className="row">
-                <div className="span8">
-                  <div className="box1">
-                    <Route exact path="/movie" component={Movie} />
+            <div class="container">
+              <div class="row">
+                <div class="span8">
+                  <div class="box1">
                     <Route exact path="/" component={Home} />
                     <Route path="/movie/seat" component={Seat} />
 
@@ -242,7 +236,6 @@ function App() {
                     <Route path="/login" component={LoginPage} />
                     <Route path="/signup" component={SignUpPage} />
                     <Route path="/mypage" component={MyPage} />
-                    {/* <Route path="/check" component={CheckBox} /> */}
                     <Route path="/board" component={BoardList} />
                     <Route path="/boardwrite" component={BoardWrite} />
                     <Route path="/boarddetail" component={BoardDetail} />
@@ -342,39 +335,8 @@ function App() {
           </div>
         </div>
         <script type="text/javascript" src="js/bootstrap.js"></script>
-        {/* <Route exact path="/" component={Home} />
-        <Route exact path="/movie" component={Movie} />
-        <Route path="/movie/seat" component={Seat} />
-
-        <Route path="/commute" component={CommutePage} />
-        <Route path="/salary" component={SalaryPage} />
-
-        <Route path="/login" component={LoginPage} />
-        <Route path="/signup" component={SignUpPage} />
-        <Route path="/mypage" component={MyPage} />
-        {/* <Route path="/check" component={CheckBox} /> */}
-        {/* <Route path="/board" component={BoardList} />
-        <Route path="/boardwrite" component={BoardWrite} />
-        <Route path="/boarddetail" component={BoardDetail} />
-
-        <Route exact path="/payment" component={PaymentHome} />
-        <Route exact path="/payment/payment" component={PaymentPage} />
-        <Route exact path="/payment/result" component={PaymentResult} />
-        <Route exact path="/certification" component={CertificationPage} />
-        <Route
-          exact
-          path="/certification/result"
-          component={CertificationResult}
-        /> */}
       </RecoilRoot>
     </div>
   );
 }
-
-// !  package.js 중복되는 deps
-// "react": "^16.8.6",
-// "react-dom": "^16.8.6",
-// "react-router-dom": "^5.0.1",
-// "react-scripts": "3.0.1",
-// "styled-components": "^4.3.2"
 export default App;
