@@ -1,40 +1,42 @@
+@import "~antd/dist/antd.css"; /*! 결제모듈은 ant design으로 작성되었다! ant design 활성화를 위해 필수적인 코드임! 지우지말것 -수민 */
+
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 .App-logo {
-    height: 40vmin;
-    pointer-events: none;
+  height: 40vmin;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-link {
-    color: #61dafb;
+  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 /* 
 body {
