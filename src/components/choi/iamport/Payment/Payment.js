@@ -185,7 +185,7 @@ function Payment({ history, form, ua, reserveData }) {
 
   return (
     <Wrapper>
-      <Header>아임포트 결제 테스트</Header>
+      <Header>예매내역 결제하기</Header>
       <FormContainer onSubmit={handleSubmit}>
         <Item label="PG사">
           {getFieldDecorator("pg", {
@@ -282,7 +282,7 @@ function Payment({ history, form, ua, reserveData }) {
         </Item>
         <Item>
           {getFieldDecorator("name", {
-            initialValue: "아임포트 결제 데이터 분석",
+            initialValue: "DataNoBase 영화관",
             rules: [{ required: true, message: "주문명은 필수입력입니다" }],
           })(<Input size="large" addonBefore="주문명" />)}
         </Item>
@@ -300,7 +300,7 @@ function Payment({ history, form, ua, reserveData }) {
         </Item>
         <Item>
           {getFieldDecorator("buyer_name", {
-            initialValue: "홍길동",
+            initialValue: "김이임최홍",
             rules: [
               { required: true, message: "구매자 이름은 필수입력입니다" },
             ],
