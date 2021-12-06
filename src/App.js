@@ -242,6 +242,13 @@ function App() {
 						<div class="container">
 							<div class="row">
 								<div class="span8">
+									<div class="boxTEST">
+										<Route
+												exact
+												path="/payment/payment"
+												component={PaymentPage}
+											/>
+									</div>
 									<div class="box1">
 										<Route
 											exact
@@ -297,11 +304,11 @@ function App() {
 											path="/payment"
 											component={PaymentHome}
 										/>
-										<Route
+										{/* <Route
 											exact
 											path="/payment/payment"
 											component={PaymentPage}
-										/>
+										/> */}
 										<Route
 											exact
 											path="/payment/result"
