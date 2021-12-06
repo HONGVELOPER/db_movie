@@ -108,7 +108,7 @@ header{float: left;}
 /* ============================= content ====================== */
 #content{padding-top: 30px; padding-bottom: 20px}
 
-.box1{margin-bottom: 20px; background: #faf7f2; border: 3px solid #d3c9bb; border-radius:20px; -moz-border-radius:20px; -webkit-border-radius:20px; padding: 0 30px 20px 30px;}
+.box1{margin-bottom: 20px; margin-top: 20px; background: #faf7f2; border: 3px solid #d3c9bb; border-radius:20px; -moz-border-radius:20px; -webkit-border-radius:20px; padding: 10px 30px 20px 30px;}
 
 .box2{margin-bottom: 20px; background: #92664c; border-radius:20px; -moz-border-radius:20px; -webkit-border-radius:20px;}
 .box2_title{ text-align: center;background: url(../images/h3.jpg) left bottom repeat-x; border-radius:20px 20px 0 0; -moz-border-radius:20px 20px 0 0; -webkit-border-radius:20px 20px 0 0;}

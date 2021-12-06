@@ -90,7 +90,7 @@ const LoginPage = ({ history }) => {
                     sign up
                 </Link>
             </li>
-            <li onClick={handleClick} style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}>login</li>
+            <li type="button" onClick={handleClick} style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}>login</li>
         </Form>
     );
 };

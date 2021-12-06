@@ -105,7 +105,7 @@ function App() {
 																</a>
 															</li>
 															<li>
-																<a href="index-3.html">
+																<a href="/movie">
 																	Reserve
 																</a>
 															</li>
