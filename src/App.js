@@ -26,6 +26,7 @@ import CertificationPage from "./pages/choi/CertificationPage"; // ! 인증페�
 import CertificationResult from "./components/choi/iamport/CertificationResult";
 
 function App() {
+  
   return (
     <div>
       <RecoilRoot>
