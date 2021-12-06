@@ -6,6 +6,9 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { loginState, qrState } from "../../loginState";
+import { useRecoilState } from "recoil";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles({
     root: {
@@ -40,8 +43,12 @@ const useStyles = makeStyles({
 
 const Select = (props) => {
     // console.log(props, 'moive component props check')
-    
     const classes = useStyles()
+    const history = useHistory();
+    
+    const [isLogin, setIsLogin] = useRecoilState(loginState);
+    const [qrCheck, setQrCheck] = useRecoilState(qrState);
+
     const [movie, setMovie] = useState({
         code: '',
         name: '',
@@ -72,11 +79,15 @@ const Select = (props) => {
     }
 
     useEffect(() => {
+        if (!isLogin.email || !qrCheck.safe) {
+            alert('비정상적인 접근입니다.')
+            history.push("./")
+        }
         if (movie.code && branch.code && !date.code) {
             getDate()
         } else if (movie.code && branch.code && date) {
             getTime()
-        }
+        } 
     }, [movie, branch, date, time])
 
     const handleMovie = (event) => {
@@ -233,7 +244,7 @@ const Select = (props) => {
                                             branch: branch,
                                             date: date,
                                             time: time,
-                                            email: props.email
+                                            email: isLogin.email
                                         }
                                     }}>
                                         좌석선택

@@ -44,20 +44,19 @@ const register = async (req, res) => {
     res.status(201).send(); // 201 Created
 };
 
-// const [isLogin, setIsLogin] = useRecoilState(loginState);
-
 const login = async (req, res) => {
-    // login
-    // console.log("login button click!!");
     const userInfo = await models.U_USER.findAll({
         raw: true,
-        // attributes: ["U_EMAIL", "U_PASSWORD", "U_NAME", "U_ID"],
         where: {
             U_EMAIL: req.body.email,
             U_PASSWORD: req.body.password,
         },
     });
     if (userInfo[0]) {
+        console.log(userInfo[0], 'check')
+        if (userInfo[0].U_EMAIL === 'admin' && userInfo[0].U_PASSWORD === 'datanobase') {
+            userInfo[0].admin = true
+        }
         res.status(200).send(userInfo[0]);
     } else res.status(401).send();
 };

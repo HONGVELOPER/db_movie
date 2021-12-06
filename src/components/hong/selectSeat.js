@@ -173,7 +173,7 @@ const SelectSeat = (props) => {
   return (
     <>
       <Container>
-        <h1>Select Component</h1>
+        {/* <h3>인원과 좌석을 선택해주세요.</h3> */}
         <Grid container className={classes.root}>
           <Grid item xs={12} className={classes.subHeader}>
             인원 / 좌석

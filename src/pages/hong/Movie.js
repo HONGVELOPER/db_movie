@@ -16,7 +16,7 @@ const Movie = (props) => {
 
     return (
         <>
-            <Select data={data} email={props.history.location.state.email} />
+            <Select data={data} />
         </>
     )
 }
