@@ -294,7 +294,7 @@ function Payment({ history, form, ua, reserveData }) {
         </Item>
         <Item>
           {getFieldDecorator("merchant_uid", {
-            initialValue: `min_${new Date().getTime()}`,
+            initialValue: `ERICA_${new Date().getTime()}`,
             rules: [{ required: true, message: "주문번호는 필수입력입니다" }],
           })(<Input size="large" addonBefore="주문번호" />)}
         </Item>
