@@ -300,7 +300,7 @@ function Payment({ history, form, ua, reserveData }) {
         </Item>
         <Item>
           {getFieldDecorator("buyer_name", {
-            initialValue: "김이임최홍",
+            initialValue: "김한나",
             rules: [
               { required: true, message: "구매자 이름은 필수입력입니다" },
             ],
