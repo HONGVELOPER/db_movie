@@ -3,17 +3,40 @@ import styled from "styled-components";
 import axios from "axios";
 import { style } from "@mui/system";
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  background-color: green;
+  border: 2px solid white;
+`;
+
+const LeftBox = styled.div`
+  flex: 1;
+  background: ${(props) => (props.name === "-" ? "grey" : "grey")};
+`;
+
+const MiddleBox = styled.div`
+  flex: 2;
+  background: skyblue;
+`;
+
+const RightBox = styled.div`
+  flex: 2;
+  background: lightblue;
+`;
+
+const StyledButton = styled.button`
+  /* background: green; */
+  margin-bottom: 20px;
+  padding: 10px;
+`;
+
 const CommuteItem = ({ name, position }) => {
   const [punchIn, setPunchIn] = useState("-");
+  const [msPunchIn, setMsPunchIn] = useState("-");
   const [punchOut, setPunchOut] = useState("-");
 
-  // useEffect(() => {
-  //   sendPunchIn();
-  // }, [punchIn]);
-
-  // useEffect(() => {
-  //   sendPunchOut();
-  // }, [punchOut]);
+  useEffect(() => {}, [punchIn, punchOut]);
 
   const sendPunchIn = (name, dateTime) => {
     console.log("sendPunchIn:", name, dateTime);
@@ -29,13 +52,14 @@ const CommuteItem = ({ name, position }) => {
       });
   };
 
-  const sendPunchOut = (name, dateTime) => {
+  const sendPunchOut = (name, dateTime, punchIn) => {
     console.log("sendPunchOut:", name, dateTime);
 
     axios
       .post("/api/commute/Out", {
         userName: name,
         outTime: dateTime,
+        pairInTime: punchIn,
       })
       .catch((err) => {
         // error
@@ -43,42 +67,6 @@ const CommuteItem = ({ name, position }) => {
       });
   };
 
-  const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    background-color: green;
-    border: 2px solid white;
-  `;
-
-  const LeftBox = styled.div`
-    flex: 1;
-    background: ${(props) => (props.name === "-" ? "grey" : "grey")};
-  `;
-
-  const MiddleBox = styled.div`
-    flex: 2;
-    background: skyblue;
-  `;
-
-  const RightBox = styled.div`
-    flex: 2;
-    background: lightblue;
-  `;
-
-  const StyledButton = styled.button`
-    /* background: green; */
-    margin-bottom: 20px;
-    padding: 10px;
-  `;
-
-  // const Circle = styled.div`
-  //   width: 5rem;
-  //   height: 5rem;
-  //   background: black;
-  //   border-radius: 50%;
-  // `;
-
-  // name === null ? "김사원" : name;
   if (name === undefined) {
     name = "-";
   }
@@ -93,22 +81,33 @@ const CommuteItem = ({ name, position }) => {
     // console.log(currentTime.toTimeString());
     // console.log(typeof currentTime.toTimeString());
 
-    if (type === "In") {
-      setPunchIn(currentTime.toLocaleTimeString());
+    switch (type) {
+      case "In":
+        setPunchIn(currentTime.toLocaleTimeString());
+        setMsPunchIn(ms);
 
-      if (punchOut !== "-") {
-        setPunchOut("-");
-        sendPunchIn(name, ms.toString());
-      }
-    }
+        if (punchOut !== "-") {
+          alert(
+            "기존 출퇴근 시간이 저장되었습니다. 새로운 출퇴근 기록이 시작됩니다"
+          );
+          setPunchOut("-");
+        } else {
+          sendPunchIn(name, ms.toString());
+        }
+        break;
 
-    if (type === "Out") {
-      if (punchIn === "-") {
-        alert("출근 시각을 먼저 기입해주세요");
-      } else {
-        setPunchOut(currentTime.toLocaleTimeString());
-        sendPunchOut(name, ms.toString());
-      }
+      case "Out":
+        if (punchIn === "-") {
+          alert("출근 시각을 먼저 기입해주세요");
+        } else {
+          setPunchOut(currentTime.toLocaleTimeString());
+          sendPunchOut(name, ms.toString(), msPunchIn);
+        }
+        break;
+
+      default:
+        console.log("THERE IS NO TYPE");
+        break;
     }
   };
 
