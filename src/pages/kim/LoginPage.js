@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 // import { Button } from "../../components/kim/Button";
 import { Input, Footer } from "../../components/kim/Input";
 import { Form } from "../../components/kim/Form";
@@ -9,8 +9,12 @@ import { useRecoilState } from "recoil";
 import { loginState } from "../../loginState";
 
 const LoginPage = ({ history }) => {
-    const [isLogin, setIsLogin] = useRecoilState(loginState);
 
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    const [isLogin, setIsLogin] = useRecoilState(loginState);
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
@@ -68,30 +72,32 @@ const LoginPage = ({ history }) => {
             });
     };
     return (
-        <Form style={{border: '1px solid black', height: '300px'}}>
-            <h1> Login 로그인 </h1>
-            <Input
-                onChange={handleInputs}
-                id="email"
-                name="email"
-                placeholder="이메일을 입력해주세요 "
-                style={{height: '30px'}}
-            ></Input>
-            <Input
-                onChange={handleInputs}
-                type="password"
-                id="password"
-                name="password"
-                placeholder="비밀번호를 입력해주세요"
-                style={{height: '30px'}}
-            />
-            <li style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}>
-                <Link to="/signup" style={{textDecoration: "none", color: '#7b533f'}}>
-                    sign up
-                </Link>
-            </li>
-            <li type="button" onClick={handleClick} style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}>login</li>
-        </Form>
+        <>
+            <Form style={{border: '1px solid black', height: '300px'}}>
+                <h1> Login 로그인 </h1>
+                <Input
+                    onChange={handleInputs}
+                    id="email"
+                    name="email"
+                    placeholder="이메일을 입력해주세요 "
+                    style={{height: '30px'}}
+                ></Input>
+                <Input
+                    onChange={handleInputs}
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="비밀번호를 입력해주세요"
+                    style={{height: '30px'}}
+                />
+                <li type="button" onClick={handleClick} style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}>login</li>
+                <li style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}>
+                    <Link to="/signup" style={{textDecoration: "none", color: '#7b533f'}}>
+                        sign up
+                    </Link>
+                </li>
+            </Form>
+        </>
     );
 };
 
