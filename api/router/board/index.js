@@ -31,7 +31,7 @@ router.post("/update", async (req, res) => {  // insert
     try {
       let obj;
       obj = {
-        ID: req.body.id,
+        // ID: req.body.id,
         Writer : req.body.writer,
         Title: req.body.title,
         Content: req.body.content

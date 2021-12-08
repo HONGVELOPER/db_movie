@@ -60,37 +60,64 @@ function App() {
             </div>
           </div>
 
-          <div class="hl1"></div>
-          <div class="hl2">
-            <div class="hl2_2">
-              <div class="container">
-                <div class="row">
-                  <div class="span12">
-                    <div class="hl2_2_inner">
-                      <div class="hl2_2_left"></div>
-                      <div class="hl2_2_px"></div>
-                      <div class="hl2_2_right"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="hl2_inner">
-              <div class="container">
-                <div class="row">
-                  <div class="span12">
-                    <div class="hl1_inner2">
-                      <div class="navbar navbar_">
-                        <div
-                          class="navbar-inner navbar-inner_"
-                          style={{
-                            textAlign: "center",
-                            width: "100%",
-                            bottom: "10px",
-                            position: "relative",
-                          }}
-                        >
-                          {/* <a
+	return (
+		<div>
+			<RecoilRoot>
+				<div id="main">
+					<div class="top1">
+						<div class="container">
+							<div class="clearfix" style={{textAlign: 'right', paddingTop: '20px'}}>
+								<div>
+									<ul id="menu_bot" class="clearfix">
+										<LogInOut />
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="span12">
+									<div class="top2_inner clearfix">
+										<header>
+											<div class="logo_wrapper">
+												<a
+													href="index.html"
+													class="logo"
+												>
+													<img
+														src="assets/images/main_banner.png"
+														alt=""
+													/>
+												</a>
+											</div>
+										</header>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="hl1"></div>
+					<div class="hl2">
+						<div class="hl2_2">
+							<div class="container">
+								<div class="row">
+									<div class="span12">
+										<div class="hl2_2_inner">
+											<div class="hl2_2_left"></div>
+											<div class="hl2_2_px"></div>
+											<div class="hl2_2_right"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="hl2_inner">
+							<div class="container">
+								<div class="row">
+									<div class="span12">
+										<div class="hl1_inner2">
+											<div class="navbar navbar_">
+												<div class="navbar-inner navbar-inner_" style={{textAlign: 'center', width: '100%', bottom: '10px', position: 'relative'}} >
+													{/* <a
 														class="btn btn-navbar btn-navbar "
 														data-toggle="collapse"
 														data-target=".nav-collapse_"
@@ -226,7 +253,6 @@ function App() {
             </div>
           </div>
           <div class="hl3"></div>
-
           <div id="content">
             <div class="container">
               <div class="row">
@@ -239,14 +265,13 @@ function App() {
                     <Route path="/commute" component={CommutePage} />
                     <Route path="/salary" component={SalaryPage} />
 
-                    <Route path="/login" component={LoginPage} />
+                    {/* <Route path="/login" component={LoginPage} /> */}
                     <Route path="/signup" component={SignUpPage} />
                     <Route path="/mypage" component={MyPage} />
                     <Route exact path="/" component={BoardList} />
                     <Route exact path="/board" component={BoardList} />
                     <Route path="/boardwrite" component={BoardWrite} />
                     <Route path="/boarddetail" component={BoardDetail} />
-
                     <Route exact path="/payment" component={PaymentHome} />
                     <Route
                       exact
