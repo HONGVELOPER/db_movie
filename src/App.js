@@ -27,38 +27,6 @@ import CertificationResult from "./components/choi/iamport/CertificationResult";
 import GoCommute from "./components/choi/GoCommute";
 
 function App() {
-  return (
-    <div>
-      <RecoilRoot>
-        <div id="main">
-          <div
-            class="clearfix"
-            style={{ marginLeft: "79%", paddingTop: "20px" }}
-          >
-            <div>
-              <ul id="menu_bot" class="clearfix">
-                <GoCommute />
-                <LogInOut />
-              </ul>
-            </div>
-          </div>
-          <div class="top1">
-            <div class="container">
-              <div class="row">
-                <div class="span12">
-                  <div class="top2_inner clearfix">
-                    <header>
-                      <div class="logo_wrapper">
-                        <a href="/" class="logo">
-                          <img src="assets/images/main_banner.png" alt="" />
-                        </a>
-                      </div>
-                    </header>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
 	return (
 		<div>
@@ -70,6 +38,7 @@ function App() {
 								<div>
 									<ul id="menu_bot" class="clearfix">
 										<LogInOut />
+                    <GoCommute />
 									</ul>
 								</div>
 							</div>
@@ -438,4 +407,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
