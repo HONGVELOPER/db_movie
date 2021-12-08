@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { loginState } from "../../loginState";
+import { loginState, qrState } from "../../loginState";
 import { useHistory } from "react-router";
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
@@ -11,11 +11,16 @@ import axios from "axios";
 
 const LogInOut = () => {
     const [isLogin, setIsLogin] = useRecoilState(loginState);
+    const [qrCheck, setQrCheck] = useRecoilState(qrState);
     const history = useHistory();
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         if (isLogin) {
             setIsLogin(false)
+            setQrCheck({
+                check: false,
+                safe: false,
+            })
             alert('로그아웃 되었습니다.')
         } else {
             setOpen(true)
@@ -145,6 +150,7 @@ const LogInOut = () => {
             >
                 {isLogin ? "my page" : "sign up"}
             </li>
+            
         </div>
     );
 };
