@@ -4,6 +4,7 @@ import { Form, Select, Icon, Input, Switch, Button } from "antd";
 import { withRouter } from "react-router-dom";
 import { withUserAgent } from "react-useragent";
 import queryString from "query-string";
+import { useRecoilState } from "recoil";
 
 import {
   PGS,
@@ -11,12 +12,23 @@ import {
   QUOTAS_FOR_INICIS_AND_KCP,
 } from "./constants";
 import { getMethods, getQuotas } from "./utils";
-
+import { loginState } from "../../../../loginState";
 const { Item } = Form;
 const { Option } = Select;
 
 function Payment({ history, form, ua, reserveData }) {
   console.log("reserveData (Payment.js)", reserveData);
+  const [isLogin, setIsLogin] = useRecoilState(loginState);
+
+  if (
+    isLogin.name === undefined ||
+    isLogin.phone === undefined ||
+    isLogin.email === undefined
+  ) {
+    isLogin.name = "UNDEFINED";
+    isLogin.phone = "UNDEFINED";
+    isLogin.email = "UNDEFINED";
+  }
 
   const [methods, setMethods] = useState(METHODS_FOR_INICIS);
   const [quotas, setQuotas] = useState(QUOTAS_FOR_INICIS_AND_KCP);
@@ -300,7 +312,7 @@ function Payment({ history, form, ua, reserveData }) {
         </Item>
         <Item>
           {getFieldDecorator("buyer_name", {
-            initialValue: "김한나",
+            initialValue: isLogin.name,
             rules: [
               { required: true, message: "구매자 이름은 필수입력입니다" },
             ],
@@ -308,7 +320,7 @@ function Payment({ history, form, ua, reserveData }) {
         </Item>
         <Item>
           {getFieldDecorator("buyer_tel", {
-            initialValue: "01012341234",
+            initialValue: isLogin.phone,
             rules: [
               { required: true, message: "구매자 전화번호는 필수입력입니다" },
             ],
@@ -316,7 +328,7 @@ function Payment({ history, form, ua, reserveData }) {
         </Item>
         <Item>
           {getFieldDecorator("buyer_email", {
-            initialValue: "example@example.com",
+            initialValue: isLogin.email,
             rules: [
               { required: true, message: "구매자 이메일은 필수입력입니다" },
             ],
