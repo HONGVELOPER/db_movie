@@ -56,6 +56,7 @@ const Home = (props) => {
                         {/* <button onClick={qrFail}>
                             fail
                         </button> */}
+                        
                     </>
                 ) : (
                     <QR />
