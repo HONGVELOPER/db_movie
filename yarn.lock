@@ -8023,7 +8023,6 @@ joi@^17.4.2:
     "@sideway/address" "^4.1.0"
     "@sideway/formula" "^3.0.0"
     "@sideway/pinpoint" "^2.0.0"
-
 jquery@^3.6.0:
   version "3.6.0"
   resolved "https://registry.npmjs.org/jquery/-/jquery-3.6.0.tgz"
@@ -11481,7 +11480,6 @@ react-scripts@4.0.3:
     workbox-webpack-plugin "5.1.4"
   optionalDependencies:
     fsevents "^2.1.3"
-
 react-slick@~0.25.2:
   version "0.25.2"
   resolved "https://registry.npmjs.org/react-slick/-/react-slick-0.25.2.tgz"

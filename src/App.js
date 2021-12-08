@@ -272,27 +272,92 @@ function App() {
                 </div>
                 <div class="span4">
                   <div class="box2">
-                    <div class="box2">
-                      <div class="box2_title">
-                        <h3>Event</h3>
-                      </div>
-                      <div class="box2_inner">
-                        <ul class="ul0">
-                          <div class="thumb4">
-                            <div class="thumbnail clearfix">
-                              <figure class="img-polaroid img-rounded">
-                                <img src="./eventLPoint.png" alt="" />
-                              </figure>
-                            </div>
+                    <div class="page_title">
+                      <div class="page_title_left"></div>
+                      <div class="page_title_px">Event</div>
+                      <div class="page_title_right"></div>
+                    </div>
+                    <div id="slider3">
+                      <a class="prev3" href="#"></a>
+                      <a class="next3" href="#"></a>
+                      <div class="carousel-box row">
+                        <div class="inner span12">
+                          <div class="carousel main">
+                            <ul>
+                              <li>
+                                <div class="thumb-carousel banner1">
+                                  <div class="thumbnail clearfix">
+                                    <a href="/movie">
+                                      <figure>
+                                        <img
+                                          src="./eventSpeedMovie.png"
+                                          alt=""
+                                        />
+                                        <div class='caption'>2021.11.17 ~ 2021.12.31</div>
+                                      </figure>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="thumb-carousel banner1">
+                                  <div class="thumbnail clearfix">
+                                    <a href="#">
+                                      <figure>
+                                        <img
+                                          src="https://img.cgv.co.kr/WebApp/contents/eventV4/33609/16387470657970.jpg"
+                                          alt="[엔칸토: 마법의 세계] 
+											스페셜 리미티드 포스터"
+                                        />
+                                        <div class="caption"> 2021.12.01 ~ 2121.12.31</div>
+                                      </figure>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="thumb-carousel banner1">
+                                  <div class="thumbnail clearfix">
+                                    <a href="#">
+                                      <figure>
+                                        <img
+                                          src="https://img.cgv.co.kr/WebApp/contents/eventV4/33597/16384093821630.jpg"
+                                          alt="[몬스타엑스: 더 드리밍] 
+                                            포토플레이 시크릿 컷"
+                                        />
+                                        <div class="caption"> 2021.12.01 ~ 2121.12.31</div>
+                                      </figure>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="thumb-carousel banner1">
+                                  <div class="thumbnail clearfix">
+                                    <a href="#">
+                                      <figure>
+                                        <img src="./eventToss.png" alt="" />
+                                        <div class="caption">2021.12.01 ~ 2121.12.31<br/></div>
+                                      </figure>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="thumb-carousel banner1">
+                                  <div class="thumbnail clearfix">
+                                    <a href="#">
+                                      <figure>
+                                        <img img src="./eventIMAX.png" alt="" />
+                                        <div class="caption">2021.11.01~2022.06.01</div>
+                                      </figure>
+                                    </a>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
                           </div>
-                          <div class="thumb4 last">
-                            <div class="thumbnail clearfix">
-                              <figure class="img-polaroid img-rounded">
-                                <img src="./eventUser.png" alt="" />
-                              </figure>
-                            </div>
-                          </div>
-                        </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
