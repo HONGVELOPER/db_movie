@@ -6,15 +6,14 @@ import { loginState } from "../../loginState";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-function BoardDetail(props){
-
+function BoardDetail(props) {
   const [board, setBoard] = useState();
   const [isLogin, setIsLogin] = useRecoilState(loginState);
-  console.log(isLogin, 'is login')
+  console.log(isLogin, "is login");
 
-  useEffect( () => {
+  useEffect(() => {
     setBoardDetail();
-  },[]);
+  }, []);
 
   // useEffect(function() {
   //   if(props.location.query !== undefined) {
@@ -24,26 +23,26 @@ function BoardDetail(props){
   //   }
   // },[]);
 
-  const setBoardDetail= () =>{
-    if(props.location.query !== undefined) {
+  const setBoardDetail = () => {
+    if (props.location.query !== undefined) {
       getDetail();
     } else {
-      window.location.href = "/board"
+      window.location.href = "/board";
     }
   };
 
-  const deleteBoard = ID => {
+  const deleteBoard = (ID) => {
     const send_param = {
-      ID
+      ID,
     };
-    if(window.confirm("정말로 삭제하시겠습니까?")){
+    if (window.confirm("정말로 삭제하시겠습니까?")) {
       axios
         .post("/api/board/delete", send_param)
-        .then(returnData => {
+        .then((returnData) => {
           alert("게시글이 삭제되었습니다");
           window.location.href = "/board";
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
           alert("글 삭제 실패");
         });
@@ -52,15 +51,16 @@ function BoardDetail(props){
 
   const getDetail = () => {
     const send_param = {
-      ID: props.location.query.ID
+      ID: props.location.query.ID,
     };
     const marginBottom = {
       margin: "0px 5px 0px 10px",
-      marginBottom: 5
+      marginBottom: 5,
     };
-    axios.post("/api/board/detail", send_param)
+    axios
+      .post("/api/board/detail", send_param)
       //정상 수행
-      .then(returnData => {   
+      .then((returnData) => {
         if (returnData.data.list[0]) {
           const board = (
             <div>
@@ -70,11 +70,11 @@ function BoardDetail(props){
                     <th>{returnData.data.list[0].Title}</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody height="200px">
                   <tr>
                     <td
                       dangerouslySetInnerHTML={{
-                        __html: returnData.data.list[0].Content
+                        __html: returnData.data.list[0].Content,
                       }}
                     ></td>
                   </tr>
@@ -83,33 +83,31 @@ function BoardDetail(props){
               <div>
                 {isLogin.admin ? (
                   <NavLink
-                  to={{
-                    pathname: "/boardWrite",
-                    query: {
-                      Title: returnData.data.list[0].Title,
-                      Content: returnData.data.list[0].Content,
-                      ID: props.location.query.ID,
-                      Writer: returnData.data.list[0].Writer
-                    }
-                  }}
-                >
-                  <Button style={marginBottom}>
-                    글 수정
-                  </Button>
+                    to={{
+                      pathname: "/boardWrite",
+                      query: {
+                        Title: returnData.data.list[0].Title,
+                        Content: returnData.data.list[0].Content,
+                        ID: props.location.query.ID,
+                        Writer: returnData.data.list[0].Writer,
+                      },
+                    }}
+                  >
+                    <Button style={marginBottom}>글 수정</Button>
                   </NavLink>
-                ) : (<></>)
-                }
+                ) : (
+                  <></>
+                )}
                 {isLogin.admin ? (
-                <Button style={marginBottom}
-                  onClick={deleteBoard.bind(
-                    null,
-                    props.location.query.ID
-                  )}
-                >
-                  글 삭제
-                </Button>
-                ) : (<></>)
-                }
+                  <Button
+                    style={marginBottom}
+                    onClick={deleteBoard.bind(null, props.location.query.ID)}
+                  >
+                    글 삭제
+                  </Button>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           );
@@ -119,20 +117,19 @@ function BoardDetail(props){
         }
       })
       //에러
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
 
-  const divStyle ={
-    margin: 50
-  }
+  const divStyle = {
+    margin: 50,
+  };
   return (
     <>
-    <div style={divStyle}>{board}</div>
+      <div style={divStyle}>{board}</div>
     </>
   );
 }
-    
 
 export default BoardDetail;
