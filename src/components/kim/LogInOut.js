@@ -124,7 +124,7 @@ const LogInOut = () => {
                         style={{ height: '30px', display: 'block', width: '430px' }}
                     />
                     <li type="button" onClick={handleClick} style={{ display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px' }}>login</li>
-                    <li type="button" style={{fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px' }}>
+                    <li type="button" onClick={handleClose} style={{fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px' }}>
                         <Link to="/signup" style={{ textDecoration: "none", color: '#7b533f' }}>
                             sign up
                         </Link>

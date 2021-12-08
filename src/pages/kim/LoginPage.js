@@ -7,9 +7,9 @@ import { Input, Footer } from "../../components/kim/Input";
 import { Form } from "../../components/kim/Form";
 import { useRecoilState } from "recoil";
 import { loginState } from "../../loginState";
+import {Modal} from 'react-bootstrap';
 
 const LoginPage = ({ history }) => {
-
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -19,6 +19,8 @@ const LoginPage = ({ history }) => {
         email: "",
         password: "",
     });
+
+
     const { email, password } = inputs;
 
     const handleInputs = (e) => {
