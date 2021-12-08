@@ -49,7 +49,7 @@ function App() {
                   <div class="top2_inner clearfix">
                     <header>
                       <div class="logo_wrapper">
-                        <a href="index.html" class="logo">
+                        <a href="/" class="logo">
                           <img src="assets/images/main_banner.png" alt="" />
                         </a>
                       </div>
@@ -101,13 +101,16 @@ function App() {
 													</a> */}
                           <ul class="nav sf-menu clearfix">
                             <li>
-                              <a href="index.html">Home</a>
+                              <a href="/">Home</a>
                             </li>
                             <li>
                               <a href="index-1.html">Introduce</a>
                             </li>
                             <li>
                               <a href="/movie">Reserve</a>
+                            </li>
+                            <li>
+                              <a href="/board">Notice</a>
                             </li>
                             <li>
                               <a href="index-4.html">Event</a>
@@ -197,7 +200,7 @@ function App() {
                                 <li>
                                   <div class="thumb-carousel banner1">
                                     <div class="thumbnail clearfix">
-                                      <a href="#">
+                                      <a  target="_blank" href="https://movie.naver.com/movie/bi/mi/basic.naver?code=210282" >
                                         <figure>
                                           <img
                                             src="/assets/images/엔칸토.jpeg"
@@ -229,7 +232,7 @@ function App() {
               <div class="row">
                 <div class="span8">
                   <div class="box1">
-                    <Route exact path="/" component={Home} />
+                    {/* <Route exact path="/" component={Home} /> */}
                     <Route exact path="/movie" component={Movie} />
                     <Route path="/movie/seat" component={Seat} />
 
@@ -239,7 +242,8 @@ function App() {
                     <Route path="/login" component={LoginPage} />
                     <Route path="/signup" component={SignUpPage} />
                     <Route path="/mypage" component={MyPage} />
-                    <Route path="/board" component={BoardList} />
+                    <Route exact path="/" component={BoardList} />
+                    <Route exact path="/board" component={BoardList} />
                     <Route path="/boardwrite" component={BoardWrite} />
                     <Route path="/boarddetail" component={BoardDetail} />
 
@@ -305,13 +309,13 @@ function App() {
                     <div class="menu_bot">
                       <ul id="menu_bot" class="clearfix">
                         <li>
-                          <a href="index.html">Home</a>
+                          <a href="/">Home</a>
                         </li>
                         <li>
                           <a href="index-1.html">Introduce</a>
                         </li>
                         <li>
-                          <a href="index-3.html">Reserve</a>
+                          <a href="/movie">Reserve</a>
                         </li>
                         <li>
                           <a href="index-4.html">Event</a>
@@ -320,7 +324,7 @@ function App() {
                           <a href="index-5.html">address</a>
                         </li>
                         <li>
-                          <a href="/board">board</a>
+                          <a href="/board">Notice</a>
                         </li>
                       </ul>
                     </div>
