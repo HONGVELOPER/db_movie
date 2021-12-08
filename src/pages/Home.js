@@ -5,7 +5,8 @@ import { useRecoilState } from "recoil";
 import { loginState, qrState } from "../loginState";
 import { useHistory } from "react-router";
 import QR from '../components/lee/check'
- 
+import Board from '../pages/lim/BoardList'; 
+
 const Home = (props) => {
     const [isLogin, setIsLogin] = useRecoilState(loginState);
     const [qrCheck, setQrCheck] = useRecoilState(qrState);
@@ -42,17 +43,19 @@ const Home = (props) => {
             <div>
                 {qrCheck.check? (
                     <>
-                        <h1>Home page</h1>
+
+                        {/* <h1>Home page</h1>
                         <li
                             type="button"
                             onClick={toMovie}
                             style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}
                         >
                             Reserve
-                        </li>
-                        <button onClick={qrFail}>
+                        </li> */}
+                        <Board />
+                        {/* <button onClick={qrFail}>
                             fail
-                        </button>
+                        </button> */}
                     </>
                 ) : (
                     <QR />

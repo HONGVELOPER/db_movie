@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Table, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { loginState } from "../../loginState";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
 function BoardDetail(props){
 
   const [board, setBoard] = useState();
+  const [isLogin, setIsLogin] = useRecoilState(loginState);
+  console.log(isLogin, 'is login')
 
   useEffect( () => {
     setBoardDetail();
@@ -77,7 +81,8 @@ function BoardDetail(props){
                 </tbody>
               </Table>
               <div>
-                <NavLink
+                {isLogin.admin ? (
+                  <NavLink
                   to={{
                     pathname: "/boardWrite",
                     query: {
@@ -91,7 +96,10 @@ function BoardDetail(props){
                   <Button style={marginBottom}>
                     글 수정
                   </Button>
-                </NavLink>
+                  </NavLink>
+                ) : (<></>)
+                }
+                {isLogin.admin ? (
                 <Button style={marginBottom}
                   onClick={deleteBoard.bind(
                     null,
@@ -100,6 +108,8 @@ function BoardDetail(props){
                 >
                   글 삭제
                 </Button>
+                ) : (<></>)
+                }
               </div>
             </div>
           );
