@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useRef } from "react";
 import { Route } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Home from "./pages/Home";
@@ -27,6 +27,7 @@ import CertificationResult from "./components/choi/iamport/CertificationResult";
 import GoCommute from "./components/choi/GoCommute";
 
 function App() {
+
   return (
     <div>
       <RecoilRoot>
@@ -49,7 +50,7 @@ function App() {
                   <div class="top2_inner clearfix">
                     <header>
                       <div class="logo_wrapper">
-                        <a href="index.html" class="logo">
+                        <a href="/" class="logo">
                           <img src="assets/images/main_banner.png" alt="" />
                         </a>
                       </div>

@@ -145,6 +145,7 @@ const LogInOut = () => {
             >
                 {isLogin ? "my page" : "sign up"}
             </li>
+            
         </div>
     );
 };

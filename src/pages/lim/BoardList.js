@@ -11,7 +11,7 @@ function BoardRow(props) {
     <tr>
       <td>
         <NavLink to={{ pathname: "/boarddetail", query: { ID: props.ID } }}>
-          {props.CreatedAt.substring(0, 10)}
+        {props.Title}
         </NavLink>
       </td>
       <td>
@@ -21,7 +21,7 @@ function BoardRow(props) {
       </td>
       <td>
         <NavLink to={{ pathname: "/boarddetail", query: { ID: props.ID } }}>
-          {props.Title}
+        {props.CreatedAt.substring(0, 10)}
         </NavLink>
       </td>
     </tr>
@@ -46,9 +46,9 @@ function BoardList() {
           const boardContents = boards.map((item) => (
             <BoardRow
               key={Date.now() + Math.random() * 500}
-              CreatedAt={item.CreatedAt}
               Title={item.Title}
               Writer={item.Writer}
+              CreatedAt={item.CreatedAt}
               ID={item.ID}
             ></BoardRow>
           ));
@@ -84,9 +84,9 @@ function BoardList() {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>날짜</th>
-              <th>작성자</th>
               <th>글 제목</th>
+              <th>작성자</th>
+              <th>날짜</th>
             </tr>
           </thead>
           <tbody>{boardList}</tbody>
@@ -101,11 +101,6 @@ function BoardList() {
             <NavLink to="/boardWrite">
               <Button style={buttonStyle} variant="primary">
                 글쓰기
-              </Button>
-            </NavLink>
-            <NavLink to="/commute">
-              <Button style={buttonStyle} variant="primary">
-                통근관리
               </Button>
             </NavLink>
           </dix>
