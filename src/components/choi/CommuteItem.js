@@ -6,29 +6,36 @@ import { style } from "@mui/system";
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: green;
   border: 2px solid white;
+  border-radius: 4px;
 `;
 
 const LeftBox = styled.div`
   flex: 1;
-  background: ${(props) => (props.name === "-" ? "grey" : "grey")};
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background: ${(props) => (props.name === "-" ? "lightgrey" : "lightgrey")};
 `;
 
 const MiddleBox = styled.div`
   flex: 2;
-  background: skyblue;
+  background: #faf7f2;
 `;
 
 const RightBox = styled.div`
   flex: 2;
-  background: lightblue;
+  background: #92664c;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 `;
 
 const StyledButton = styled.button`
   /* background: green; */
   margin-bottom: 20px;
-  padding: 10px;
+  border-width: 4px;
+  width: 30%;
+  height: 20%;
+  font-size: large;
 `;
 
 const CommuteItem = ({ name, position }) => {
