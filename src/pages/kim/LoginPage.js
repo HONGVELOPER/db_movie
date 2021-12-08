@@ -7,14 +7,23 @@ import { Input, Footer } from "../../components/kim/Input";
 import { Form } from "../../components/kim/Form";
 import { useRecoilState } from "recoil";
 import { loginState } from "../../loginState";
+import {Modal} from 'react-bootstrap';
 
 const LoginPage = ({ history }) => {
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
     const [isLogin, setIsLogin] = useRecoilState(loginState);
 
     const [inputs, setInputs] = useState({
         email: "",
         password: "",
     });
+
+
     const { email, password } = inputs;
 
     const handleInputs = (e) => {
@@ -68,6 +77,7 @@ const LoginPage = ({ history }) => {
             });
     };
     return (
+        <>
         <Form style={{border: '1px solid black', height: '300px'}}>
             <h1> Login 로그인 </h1>
             <Input
@@ -92,6 +102,7 @@ const LoginPage = ({ history }) => {
             </li>
             <li type="button" onClick={handleClick} style={{display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px'}}>login</li>
         </Form>
+        </>
     );
 };
 
