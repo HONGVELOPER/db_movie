@@ -7,7 +7,7 @@ import { useHistory } from "react-router";
 const GoCommute = () => {
   const [isLogin, setIsLogin] = useRecoilState(loginState);
   const history = useHistory();
-  const isAdmin = isLogin.name === "admin";
+  const isAdmin = isLogin.email === "admin" || isLogin.name === "admin";
   // console.log("isLogin", isLogin);
 
   return (

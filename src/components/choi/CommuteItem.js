@@ -98,6 +98,7 @@ const CommuteItem = ({ name, position }) => {
             "기존 출퇴근 시간이 저장되었습니다. 새로운 출퇴근 기록이 시작됩니다"
           );
           setPunchOut("-");
+          sendPunchIn(name, ms.toString());
         } else {
           sendPunchIn(name, ms.toString());
         }
