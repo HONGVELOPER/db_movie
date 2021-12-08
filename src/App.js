@@ -31,25 +31,25 @@ function App() {
     <div>
       <RecoilRoot>
         <div id="main">
-          <div
-            class="clearfix"
-            style={{ marginLeft: "79%", paddingTop: "20px" }}
-          >
-            <div>
-              <ul id="menu_bot" class="clearfix">
-                <GoCommute />
-                <LogInOut />
-              </ul>
-            </div>
-          </div>
           <div class="top1">
             <div class="container">
+              <div
+                class="clearfix"
+                style={{ textAlign: "right", paddingTop: "20px" }}
+              >
+                <div>
+                  <ul id="menu_bot" class="clearfix">
+                    <GoCommute />
+                    <LogInOut />
+                  </ul>
+                </div>
+              </div>
               <div class="row">
                 <div class="span12">
                   <div class="top2_inner clearfix">
                     <header>
                       <div class="logo_wrapper">
-                        <a href="/" class="logo">
+                        <a href="index.html" class="logo">
                           <img src="assets/images/main_banner.png" alt="" />
                         </a>
                       </div>
@@ -60,64 +60,37 @@ function App() {
             </div>
           </div>
 
-	return (
-		<div>
-			<RecoilRoot>
-				<div id="main">
-					<div class="top1">
-						<div class="container">
-							<div class="clearfix" style={{textAlign: 'right', paddingTop: '20px'}}>
-								<div>
-									<ul id="menu_bot" class="clearfix">
-										<LogInOut />
-									</ul>
-								</div>
-							</div>
-							<div class="row">
-								<div class="span12">
-									<div class="top2_inner clearfix">
-										<header>
-											<div class="logo_wrapper">
-												<a
-													href="index.html"
-													class="logo"
-												>
-													<img
-														src="assets/images/main_banner.png"
-														alt=""
-													/>
-												</a>
-											</div>
-										</header>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="hl1"></div>
-					<div class="hl2">
-						<div class="hl2_2">
-							<div class="container">
-								<div class="row">
-									<div class="span12">
-										<div class="hl2_2_inner">
-											<div class="hl2_2_left"></div>
-											<div class="hl2_2_px"></div>
-											<div class="hl2_2_right"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="hl2_inner">
-							<div class="container">
-								<div class="row">
-									<div class="span12">
-										<div class="hl1_inner2">
-											<div class="navbar navbar_">
-												<div class="navbar-inner navbar-inner_" style={{textAlign: 'center', width: '100%', bottom: '10px', position: 'relative'}} >
-													{/* <a
+          <div class="hl1"></div>
+          <div class="hl2">
+            <div class="hl2_2">
+              <div class="container">
+                <div class="row">
+                  <div class="span12">
+                    <div class="hl2_2_inner">
+                      <div class="hl2_2_left"></div>
+                      <div class="hl2_2_px"></div>
+                      <div class="hl2_2_right"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="hl2_inner">
+              <div class="container">
+                <div class="row">
+                  <div class="span12">
+                    <div class="hl1_inner2">
+                      <div class="navbar navbar_">
+                        <div
+                          class="navbar-inner navbar-inner_"
+                          style={{
+                            textAlign: "center",
+                            width: "100%",
+                            bottom: "10px",
+                            position: "relative",
+                          }}
+                        >
+                          {/* <a
 														class="btn btn-navbar btn-navbar "
 														data-toggle="collapse"
 														data-target=".nav-collapse_"
@@ -227,7 +200,10 @@ function App() {
                                 <li>
                                   <div class="thumb-carousel banner1">
                                     <div class="thumbnail clearfix">
-                                      <a  target="_blank" href="https://movie.naver.com/movie/bi/mi/basic.naver?code=210282" >
+                                      <a
+                                        target="_blank"
+                                        href="https://movie.naver.com/movie/bi/mi/basic.naver?code=210282"
+                                      >
                                         <figure>
                                           <img
                                             src="/assets/images/엔칸토.jpeg"
@@ -318,7 +294,9 @@ function App() {
                                           src="./eventSpeedMovie.png"
                                           alt=""
                                         />
-                                        <div class='caption'>2021.11.17 ~ 2021.12.31</div>
+                                        <div class="caption">
+                                          2021.11.17 ~ 2021.12.31
+                                        </div>
                                       </figure>
                                     </a>
                                   </div>
@@ -334,7 +312,10 @@ function App() {
                                           alt="[엔칸토: 마법의 세계] 
 											스페셜 리미티드 포스터"
                                         />
-                                        <div class="caption"> 2021.12.01 ~ 2121.12.31</div>
+                                        <div class="caption">
+                                          {" "}
+                                          2021.12.01 ~ 2121.12.31
+                                        </div>
                                       </figure>
                                     </a>
                                   </div>
@@ -350,7 +331,10 @@ function App() {
                                           alt="[몬스타엑스: 더 드리밍] 
                                             포토플레이 시크릿 컷"
                                         />
-                                        <div class="caption"> 2021.12.01 ~ 2121.12.31</div>
+                                        <div class="caption">
+                                          {" "}
+                                          2021.12.01 ~ 2121.12.31
+                                        </div>
                                       </figure>
                                     </a>
                                   </div>
@@ -362,7 +346,10 @@ function App() {
                                     <a href="#">
                                       <figure>
                                         <img src="./eventToss.png" alt="" />
-                                        <div class="caption">2021.12.01 ~ 2121.12.31<br/></div>
+                                        <div class="caption">
+                                          2021.12.01 ~ 2121.12.31
+                                          <br />
+                                        </div>
                                       </figure>
                                     </a>
                                   </div>
@@ -374,7 +361,9 @@ function App() {
                                     <a href="#">
                                       <figure>
                                         <img img src="./eventIMAX.png" alt="" />
-                                        <div class="caption">2021.11.01~2022.06.01</div>
+                                        <div class="caption">
+                                          2021.11.01~2022.06.01
+                                        </div>
                                       </figure>
                                     </a>
                                   </div>
