@@ -99,7 +99,6 @@ const LoginPage = ({ history }) => {
                     </Link>
                 </li>
             </Form>
-
         </>
     );
 };

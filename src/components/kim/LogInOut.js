@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { loginState } from "../../loginState";
+import { loginState, qrState } from "../../loginState";
 import { useHistory } from "react-router";
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
@@ -11,11 +11,16 @@ import axios from "axios";
 
 const LogInOut = () => {
     const [isLogin, setIsLogin] = useRecoilState(loginState);
+    const [qrCheck, setQrCheck] = useRecoilState(qrState);
     const history = useHistory();
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         if (isLogin) {
             setIsLogin(false)
+            setQrCheck({
+                check: false,
+                safe: false,
+            })
             alert('로그아웃 되었습니다.')
         } else {
             setOpen(true)
@@ -124,7 +129,7 @@ const LogInOut = () => {
                         style={{ height: '30px', display: 'block', width: '430px' }}
                     />
                     <li type="button" onClick={handleClick} style={{ display: 'inline-block', fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px' }}>login</li>
-                    <li type="button" style={{fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px' }}>
+                    <li type="button" onClick={handleClose} style={{fontFamily: 'Thysen', fontWeight: 400, fontSize: '18px', color: '#7b533f', textTransform: 'uppercase', lineHeight: '20px', padding: '8px 20px', letterSpacing: '1px' }}>
                         <Link to="/signup" style={{ textDecoration: "none", color: '#7b533f' }}>
                             sign up
                         </Link>
