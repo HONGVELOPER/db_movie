@@ -50,7 +50,7 @@ function App() {
                   <div class="top2_inner clearfix">
                     <header>
                       <div class="logo_wrapper">
-                        <a href="/" class="logo">
+                        <a href="index.html" class="logo">
                           <img src="assets/images/main_banner.png" alt="" />
                         </a>
                       </div>
@@ -428,4 +428,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
