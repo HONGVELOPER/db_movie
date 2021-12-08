@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { style } from "@mui/system";
 
 const CommuteItem = ({ name, position }) => {
   const [punchIn, setPunchIn] = useState("-");
@@ -51,7 +52,7 @@ const CommuteItem = ({ name, position }) => {
 
   const LeftBox = styled.div`
     flex: 1;
-    background: ${(props) => (props.name === "이름이없엉" ? "red" : "grey")};
+    background: ${(props) => (props.name === "-" ? "grey" : "grey")};
   `;
 
   const MiddleBox = styled.div`
@@ -64,6 +65,12 @@ const CommuteItem = ({ name, position }) => {
     background: lightblue;
   `;
 
+  const StyledButton = styled.button`
+    /* background: green; */
+    margin-bottom: 20px;
+    padding: 10px;
+  `;
+
   // const Circle = styled.div`
   //   width: 5rem;
   //   height: 5rem;
@@ -73,11 +80,11 @@ const CommuteItem = ({ name, position }) => {
 
   // name === null ? "김사원" : name;
   if (name === undefined) {
-    name = "이름이없엉";
+    name = "-";
   }
 
   if (position === undefined) {
-    position = "직급이없엉";
+    position = "-";
   }
 
   const recordCurrentTime = (type) => {
@@ -115,25 +122,25 @@ const CommuteItem = ({ name, position }) => {
       <MiddleBox>
         <h2>출근시각</h2>
         <h3>{punchIn}</h3>
-        <button
+        <StyledButton
           onClick={() => {
             recordCurrentTime("In");
           }}
         >
           출근
-        </button>
+        </StyledButton>
       </MiddleBox>
 
       <RightBox>
         <h2>퇴근시각</h2>
         <h3>{punchOut}</h3>
-        <button
+        <StyledButton
           onClick={() => {
             recordCurrentTime("Out");
           }}
         >
           퇴근
-        </button>
+        </StyledButton>
       </RightBox>
     </Container>
   );
