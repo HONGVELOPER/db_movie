@@ -24,6 +24,7 @@ import PaymentPage from "./pages/choi/PaymentPage"; // ! 결제페이지
 import PaymentResult from "./pages/choi/PaymentResultPage"; // ! 결제 결과페이지
 import CertificationPage from "./pages/choi/CertificationPage"; // ! 인증페이지
 import CertificationResult from "./components/choi/iamport/CertificationResult";
+import GoCommute from "./components/choi/GoCommute";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           >
             <div>
               <ul id="menu_bot" class="clearfix">
+                <GoCommute />
                 <LogInOut />
               </ul>
             </div>
