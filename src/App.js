@@ -18,7 +18,7 @@ import BoardList from "./pages/lim/BoardList";
 import BoardWrite from "./pages/lim/BoardWrite";
 import BoardDetail from "./pages/lim/BoardDetail";
 
-// ? iamport 이식 - 수민
+// ? iamport 이식 - 수민 | 백업.
 import PaymentHome from "./components/choi/iamport/Home";
 import PaymentPage from "./pages/choi/PaymentPage"; // ! 결제페이지
 import PaymentResult from "./pages/choi/PaymentResultPage"; // ! 결제 결과페이지
