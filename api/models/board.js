@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
             dateStrings: true,
             typeCast: true,
             freezeTableName: true,
-            tableName: "Board",
+            tableName: "B_BOARD",
             timestamps: false,
         }
     );
