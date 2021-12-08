@@ -31,15 +31,15 @@ function App() {
 		<div>
 			<RecoilRoot>
 				<div id="main">
-					<div class="clearfix" style={{marginLeft: '79%', paddingTop: '20px'}}>
-						<div>
-							<ul id="menu_bot" class="clearfix">
-								<LogInOut />
-							</ul>
-						</div>
-					</div>
 					<div class="top1">
 						<div class="container">
+							<div class="clearfix" style={{textAlign: 'right', paddingTop: '20px'}}>
+								<div>
+									<ul id="menu_bot" class="clearfix">
+										<LogInOut />
+									</ul>
+								</div>
+							</div>
 							<div class="row">
 								<div class="span12">
 									<div class="top2_inner clearfix">
@@ -95,7 +95,7 @@ function App() {
 													</a> */}
 														<ul class="nav sf-menu clearfix">
 															<li>
-																<a href="index.html">
+																<a href="./">
 																	Home
 																</a>
 															</li>
@@ -267,10 +267,10 @@ function App() {
 											component={SalaryPage}
 										/>
 
-										<Route
+										{/* <Route
 											path="/login"
 											component={LoginPage}
-										/>
+										/> */}
 										<Route
 											path="/signup"
 											component={SignUpPage}
