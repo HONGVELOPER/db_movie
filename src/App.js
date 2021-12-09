@@ -138,7 +138,7 @@ function App() {
                                   <li>
                                     <div class="thumb-carousel banner1">
                                       <div class="thumbnail clearfix">
-                                        <a href="/movie">
+                                        <a href="https://movie.naver.com/movie/bi/mi/basic.naver?code=187312">
                                           <figure>
                                             <img
                                               src="/assets/images/프렌치디스패치.jpeg"
@@ -155,7 +155,7 @@ function App() {
                                   <li>
                                     <div class="thumb-carousel banner1">
                                       <div class="thumbnail clearfix">
-                                        <a href="#">
+                                        <a href="https://movie.naver.com/movie/bi/mi/basic.naver?code=184311">
                                           <figure>
                                             <img
                                               src="/assets/images/eternals.jpeg"
@@ -170,7 +170,7 @@ function App() {
                                   <li>
                                     <div class="thumb-carousel banner1">
                                       <div class="thumbnail clearfix">
-                                        <a href="#">
+                                        <a href="https://movie.naver.com/movie/bi/mi/basic.naver?code=196809">
                                           <figure>
                                             <img
                                               src="/assets/images/연애빠진로맨스.jpeg"
@@ -187,7 +187,7 @@ function App() {
                                   <li>
                                     <div class="thumb-carousel banner1">
                                       <div class="thumbnail clearfix">
-                                        <a href="#">
+                                        <a href="https://movie.naver.com/movie/bi/mi/basic.naver?code=182362">
                                           <figure>
                                             <img
                                               src="/assets/images/유체이탈자.jpeg"
