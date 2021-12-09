@@ -32,13 +32,17 @@ function PaymentResult({ history }) {
   // }
 
   useEffect(() => {
-    sendPaymentData(
-      numberOnly,
-      reserveState.mpEmail,
-      reserveState.mpPrice,
-      reserveState.mpReserveNum
-    );
-    console.log("sendPaymentData", "하ㅏ하핳하");
+    if (isSuccessed) {
+      alert("결제내역 저장 완료!");
+      sendPaymentData(
+        numberOnly,
+        reserveState.mpEmail,
+        reserveState.mpPrice,
+        reserveState.mpReserveNum
+      );
+    } else {
+      alert("결제내역 저장 취소");
+    }
   }, []);
 
   const sendPaymentData = (numberOnly, mpEmail, mpPrice, mpReserveNum) => {
@@ -53,7 +57,6 @@ function PaymentResult({ history }) {
       })
       .then(function (res) {
         // response
-        alert("결제내역 저장 완료!");
       })
       .catch(function (error) {
         // error
