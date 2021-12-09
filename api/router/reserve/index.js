@@ -71,6 +71,7 @@ router.get('/time', async (req, res) => {
             attributes: ['MT_CODE', 'MT_SCREEN_SPACE', 'MT_FORMAT', 'MT_TOTAL_SEAT', 'MT_START_TIME', 'MT_AVAIL_SEAT'],
             where: {
                 MT_RUNNING_DATE: req.query.theaterDate,
+                M_CODE: req.query.movieCode
             }
         })
         res.json(timeInfo)
