@@ -21,7 +21,7 @@ import BoardDetail from "./pages/lim/BoardDetail";
 // ? iamport 이식 - 수민
 import PaymentHome from "./components/choi/iamport/Home";
 import PaymentPage from "./pages/choi/PaymentPage"; // ! 결제페이지
-import PaymentResult from "./pages/choi/PaymentResultPage"; // ! 결제 결과페이지
+import PaymentResultPage from "./pages/choi/PaymentResultPage"; // ! 결제 결과페이지
 import CertificationPage from "./pages/choi/CertificationPage"; // ! 인증페이지
 import CertificationResult from "./components/choi/iamport/CertificationResult";
 import GoCommute from "./components/choi/GoCommute";
@@ -257,7 +257,7 @@ function App() {
                     <Route
                       exact
                       path="/payment/result"
-                      component={PaymentResult}
+                      component={PaymentResultPage}
                     />
                     <Route
                       exact
