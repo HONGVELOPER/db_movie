@@ -116,7 +116,7 @@ function App() {
                               <a href="index-4.html">Event</a>
                             </li>
                             <li>
-                              <a href="index-5.html">Contacts</a>
+                              <a href="index-5.html">ADDRESS</a>
                             </li>
                           </ul>
                         </div>
@@ -397,13 +397,13 @@ function App() {
                           <a href="/movie">Reserve</a>
                         </li>
                         <li>
+                          <a href="/board">Notice</a>
+                        </li>
+                        <li>
                           <a href="index-4.html">Event</a>
                         </li>
                         <li>
-                          <a href="index-5.html">address</a>
-                        </li>
-                        <li>
-                          <a href="/board">Notice</a>
+                          <a href="index-5.html">ADDRESS</a>
                         </li>
                       </ul>
                     </div>
