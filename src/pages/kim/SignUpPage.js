@@ -76,30 +76,6 @@ const SignUpPage = ({ show, onHide}) => {
     return (
 
         <div className="container">
-            {/* <Modal
-                show = {show}
-                onHide = {onHide}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Modal heading
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <h4>Centered Modal</h4>
-                    <p>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                        consectetur ac, vestibulum at eros.
-                    </p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={onHide}>Close</Button>
-                </Modal.Footer>
-            </Modal> */}
             <Form>
                 <h1> Sign Up 회원가입 </h1>
                 <div className="form-row">
@@ -176,11 +152,6 @@ const SignUpPage = ({ show, onHide}) => {
                     </div>
                 </div>
                 <Button onClick={handleClick}>회원가입</Button>
-                <Footer>
-                    <Link to="/login" style={{ textDecoration: "none" }}>
-                        로그인
-                    </Link>
-                </Footer>
             </Form>
         </div>
     );
