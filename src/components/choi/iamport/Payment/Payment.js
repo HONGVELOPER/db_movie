@@ -300,7 +300,7 @@ function Payment({ history, form, ua, reserveData }) {
         </Item>
         <Item>
           {getFieldDecorator("amount", {
-            initialValue: "39000",
+            initialValue: reserveData.mpPrice,
             rules: [{ required: true, message: "결제금액은 필수입력입니다" }],
           })(<Input size="large" type="number" addonBefore="결제금액" />)}
         </Item>
