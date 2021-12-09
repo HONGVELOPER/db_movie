@@ -10,7 +10,7 @@ const PaymentResultPage = (props) => {
   return (
     <Modal
       open={isOpen}
-      onClose={setIsOpen(false)}
+      onClose={() => setIsOpen(false)}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
